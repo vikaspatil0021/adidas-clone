@@ -24,7 +24,7 @@ const DropdownSports = () => {
 
         
         <div className='d-flex col-9 pe-5 me-5'>
-          <div className='col-3 ps-5 pt-5 pe-2'>
+          <div className='col-3 ps-5 pt-4 pe-2'>
             <a className='drop-a'>FOOTBALL</a>
             <ul className='pt-2 p-0 m-0'>
               <img src={ds1} className="card-img mb-2" />
@@ -65,7 +65,7 @@ const DropdownSports = () => {
             </ul>
 
           </div>
-          <div className='col-3 ps-5 pt-5 pe-2'>
+          <div className='col-3 ps-5 pt-4 pe-2'>
             <a className='drop-a'>RUNNING</a>
             <ul className='pt-2 p-0'>
               <img src={ds2} className="card-img mb-2" />
@@ -99,7 +99,7 @@ const DropdownSports = () => {
             </ul>
 
           </div>
-          <div className='col-3 ps-5 pt-5 pe-2'>
+          <div className='col-3 ps-5 pt-4 pe-2'>
             <a className='drop-a'>OUTDOOR </a>
             <ul className='pt-2 p-0'>
             <img src={ds3} className="card-img mb-2" />
@@ -123,7 +123,7 @@ const DropdownSports = () => {
 
             </ul>
           </div>
-          <div className='col-3 ps-5 pt-5 pe-2 pb-3'>
+          <div className='col-3 ps-5 pt-4 pe-2 pb-3'>
             <a className='drop-a'>GYM & TRAINING</a>
             <ul className='pt-2 p-0 m-0'>
               <img src={ds4} className="card-img mb-2" />
@@ -149,7 +149,7 @@ const DropdownSports = () => {
 
         </div>
         
-        <div className='col-5 ps-5 pt-5 pe-2 pb-3'>
+        <div className='col-5 ps-5 pt-4 pe-2 pb-3'>
             <a className='drop-a'>OTHER SPORTS</a>
             <ul className='pt-2 p-0 m-0'>
 

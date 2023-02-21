@@ -3,9 +3,9 @@
 
 /* top most discount header---- */
 .discount-header {
-    font-size: 12px;
+    font-size: 10px;
     line-height: 1.7rem;
-    letter-spacing: .1rem;
+    letter-spacing: .05rem;
     color: white;
     font-weight: 700;
     height: 100%;
@@ -49,7 +49,7 @@
     margin-top: 25px;
     font-size: 15px;
     font-weight:700 ;
-    letter-spacing: .1rem;
+    letter-spacing: .05rem;
     text-decoration: underline;
 }
 .offcanvas-linkh6:hover{
@@ -59,7 +59,7 @@
 /* header-top --------------------- */
 .header-top>ul>li {
     margin: 7px 14px;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 
@@ -82,7 +82,8 @@
     margin: 7px 13px;
     margin-bottom: 0;
     padding-bottom: 15px;
-    letter-spacing: .1rem;
+    letter-spacing: .05rem;
+    font-size: 15px;
 
 }
 .header-bottom> div> ul >li:hover{
@@ -141,11 +142,14 @@ left: -30px;
 
 /* MENU DROPDOWN CONTENT ===============>*/
 .drop-a{
+    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
 }
 
 .drop-lia{
+    font-size: 14px;
+
     cursor: pointer;
 }
 .drop-lia:hover,.drop-a:hover{

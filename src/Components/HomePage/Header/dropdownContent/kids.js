@@ -7,7 +7,7 @@ const DropdownKids = () => {
         <div className="dropdown-content" >
             <div className='d-flex border-bottom px-5'>
 
-                <div className='border-end col-3 ps-5 pt-5 pe-2'>
+                <div className='border-end col-3 ps-5 pt-4 pe-2'>
                     <a className='drop-a'>FEATURED</a>
                     <ul className='p-0 m-0'>
                         <li className='mt-2'><a className='drop-lia'>
@@ -29,7 +29,7 @@ const DropdownKids = () => {
 
                 </div>
                 <div className='d-flex col-9 pe-5 me-5'>
-                    <div className='col-4 ps-5 pt-5 pe-2'>
+                    <div className='col-4 ps-5 pt-4 pe-2'>
                         <a className='drop-a'>YOUTH 8 - 16 YEARS</a>
                         <ul className='p-0 m-0'>
                             <li className='mt-2'><a className='drop-lia'>
@@ -54,7 +54,7 @@ const DropdownKids = () => {
                         </ul>
 
                     </div>
-                    <div className='col-4 ps-5 pt-5 pe-2 pb-3'>
+                    <div className='col-4 ps-5 pt-4 pe-2 pb-3'>
                         <a className='drop-a'>KIDS 4 - 8 YEARS</a>
                         <ul className='pt-2 p-0'>
                             <li className='mt-2'><a className='drop-lia'>
@@ -78,7 +78,7 @@ const DropdownKids = () => {
                         </ul>
 
                     </div>
-                    <div className='col-4 ps-5 pt-5 pe-2'>
+                    <div className='col-4 ps-5 pt-4 pe-2'>
                         <a className='drop-a'>TODDLERS 0 - 4 YEARS</a>
                         <ul className='pt-2 p-0'>
                             <li><a className='drop-lia'>
@@ -95,7 +95,7 @@ const DropdownKids = () => {
                 </div>
             </div>
             <div className='border-bottom px-5 d-flex'>
-                <div className='col-3 ps-5 py-3'>
+                <div className='col-3 ps-5 py-2'>
 
                     <a className='drop-a'>All Kids</a>
                 </div>

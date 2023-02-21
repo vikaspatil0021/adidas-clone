@@ -13,7 +13,7 @@ const DropdownCollections = () => {
 
 
                 <div className='d-flex col-9 pe-5 me-5'>
-                    <div className='col-4 ps-5 pt-5 pe-2'>
+                    <div className='col-4 ps-5 pt-4 pe-2'>
                         <a className='drop-a'>WHAT'S NEW?</a>
                         <ul className='pt-2 p-0 m-0'>
                             <img src={dc1} className="card-img mb-2" />
@@ -45,7 +45,7 @@ const DropdownCollections = () => {
                         </ul>
 
                     </div>
-                    <div className='col-4 ps-5 pt-5 pe-2'>
+                    <div className='col-4 ps-5 pt-4 pe-2'>
                         <a className='drop-a'>COLLABORATIONS</a>
                         <ul className='pt-2 p-0'>
                             <img src={dc2} className="card-img mb-2" />
@@ -76,7 +76,7 @@ const DropdownCollections = () => {
                         </ul>
 
                     </div>
-                    <div className='col-4 ps-5 pt-5 pe-2'>
+                    <div className='col-4 ps-5 pt-4 pe-2'>
                         <a className='drop-a'>SPORTS </a>
                         <ul className='pt-2 p-0'>
                             <img src={dc3} className="card-img mb-2" />
@@ -117,7 +117,7 @@ const DropdownCollections = () => {
 
                         </ul>
                     </div>
-                    <div className='col-4 ps-5 pt-5 pe-2 pb-3'>
+                    <div className='col-4 ps-5 pt-4 pe-2 pb-3'>
                         <a className='drop-a'>ORIGINALS</a>
                         <ul className='pt-2 p-0 m-0'>
                             <img src={dc4} className="card-img mb-2" />

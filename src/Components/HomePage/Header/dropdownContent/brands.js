@@ -31,7 +31,7 @@ const DropdownBrands = () => {
 
         
         <div className='d-flex justify-content-between col-10 pe-5 me-5'>
-          <div className='col-3 ps-5 pt-5 pe-2'>
+          <div className='col-3 ps-5 pt-4 pe-2'>
           <img src={db01} className="card-img mb-2" />
             <ul className='pt-2 mb-3 p-0 m-0'>
               <img src={db1} className="card-img mb-2" />
@@ -68,7 +68,7 @@ const DropdownBrands = () => {
             </ul>
 
           </div>
-          <div className='col-3 ps-5 pt-5 pe-2'>
+          <div className='col-3 ps-5 pt-4 pe-2'>
           <img src={db02} className="card-img mb-2" />
             <ul className='pt-2 p-0'>
               <img src={db2} className="card-img mb-2" />
@@ -88,7 +88,7 @@ ZNE                            </a></li>
             </ul>
 
           </div>
-          <div className='col-3 ps-5 pt-5 pe-2'>
+          <div className='col-3 ps-5 pt-4 pe-2'>
           <img src={db03} className="card-img mb-2" />
             <ul className='pt-2 p-0'>
             <img src={db3} className="card-img mb-2" />
@@ -108,7 +108,7 @@ ZNE                            </a></li>
 
             </ul>
           </div>
-          <div className='col-3 ps-5 pt-5 pe-2 pb-3'>
+          <div className='col-3 ps-5 pt-4 pe-2 pb-3'>
           <img src={db04} className="card-img mb-2" />
             <ul className='pt-2 p-0 m-0'>
               <img src={db4} className="card-img mb-2" />
@@ -136,7 +136,7 @@ ZNE                            </a></li>
             </ul>
 
           </div>
-          <div className='col-3 ps-5 pt-5 pe-2 pb-3'>
+          <div className='col-3 ps-5 pt-4 pe-2 pb-3'>
           <img src={db05} className="card-img mb-2" />
             <ul className='pt-2 p-0 m-0'>
               <img src={db5} className="card-img mb-2" />

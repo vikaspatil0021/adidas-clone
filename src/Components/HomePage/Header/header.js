@@ -183,14 +183,14 @@ const Header = () => {
 
                 <li className='dropdown'><a href='/women' className='fw-bold'>WOMEN                </a>
 
-                <DropdownWomen />
+                  <DropdownWomen />
 
                 </li>
 
 
                 <li className='dropdown'><a href='' className='fw-bold'>KIDS                </a>
 
-                <DropdownKids />
+                  <DropdownKids />
 
                 </li>
 
@@ -209,12 +209,12 @@ const Header = () => {
 
                 <li className='dropdown'><a href='' className=''>COLLECTIONS                </a>
 
-                <DropdownCollections />
+                  <DropdownCollections />
 
                 </li>
 
 
-                <li className='dropdown'  style={{borderColor:"#dc3545"}}><a href='' className='text-danger fw-bold '>OUTLET                </a>
+                <li className='dropdown' style={{ borderColor: "#dc3545" }}><a href='' className='text-danger fw-bold '>OUTLET                </a>
 
                   <DropdownOutlet />
                 </li>
@@ -227,23 +227,23 @@ const Header = () => {
 
 
             </div>
-              <div className='d-flex mb-2'>
-                <div className='d-flex'>
-                  <input type="text" className='search fw-semibold' placeholder='Search' />
-                  <div className='d-flex align-items-center search-icon'>
+            <div className='d-flex mb-2'>
+              <div className='d-flex'>
+                <input type="text" className='search fw-semibold' placeholder='Search' />
+                <div className='d-flex align-items-center search-icon'>
 
-                    <i class="fa-solid fa-magnifying-glass fs-5 "></i>
-                  </div>
-                </div>
-                <div className='d-flex align-items-center me-3'>
-                  <i class="fa-regular fa-user fs-5"></i>
-                </div>
-                <div className='d-flex align-items-center mx-3'>
-                  <i class="fa-regular fa-heart fs-5"></i>               </div>
-                <div className='d-flex align-items-center mx-3'>
-                  <i class="bi bi-cart2 fs-4"></i>
+                  <i class="fa-solid fa-magnifying-glass fs-5 "></i>
                 </div>
               </div>
+              <div className='d-flex align-items-center me-3'>
+                <i class="fa-regular fa-user fs-5"></i>
+              </div>
+              <div className='d-flex align-items-center mx-3'>
+                <i class="fa-regular fa-heart fs-5"></i>               </div>
+              <div className='d-flex align-items-center mx-3'>
+                <i class="bi bi-cart2 fs-4"></i>
+              </div>
+            </div>
 
 
           </div>
