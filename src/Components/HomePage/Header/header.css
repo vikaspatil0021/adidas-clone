@@ -1,0 +1,167 @@
+
+
+
+/* top most discount header---- */
+.discount-header {
+    font-size: 12px;
+    line-height: 1.7rem;
+    letter-spacing: .1rem;
+    color: white;
+    font-weight: 700;
+    height: 100%;
+    cursor: pointer;
+
+}
+
+#dis-header{
+    transition: opacity .4s ;
+}
+/* offcanvas discount header */
+.offCanvas{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 1;
+    height: 350px; 
+    top: -350px;
+    transition: transform .3s ease-in-out;
+}
+.openCanvas{
+    transform: translateY(350px);
+}
+.close-button{
+    cursor: pointer;
+    border:solid black 1px;
+    padding: 10px 18px;
+}
+
+
+.offcanvash6{
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .05rem;
+
+}
+.offcanvas-linkh6{
+    display: inline;
+    margin-top: 25px;
+    font-size: 15px;
+    font-weight:700 ;
+    letter-spacing: .1rem;
+    text-decoration: underline;
+}
+.offcanvas-linkh6:hover{
+    background: #000;
+    color: #ffffff;
+}
+/* header-top --------------------- */
+.header-top>ul>li {
+    margin: 7px 14px;
+    font-size: 12px;
+}
+
+
+.header-top>ul>li>a:hover {
+    text-decoration: underline;
+
+}
+
+
+
+
+
+/* header -bottom -----logo */
+.adidas-icon {
+    position: relative;
+    width: 65px;
+    top: -15px;
+}
+.header-bottom> div> ul >li{
+    margin: 7px 13px;
+    margin-bottom: 0;
+    padding-bottom: 15px;
+    letter-spacing: .1rem;
+
+}
+.header-bottom> div> ul >li:hover{
+    border-bottom: 4px solid;
+    padding-bottom: 11px;
+
+
+}
+
+.header-bottom> div> ul{
+    margin: 0;
+    margin-left: 200px ;
+    padding: 0;
+}
+
+
+
+
+.search{
+    transition: border ease 1s;
+    padding: 0 10px 0 10px;
+    border: solid thin #e0e3e6;
+    background-color: #e0e3e6;
+    font-size: 14px;
+    height: 35px;
+    max-width: fit-content;
+    width: 170px;
+}
+.search:focus{
+    
+    border: solid thin #636566;
+    outline: 0;
+}
+
+.search-icon{
+position: relative;
+left: -30px;
+}
+
+/* MENU DROPDOWN============> */
+.dropdown{
+    position: static;
+}
+.dropdown-content{
+    background-color: #ffffff;
+    width: 100%;
+    margin: 17px 0px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    display:none;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+/* MENU DROPDOWN CONTENT ===============>*/
+.drop-a{
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.drop-lia{
+    cursor: pointer;
+}
+.drop-lia:hover,.drop-a:hover{
+    text-decoration: underline;
+}
+
+
+
+/* MEDIA QUERY SCREEN WIDTH */
+@media (max-width: 1450px) {
+    .header-bottom> div> ul>li{
+        margin-right:0px;
+    }
+    .header-bottom> div> ul{
+
+    margin-left: 0px ;
+    }
+    
+}
