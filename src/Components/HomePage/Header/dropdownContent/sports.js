@@ -149,7 +149,7 @@ const DropdownSports = () => {
 
         </div>
         
-        <div className='col-5 ps-5 pt-4 pe-2 pb-3'>
+        <div className='col-3 ps-5 pt-4 pe-2 pb-3'>
             <a className='drop-a'>OTHER SPORTS</a>
             <ul className='pt-2 p-0 m-0'>
 
