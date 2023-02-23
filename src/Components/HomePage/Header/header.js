@@ -83,13 +83,13 @@ const Header = () => {
         <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center bg-dark  discount-header'>
           <div id='dis-header' className='my-2 d-flex align-items-center'>
             {DisHeader.content}
-            <i class="fa-solid fa-angle-down mx-3 fs-6"></i>
+            <i class="fa-solid fa-angle-down mx-3 dis-arrowDown fs-6"></i>
           </div>
 
 
         </div>
         {/* discount header offCanvas */}
-        <div className='offCanvas p-xl-4 p-2'>
+        <div className='offCanvas p-4'>
           <div className='d-flex justify-content-end'>
 
             <div className='border-1 close-button mb-3' onClick={disHeaderOffcanvas}>
@@ -98,8 +98,8 @@ const Header = () => {
             </div>
           </div>
 
-          <div className='d-flex justify-content-between pe-5 '>
-            <div className='ms-lg-3 px-lg-5 px-1 col-4'>
+          <div className='offCanvas-content'>
+            <div className='px-lg-4 px-1'>
               <h6 className='offcanvash6'>
                 SIGNUP & GET 15% OFF
               </h6>
@@ -113,7 +113,7 @@ const Header = () => {
                 </h6>
               </a>
             </div>
-            <div className='col-4 px-lg-5 px-2'>
+            <div className='px-lg-4 px-2'>
               <h6 className='offcanvash6'>
 
                 FREE DELIVERY
@@ -132,7 +132,7 @@ const Header = () => {
                 </h6>
               </a>
             </div>
-            <div className='me-5 px-lg-5 px-2 col-4'>
+            <div className=' px-lg-4 px-2'>
               <h6 className='offcanvash6'>
                 UPI & NET BANKING AVAILABLE
               </h6>
@@ -151,8 +151,8 @@ const Header = () => {
 
           </div>
         </div>
-        <div className='mx-xl-5 mx-3'>
-          <div className='header-top w-100 d-flex justify-content-end'>
+        <div className='mx-xl-5 mx-2'>
+          <div className='header-top'>
             <ul className='d-flex justify-content-between p-0 m-0'>
               <li><a href=''>help</a></li>
               <li><a href=''>returns</a></li>
@@ -162,7 +162,16 @@ const Header = () => {
 
             </ul>
           </div>
-          <div className='header-bottom d-flex flex-wrap justify-content-between align-items-end pt-2'>
+          <div className='header-bottom'>
+            <div className='mobile-menu'>
+
+              <div className='mx-2'>
+                <i class="fa-solid fa-bars fs-4"></i>
+              </div>
+              <div className='d-flex align-items-center mx-2'>
+                <i class="fa-regular fa-heart fs-5"></i>
+              </div>
+            </div>
             <a href='/'>
               <div className='adidas-icon'>
 
@@ -170,7 +179,7 @@ const Header = () => {
               </div>
 
             </a>
-            <div className='d-flex'>
+            <div className='dropMENU'>
 
               <ul className='d-flex'>
 
@@ -228,20 +237,31 @@ const Header = () => {
 
             </div>
             <div className='d-flex mb-2'>
-              <div className='d-flex'>
+              <div className='search-group'>
                 <input type="text" className='search fw-semibold' placeholder='Search' />
-                <div className='d-flex align-items-center search-icon'>
+                <div className='d-flex align-items-center  search-icon'>
 
-                  <i class="fa-solid fa-magnifying-glass fs-5 "></i>
+                  <i class="fa-solid fa-magnifying-glass fs-5 mx-2"></i>
                 </div>
               </div>
-              <div className='d-flex align-items-center me-3'>
+              <div className='d-flex align-items-center mx-2'>
                 <i class="fa-regular fa-user fs-5"></i>
               </div>
-              <div className='d-flex align-items-center mx-3'>
-                <i class="fa-regular fa-heart fs-5"></i>               </div>
-              <div className='d-flex align-items-center mx-3'>
+              <div className='mobile-search-icon'>
+
+                <i class="fa-solid fa-magnifying-glass fs-5 mx-2"></i>
+              </div>
+              <div className='mx-2 desktop-heart-icon'>
+                <i class="fa-regular fa-heart fs-5"></i>
+              </div>
+              <div className='dropdown mx-2'>
                 <i class="bi bi-cart2 fs-4"></i>
+                <div className='dropdown-content-cart mx-xl-5 mx-2'>
+                  <h4 className='d-block py-3 px-5'>
+
+                    YOUR CART IS EMPTY
+                  </h4>
+                </div>
               </div>
             </div>
 
