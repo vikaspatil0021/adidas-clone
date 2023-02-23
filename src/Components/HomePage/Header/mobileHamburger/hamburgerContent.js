@@ -43,7 +43,7 @@ const HamburgerContent = () => {
                     <i className='fa-solid fa-angle-right me-3 fs-6'></i>
                 </div>
             </div>
-            <div className='p-4 border-top' >
+            <div className='p-4 pb-5 border-top' >
                 {
                     menu1.c3.map((each) => {
                         return (

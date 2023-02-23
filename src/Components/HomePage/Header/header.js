@@ -44,6 +44,11 @@ const Header = () => {
 
   }
 
+  // offCanvas mobile search ---- mobile version
+  const openCanvasMobileSearch = () => {
+    document.querySelector(".mobile-search-offcanvas").classList.toggle("openCanvas-mobile-search");
+
+  }
 
 
   return (
@@ -163,7 +168,7 @@ const Header = () => {
                   </h5>
                 </div>
               </div>
-              <div className='d-flex align-items-center me-3'>
+              <div className='d-flex align-items-center me-3 ms-1'>
                 <i class="fa-regular fa-heart fs-4"></i>
               </div>
             </div>
@@ -239,16 +244,30 @@ const Header = () => {
                   <i class="fa-solid fa-magnifying-glass fs-5 mx-2"></i>
                 </div>
               </div>
+
               <div className='d-flex align-items-center mx-3'>
                 <i class="fa-regular fa-user fs-5"></i>
               </div>
-              <div className='mobile-search-icon'>
+
+              <div role='button' className='mobile-search-icon' onClick={openCanvasMobileSearch}>
 
                 <i class="fa-solid fa-magnifying-glass fs-5 me-3 ms-2"></i>
               </div>
+              <div className="mobile-search-offcanvas">
+                <div className='d-flex ' style={{ backgroundColor: "#eceff1" }}>
+                <div role='button' onClick={openCanvasMobileSearch}>
+
+                  <i class="fa-solid fa-angle-left m-3 mt-4 ps-2 mx-4 fs-5"></i>
+                </div>
+
+                  <input placeholder='Search' className='search-mobile-input' />
+                </div>
+              </div>
+
               <div className='me-3 ms-2 desktop-heart-icon'>
                 <i class="fa-regular fa-heart fs-4"></i>
               </div>
+
               <div className='dropdown me-3 ms-2 mb-1'>
                 <i class="bi bi-cart2 fs-4"></i>
                 <div className='dropdown-content-cart mx-xl-5 mx-2'>

@@ -167,6 +167,14 @@
 .search-icon {
     position: relative;
 }
+.search-mobile-input{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+.search-mobile-input:focus{
+    outline: 0;
+}
 
 .mobile-search-icon {
     display: none;
@@ -256,9 +264,25 @@
 }
 
 .scroll{
-    height: calc(100% - 80px);
+    height: calc(100% - 90px);
     overflow: scroll;
 }
+
+/* MOBILE SEARCH OFFCANVAS */
+.mobile-search-offcanvas {
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    top: 0;
+    right: -100%;
+    transition: transform .3s ease-in-out;
+}
+.openCanvas-mobile-search {
+    transform: translateX(-100%);
+}
+
 /* MEDIA QUERY SCREEN WIDTH */
 @media (max-width: 1450px) {
     .header-bottom>div>ul>li {
