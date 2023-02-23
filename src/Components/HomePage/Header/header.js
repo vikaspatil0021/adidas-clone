@@ -236,7 +236,7 @@ const Header = () => {
 
 
             </div>
-            <div className='d-flex'>
+            <div className='d-flex mb-lg-2'>
               <div className='search-group'>
                 <input type="text" className='search fw-semibold' placeholder='Search' />
                 <div className='d-flex align-items-center  search-icon'>
