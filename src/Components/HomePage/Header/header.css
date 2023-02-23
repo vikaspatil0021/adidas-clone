@@ -1,3 +1,8 @@
+
+
+
+
+
 /* top most discount header---- */
 .discount-header {
     font-size: 10px;
@@ -250,6 +255,10 @@
 
 }
 
+.scroll{
+    height: calc(100% - 80px);
+    overflow: scroll;
+}
 /* MEDIA QUERY SCREEN WIDTH */
 @media (max-width: 1450px) {
     .header-bottom>div>ul>li {

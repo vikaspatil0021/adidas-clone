@@ -7,7 +7,7 @@ import DropdownOutlet from "./dropdownContent/outlet";
 import DropdownSports from "./dropdownContent/sports";
 import DropdownBrands from "./dropdownContent/brands";
 import DropdownCollections from "./dropdownContent/collections"
-
+import HamburgerContent from './mobileHamburger/hamburgerContent';
 
 
 const Header = () => {
@@ -40,45 +40,9 @@ const Header = () => {
 
   // offCanvas hamburger ---- mobile version
   const openCanvasHamburger = () => {
-    document.querySelector(".offCanvas-hamburger").classList.toggle("openCanvas-hamburger")
+    document.querySelector(".offCanvas-hamburger").classList.toggle("openCanvas-hamburger");
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -187,10 +151,13 @@ const Header = () => {
 
                   </a>
                 </div>
-                <div>
-                  hiuhc
+                <div className='scroll'>
+
+                  <HamburgerContent />
                 </div>
-                <div className='position-absolute border-top w-100 p-2 px-5 bottom-0'>
+
+
+                <div className='position-fixed bottom-0 w-100 bg-white px-4 border-top py-2'>
                   <h5 className='fw-normal'>
                     India
                   </h5>
