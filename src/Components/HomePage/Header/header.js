@@ -80,7 +80,7 @@ const Header = () => {
   return (
     <header className="border-bottom">
       <div>
-        <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center bg-dark  discount-header'>
+        <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center  discount-header'>
           <div id='dis-header' className='my-2 d-flex align-items-center'>
             {DisHeader.content}
             <i class="fa-solid fa-angle-down mx-3 dis-arrowDown fs-6"></i>
@@ -165,10 +165,10 @@ const Header = () => {
           <div className='header-bottom'>
             <div className='mobile-menu'>
 
-              <div className='mx-2'>
+              <div className='mx-3'>
                 <i class="fa-solid fa-bars fs-4"></i>
               </div>
-              <div className='d-flex align-items-center mx-2'>
+              <div className='d-flex align-items-center me-3'>
                 <i class="fa-regular fa-heart fs-5"></i>
               </div>
             </div>
@@ -236,7 +236,7 @@ const Header = () => {
 
 
             </div>
-            <div className='d-flex mb-2'>
+            <div className='d-flex'>
               <div className='search-group'>
                 <input type="text" className='search fw-semibold' placeholder='Search' />
                 <div className='d-flex align-items-center  search-icon'>
@@ -244,17 +244,17 @@ const Header = () => {
                   <i class="fa-solid fa-magnifying-glass fs-5 mx-2"></i>
                 </div>
               </div>
-              <div className='d-flex align-items-center mx-2'>
+              <div className='d-flex align-items-center mx-3'>
                 <i class="fa-regular fa-user fs-5"></i>
               </div>
               <div className='mobile-search-icon'>
 
-                <i class="fa-solid fa-magnifying-glass fs-5 mx-2"></i>
+                <i class="fa-solid fa-magnifying-glass fs-5 me-3 ms-2"></i>
               </div>
-              <div className='mx-2 desktop-heart-icon'>
+              <div className='me-3 ms-2 desktop-heart-icon'>
                 <i class="fa-regular fa-heart fs-5"></i>
               </div>
-              <div className='dropdown mx-2'>
+              <div className='dropdown me-3 ms-2 mb-1'>
                 <i class="bi bi-cart2 fs-4"></i>
                 <div className='dropdown-content-cart mx-xl-5 mx-2'>
                   <h4 className='d-block py-3 px-5'>
