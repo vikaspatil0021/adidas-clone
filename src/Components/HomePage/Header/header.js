@@ -38,6 +38,11 @@ const Header = () => {
 
   }
 
+  // offCanvas hamburger ---- mobile version
+  const openCanvasHamburger = () => {
+    document.querySelector(".offCanvas-hamburger").classList.toggle("openCanvas-hamburger")
+
+  }
 
 
 
@@ -92,7 +97,7 @@ const Header = () => {
         <div className='offCanvas p-4'>
           <div className='d-flex justify-content-end'>
 
-            <div className='border-1 close-button mb-3' onClick={disHeaderOffcanvas}>
+            <div className=' close-button mb-3' onClick={disHeaderOffcanvas}>
               <i class="fa-solid fa-xmark fs-4"></i>
 
             </div>
@@ -165,11 +170,34 @@ const Header = () => {
           <div className='header-bottom'>
             <div className='mobile-menu'>
 
-              <div className='mx-3'>
+              <div role='button' className='d-flex align-items-center mx-3' onClick={openCanvasHamburger}>
                 <i class="fa-solid fa-bars fs-4"></i>
               </div>
+              <div className='offCanvas-hamburger'>
+                <div role='button' className='mb-3 hamburger-closeButton' onClick={openCanvasHamburger}>
+                  <i class="fa-solid fa-xmark fs-2"></i>
+                </div>
+                <div className='d-flex border-bottom py-3 justify-content-center'>
+
+                  <a href='/'>
+                    <div className='adidas-icon-hamburger'>
+
+                      <svg viewBox="100 100 50 32" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M 150.07 131.439 L 131.925 100 L 122.206 105.606 L 137.112 131.439 L 150.07 131.439 Z M 132.781 131.439 L 120.797 110.692 L 111.078 116.298 L 119.823 131.439 L 132.781 131.439 Z M 109.718 121.401 L 115.509 131.439 L 102.551 131.439 L 100 127.007 L 109.718 121.401 Z" fill="black"></path></svg>
+                    </div>
+
+                  </a>
+                </div>
+                <div>
+                  hiuhc
+                </div>
+                <div className='position-absolute border-top w-100 p-2 px-5 bottom-0'>
+                  <h5 className='fw-normal'>
+                    India
+                  </h5>
+                </div>
+              </div>
               <div className='d-flex align-items-center me-3'>
-                <i class="fa-regular fa-heart fs-5"></i>
+                <i class="fa-regular fa-heart fs-4"></i>
               </div>
             </div>
             <a href='/'>
@@ -236,7 +264,7 @@ const Header = () => {
 
 
             </div>
-            <div className='d-flex mb-lg-2'>
+            <div className='d-flex mb-lg-1'>
               <div className='search-group'>
                 <input type="text" className='search fw-semibold' placeholder='Search' />
                 <div className='d-flex align-items-center  search-icon'>
@@ -252,12 +280,12 @@ const Header = () => {
                 <i class="fa-solid fa-magnifying-glass fs-5 me-3 ms-2"></i>
               </div>
               <div className='me-3 ms-2 desktop-heart-icon'>
-                <i class="fa-regular fa-heart fs-5"></i>
+                <i class="fa-regular fa-heart fs-4"></i>
               </div>
               <div className='dropdown me-3 ms-2 mb-1'>
                 <i class="bi bi-cart2 fs-4"></i>
                 <div className='dropdown-content-cart mx-xl-5 mx-2'>
-                  <h4 className='d-block py-3 px-5'>
+                  <h4 className='d-block py-3 px-5 fw-bold'>
 
                     YOUR CART IS EMPTY
                   </h4>

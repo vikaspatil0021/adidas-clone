@@ -224,6 +224,31 @@
 }
 
 
+/* HAMBURGER MENU OFFCANVAS */
+.offCanvas-hamburger{
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    top: 0;
+    left: 0;
+    left: -100%;
+    transition: transform .4s ease-in-out;
+}
+.openCanvas-hamburger {
+    transform: translateX(100%);
+}
+.hamburger-closeButton{
+    position: absolute;
+    right: 30px;
+    top: 20px;
+}
+.adidas-icon-hamburger{
+    width: 50px;
+  
+
+}
 
 /* MEDIA QUERY SCREEN WIDTH */
 @media (max-width: 1450px) {
@@ -254,6 +279,9 @@
     }
 
     /* discount header arrow position */
+    .discount-header{
+        font-size: 12px;
+    }
     .dis-arrowDown {
         position: absolute;
         right: 7px;
