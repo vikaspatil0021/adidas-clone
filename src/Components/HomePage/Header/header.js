@@ -257,7 +257,7 @@ const Header = () => {
                 <div className='d-flex ' style={{ backgroundColor: "#eceff1" }}>
                 <div role='button' onClick={openCanvasMobileSearch}>
 
-                  <i class="fa-solid fa-angle-left m-3 mt-4 ps-2 mx-4 fs-5"></i>
+                  <i class="fa-solid fa-angle-left m-3 pt-2 ps-2 mx-4 fs-5"></i>
                 </div>
 
                   <input placeholder='Search' className='search-mobile-input' />
