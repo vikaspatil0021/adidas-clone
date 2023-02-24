@@ -246,11 +246,13 @@
     height: 100%;
     top: 0;
     left: 0;
-    left: -100%;
-    transition: transform .4s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition-delay: .2s;
+    transform: translateX(-100%);
+
 }
 .openCanvas-hamburger {
-    transform: translateX(100%);
+    transform: translateX(0%);
 }
 .hamburger-closeButton{
     position: absolute;
@@ -268,6 +270,24 @@
     overflow: scroll;
 }
 
+/* OFFCANVAS SUBMENU HAMBUREGER */
+.offCanvas-submenu{
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: transform .5s ease-in-out;
+    transition-delay: .2s;
+    transform: translateX(200%);
+
+}
+
+.openCanvas-submenu {
+    transform: translateX(0%);
+}
+
 /* MOBILE SEARCH OFFCANVAS */
 .mobile-search-offcanvas {
     width: 100%;
@@ -278,6 +298,8 @@
     top: 0;
     right: -100%;
     transition: transform .3s ease-in-out;
+    transition-delay: .2s;
+
 }
 .openCanvas-mobile-search {
     transform: translateX(-100%);

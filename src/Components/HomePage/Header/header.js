@@ -42,6 +42,7 @@ const Header = () => {
   const openCanvasHamburger = () => {
     document.querySelector(".offCanvas-hamburger").classList.toggle("openCanvas-hamburger");
 
+
   }
 
   // offCanvas mobile search ---- mobile version
@@ -143,6 +144,7 @@ const Header = () => {
                 <i class="fa-solid fa-bars fs-4"></i>
               </div>
               <div className='offCanvas-hamburger'>
+                
                 <div role='button' className='mb-3 hamburger-closeButton' onClick={openCanvasHamburger}>
                   <i class="fa-solid fa-xmark fs-2"></i>
                 </div>
@@ -158,7 +160,7 @@ const Header = () => {
                 </div>
                 <div className='scroll'>
 
-                  <HamburgerContent />
+                  <HamburgerContent openCanvasHamburger={openCanvasHamburger} />
                 </div>
 
 
