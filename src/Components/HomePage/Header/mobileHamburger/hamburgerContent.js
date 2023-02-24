@@ -5,15 +5,262 @@ const HamburgerContent = (props) => {
         c1: [
             {
                 main: "MEN",
-                sub: ["Footwear", "Clothing", "Accessories", "New Season", "Sustainable Materials", "Featured", "Outlet"]
-            },
+                sub: [
+                    {
+                        main: "Footwear",
+                        supersub: [
+                            "All Men's Footwear",
+                            "Running",
+                            "Running Shoe Finder",
+                            "Sneakers",
+                            "Originals",
+                            "Slides & Sandals",
+                            "Football",
+                            "Basketball",
+                            "Tennis",
+                            "Skateboarding",
+                            "Swim",
+                            "Hiking & Outdoor",
+                            "Cricket",
+                            'Walking',
+                            "Shoes Under ₹5899"
+                        ]
+
+                    },
+                    {
+                        main: "Clothing",
+                        supersub: [
+                            "All Men's Clothing",
+                            "T-Shirts & Tank Tops",
+                            "Joggers & Track Pants",
+                            "Originals",
+                            "Football Jerseys & T-Shirts",
+                            "Shorts",
+                            "Jackets",
+                            "Hoodies",
+                            "Tracksuits",
+                            "Sweatshirts",
+                            "Swimwear",
+                            "Clothing Under ₹2899"
+                        ]
+
+                    },
+                    {
+                        main: "Accessories",
+                        supersub: [
+                            "All Men's Clothing",
+                            "Face covers",
+                            "Socks",
+                            "All Bags",
+                            "Backpacks",
+                            "Gym & Training Bags",
+                            "Headwear",
+                            "Gloves",
+                            "Balls"
+                        ]
+
+                    },
+                    {
+                        main: "New Season",
+                        supersub: [
+                            "All Men's",
+                            "Shoes",
+                            "Clothing",
+                            "Accessories"
+                        ]
+
+                    }, {
+                        main: "Sustainable Materials",
+                        supersub: [
+                            "Made with Recycled Material",
+                            "Vegan",
+                            "Organic Cotton",
+                            "All Sustainable Materials"
+
+                        ]
+
+                    }, {
+                        main: "Featured",
+                        supersub: [
+                            "Originals",
+                            "GAZELLE",
+                            "Manchester United",
+                            "Ultraboost",
+                            "4DFWD",
+                            "Stan Smith"
+                        ]
+
+                    }, {
+                        main: "Outlet",
+                        supersub: [
+                            "All Men's",
+                            "Shoes",
+                            "Clothing",
+                            "Accessories"
+                        ]
+
+                    }
+                ]
+            }
+            ,
             {
                 main: "WOMEN",
-                sub: ["Footwear", "Clothing", "Accessories", "New Arrivals", "Our Better Choices Range", "Featured", "Outlet"]
+                sub: [
+                    {
+                        main: "Footwear",
+                        supersub: [
+                            "All Women's Footwear",
+                            "Running",
+                            "Running Shoe Finder",
+                            "Sneakers",
+                            "Originals",
+                            "Slides & Sandals",
+                            "Football",
+                            "Basketball",
+                            "Tennis",
+                            "Skateboarding",
+                            "Swim",
+                            "Hiking & Outdoor",
+                            "Cricket",
+                            'Walking',
+                            "Shoes Under ₹5899"
+                        ]
+                    },
+                    {
+                        main: "Clothing",
+                        supersub: [
+                            "All Men's Clothing",
+                            "T-Shirts & Tank Tops",
+                            "Joggers & Track Pants",
+                            "Originals",
+                            "Football Jerseys & T-Shirts",
+                            "Shorts",
+                            "Jackets",
+                            "Hoodies",
+                            "Tracksuits",
+                            "Sweatshirts",
+                            "Swimwear",
+                            "Clothing Under ₹2899"
+                        ]
+
+                    },
+                    {
+                        main: "Accessories",
+                        supersub: [
+                            "All Men's Accessories",
+                            "Face covers",
+                            "Socks",
+                            "All Bags",
+                            "Backpacks",
+                            "Gym & Training Bags",
+                            "Headwear",
+                            "Gloves",
+                            "Balls"
+                        ]
+
+                    },
+                    {
+                        main: "New Arrivals",
+                        supersub: [
+                            "All Women's",
+                            "Shoes",
+                            "Clothing",
+                            "Accessories"
+                        ]
+
+                    }, {
+                        main: "Our Better Choices Range",
+                        supersub: [
+                            "Made with Recycled Material",
+                            "Made With Vegan Materials",
+                            "Made With Organic Cotton",
+                            "Our Better Choices Range"
+                        ]
+
+                    }, {
+                        main: "Featured",
+                        supersub: [
+                            "Originals",
+                            "GAZELLE",
+                            "Trending",
+                            "Winter Shop",
+                            "Black Trainers",
+                            "Fleece Jackets"
+                        ]
+
+                    }, {
+                        main: "Outlet",
+                        supersub: [
+                            "All Women's",
+                            "Shoes",
+                            "Clothing",
+                            "Accessories"
+                        ]
+
+                    }
+                ]
             },
             {
                 main: "KIDS",
-                sub: ["Youth & Teens (8-16 years)", "Kids (4-8 years)", "Toddlers (0-4 years)", "New Arrivals", "Featured", "Outlet"]
+                sub: [
+                    {
+                        main: "Youth & Teens (8-16 years)",
+                        supersub: [
+                            "All Youth",
+                            "Boys Shoes",
+                            "Girls Shoes",
+                            "Boys Clothing",
+                            "Girls Clothing",
+                            "Accessories"
+                        ]
+                    }, {
+                        main: "Kids (4-8 years)",
+                        supersub: [
+                            "All Kids",
+                            "Boys Shoes",
+                            "Girls Shoes",
+                            "Boys Clothing",
+                            "Girls Clothing",
+                            "Accessories"
+                        ]
+                    }, {
+                        main: "Toddlers (0-4 years)",
+                        supersub: [
+                            "All Toddlers",
+                            "Shoes",
+                            "Clothing"
+                        ]
+                    }, {
+                        main: "New Arrivals",
+                        supersub: [
+                            "All Kids",
+                            "Shoes",
+                            "Clothing",
+                            "Accessories"
+                        ]
+                    }, {
+                        main: "Featured",
+                        supersub: [
+                            "New Season",
+                            "Trending",
+                            "LEGO®",
+                            "Winter Shop",
+                            "Black Trainers"
+                        ]
+                    },{
+                        main: "Outlet",
+                        supersub: [
+                            "All Kids",
+                            "Shoes",
+                            "Clothing",
+                            "Accessories"
+                        ]
+                    }
+
+
+
+                   
+                ]
             }
 
         ],
@@ -47,6 +294,7 @@ const HamburgerContent = (props) => {
 
 
     }
+    console.log(menu1.c1[0].sub[0].supersub[0]);
     return (
         <div className="" >
             <div className='px-4 py-3'>
@@ -71,19 +319,71 @@ const HamburgerContent = (props) => {
                                     </div>
 
                                     {each.sub.map((subEach) => {
-                                        if (subEach === "Outlet") {
+                                        if (subEach.main === "Outlet") {
                                             return (
-                                                <div role='button' className='d-flex text-danger justify-content-between ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each) }}>
-                                                    {subEach}
-                                                    <i className='fa-solid fa-angle-right me-5 fs-6'></i>
+                                                <div>
+                                                    <div role='button' className='d-flex text-danger justify-content-between ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0,2)) }}>
+                                                        {subEach.main}
+                                                        <i className='fa-solid fa-angle-right me-5 fs-6'></i>
+                                                    </div>
+                                                    <div id={each.main + (subEach.main).substring(0,2)} className='offCanvas-submenu'>
+                                                        <div className='border-bottom'>
+                                                            <div role='button' className='fw-bold fs-6' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0,2)) }}>
+
+                                                                <i class="fa-solid fa-angle-left pt-2 pb-1 ps-2 my-3 me-3 ms-3 fs-5"></i>
+                                                                {subEach.main}
+                                                            </div>
+                                                            <div role='button' className='mb-3  ms-3 hamburger-closeButton' onClick={() => { props.openCanvasHamburger(); }}>
+                                                                <i class="fa-solid fa-xmark fs-2"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div className='scroll pt-3 pb-4'>
+                                                            {subEach.supersub.map((SupersubEach) => {
+                                                                return (
+                                                                    <div role='button' className='d-flex justify-content-between ms-5 mb-3 fs-5' >
+                                                                        {SupersubEach}
+                                                                    </div>
+                                                                )
+                                                            })}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             )
                                         } else {
 
                                             return (
-                                                <div role='button' className='d-flex justify-content-between ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each) }}>
-                                                    {subEach}
-                                                    <i className='fa-solid fa-angle-right me-5 fs-6'></i>
+                                                <div>
+
+                                                    <div role='button' className='d-flex justify-content-between ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0,2)) }}>
+                                                        {subEach.main}
+                                                        <i className='fa-solid fa-angle-right me-5 fs-6'></i>
+                                                    </div>
+                                                    <div id={each.main + (subEach.main).substring(0,2)} className='offCanvas-submenu'>
+                                                        <div className='border-bottom'>
+                                                            <div role='button' className='fw-bold fs-6' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0,2)) }}>
+
+                                                                <i class="fa-solid fa-angle-left pt-2 pb-1 ps-2 my-3 me-3 ms-3 fs-5"></i>
+                                                                {subEach.main}
+                                                            </div>
+                                                            <div role='button' className='mb-3  ms-3 hamburger-closeButton' onClick={() => { props.openCanvasHamburger(); }}>
+                                                                <i class="fa-solid fa-xmark fs-2"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div className='scroll pt-3 pb-4'>
+                                                            {subEach.supersub.map((SupersubEach) => {
+
+
+                                                                return (
+                                                                    <div role='button' className='d-flex justify-content-between ms-5 mb-3 fs-5' >
+                                                                        {SupersubEach}
+                                                                    </div>
+                                                                )
+
+                                                            })}
+
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             )
                                         }
