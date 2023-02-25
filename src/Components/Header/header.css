@@ -1,6 +1,10 @@
 
 
+#sticky-top-header{
 
+    transition: top .3s ease-in-out;
+    transition-delay: .5s;
+}
 
 
 /* top most discount header---- */

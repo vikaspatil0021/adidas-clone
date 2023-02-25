@@ -8,3 +8,12 @@ a{
 a:hover{
   color: black;
 }
+
+.top-width{
+  margin-top:127px ;
+}
+@media (max-width:965px) {
+  .top-width{
+    margin-top:101px ;
+  }
+}

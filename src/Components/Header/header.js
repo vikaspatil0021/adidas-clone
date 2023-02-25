@@ -51,9 +51,20 @@ const Header = () => {
 
   }
 
+  // header animation 
+  var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("sticky-top-header").style.top = "0";
+        } else {
+            document.getElementById("sticky-top-header").style.top = "-155px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
 
   return (
-    <header className="border-bottom">
+    <header id='sticky-top-header' className="border-bottom fixed-top bg-white">
       <div>
         <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center  discount-header'>
           <div id='dis-header' className='my-2 d-flex align-items-center'>
