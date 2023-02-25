@@ -3,7 +3,7 @@
 #sticky-top-header{
 
     transition: top .3s ease-in-out;
-    transition-delay: .5s;
+    transition-delay: .3s;
 }
 
 
