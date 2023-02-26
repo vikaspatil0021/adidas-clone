@@ -5,10 +5,21 @@ const Main = () => {
   const discountOfferTrigger = () => {
     document.querySelector('#discount10').classList.add("d-none");
   }
+
+  const addButtonClass = (id) => {
+    document.querySelector("#"+id).classList.toggle('main-btn-onClick');
+    document.querySelector("#"+id+" .border-button").classList.toggle('border-button-onClick');
+
+    setTimeout(()=>{
+      document.querySelector("#"+id).classList.toggle('main-btn-onClick');
+      document.querySelector("#"+id+" .border-button").classList.toggle('border-button-onClick');
+
+    },200);
+  }
   return (
     <div>
       <div id='discount10' className='d-flex justify-content-center align-items-center pe-5 p-md-2' style={{ backgroundColor: "#007bc6" }}>
-        <div className='text-white fw-semibold text-center ps-4 pe-2 py-2 ms-3'>
+        <div className='text-white text-center ps-4 pe-2 py-2 ms-3'>
 
           UP TO 60% OFF. MEMBERS GET EXTRA 10% OFF
           <a href='' className='text-decoration-underline px-2 fs-6 text-white'>SHOP NOW</a>
@@ -25,45 +36,45 @@ const Main = () => {
           <img width='100%' src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_1920,w_1920/enIN/Images/IN-SS23-EXTRA-10-HP-MH-IMAGE_tcm209-996851.jpg" />
         </picture>
         <div className='button-container pe-md-5'>
-        <div className='mb-lg-4 pb-lg-4  me-md-5 pe-md-5'>
+          <div className='mb-lg-4 pb-lg-4  me-md-5 pe-md-5'>
 
-          <div className='fs-1 fw-bolder'>
-            UP TO 60% OFF
-          </div>
-          <div className='fs-5 pb-2'>
-
-            EXTRA 10% FOR MEMBERS
-          </div>
-          <div className=''>
-            <button role='button' className='main-btn'>
-
-              SHOP MEN
-              <i class="bi bi-arrow-right fs-4 ms-3"></i>
-            <div className='border-button'>
-
+            <div className='fs-1 fw-bolder'>
+              UP TO 60% OFF
             </div>
-            </button>
-            <button role='button' className='main-btn'>
-              SHOP WOMEN
-              <i class="bi bi-arrow-right fs-4 ms-3"></i>
-              <div className='border-button'>
+            <div className='fs-5 pb-2'>
 
-</div>
-            </button>
-            <button role='button' className='main-btn'>
-              SHOP KIDS
-              <i class="bi bi-arrow-right fs-4 ms-3"></i>
-              <div className='border-button'>
+              EXTRA 10% FOR MEMBERS
+            </div>
+            <div className=''>
+              <button id='b01' role='button' className='main-btn' onClick={()=>addButtonClass("b01")} >
 
-</div>
-            </button>
+                SHOP MEN
+                <i class="bi bi-arrow-right fs-4 ms-3"></i>
+                <div className='border-button'>
+
+                </div>
+              </button>
+              <button id='b02' role='button' className='main-btn'  onClick={()=>addButtonClass("b02")}>
+                SHOP WOMEN
+                <i class="bi bi-arrow-right fs-4 ms-3"></i>
+                <div className='border-button'>
+
+                </div>
+              </button>
+              <button id='b03' role='button' className='main-btn'  onClick={()=>addButtonClass("b03")}>
+                SHOP KIDS
+                <i class="bi bi-arrow-right fs-4 ms-3"></i>
+                <div className='border-button'>
+
+                </div>
+              </button>
             </div>
 
           </div>
         </div>
       </section>
-      <div style={{height:"1000px"}}>
-        
+      <div style={{ height: "1000px" }}>
+
       </div>
 
 

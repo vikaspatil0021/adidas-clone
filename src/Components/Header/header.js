@@ -64,7 +64,7 @@ const Header = () => {
     }
 
   return (
-    <header id='sticky-top-header' className="border-bottom fixed-top bg-white">
+    <header id='sticky-top-header' className="fixed-top bg-white">
       <div>
         <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center  discount-header'>
           <div id='dis-header' className='my-2 d-flex align-items-center'>
