@@ -85,7 +85,7 @@
 /* section 03===============> */
 .section03{
     width: 100%;
-    margin: 5% 4%;
+    margin: 5% 3%;
 }
 .section-grid{
     display: grid;
@@ -94,7 +94,7 @@
     row-gap: 50px;
 }
 .section03-head{
-    font-size: 25px;
+    font-size: 30px;
     margin-bottom: 30px;
     font-weight: bolder;
 }
@@ -128,6 +128,10 @@
     .section03-head{
         font-size: 25px;
         margin-bottom: 5px;
+    }
+    .section03-head{
+        margin-top:10px ;
+font-size: 20px;
     }
     
 }
