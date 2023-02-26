@@ -12,7 +12,7 @@ a:hover{
 .top-width{
   margin-top:126px ;
 }
-@media (max-width:965px) {
+@media (max-width:1007px) {
   .top-width{
     margin-top:100px ;
   }
