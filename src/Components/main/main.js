@@ -137,7 +137,7 @@ const Main = () => {
       </section>
       <section className='d-flex justify-content-center'>
         <div className='section03'>
-          <div className='fs-2 fw-bold mb-lg-5 mb-3'>
+          <div className=' section03-head'>
 
             Now popular in men's
           </div>

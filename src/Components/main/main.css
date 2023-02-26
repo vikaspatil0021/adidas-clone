@@ -93,10 +93,15 @@
     column-gap: 42px;
     row-gap: 50px;
 }
+.section03-head{
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-weight: bolder;
+}
 .section03-box h1{
     font-size: 40px;
     font-weight: 700;
-    padding: 10px 0;
+    padding: 8px 0;
     margin-bottom: 10px;
     border-bottom: #000 1px solid;
 }
@@ -115,7 +120,14 @@
     .section-grid{
         grid-template-columns: 1fr;
         column-gap: 0px;
-    row-gap: 5px;
+    row-gap: 0px;
+    }
+    .section03-box h1{
+        font-size: 30px;
+    }
+    .section03-head{
+        font-size: 25px;
+        margin-bottom: 5px;
     }
     
 }
