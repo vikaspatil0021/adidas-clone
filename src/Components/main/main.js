@@ -14,7 +14,7 @@ const Main = () => {
       document.querySelector("#"+id).classList.toggle('main-btn-onClick');
       document.querySelector("#"+id+" .border-button").classList.toggle('border-button-onClick');
 
-    },200);
+    },150);
   }
   return (
     <div>
