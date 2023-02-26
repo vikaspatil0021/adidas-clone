@@ -8,11 +8,23 @@
     align-items: center;
 
 }
+
+.button-container-section02{
+    position: absolute;
+    width: 60%;
+    bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 6%;
+
+}
 @media (min-width:1400px) {
     
-    .button-container{
-        padding-bottom: 120px;
+    .button-container,.button-container-section02{
+        padding-bottom: 150px;
     }
+    
 }
 @media (max-width:900px) {
     .button-container{
@@ -20,8 +32,16 @@
         padding-left: 15px;
         align-items: start;
     }
+    .button-container-section02{
+        width: 100%;
+        padding-left: 15px;
+        align-items: start;
+    }
 }
 
+.a-button{
+    all:unset
+}
 .main-btn{
     all:unset;
     display: flex;
