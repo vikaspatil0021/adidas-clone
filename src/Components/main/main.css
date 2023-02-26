@@ -78,3 +78,44 @@
     transform: translate(-3px,-4px);
 
 }
+
+
+
+
+/* section 03===============> */
+.section03{
+    width: 100%;
+    margin: 5% 2%;
+}
+.section-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 42px;
+    row-gap: 50px;
+}
+.section03-box h1{
+    font-size: 40px;
+    font-weight: 700;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border-bottom: #000 1px solid;
+}
+.section03-box h1:hover{
+    border-bottom: #000 10px solid;
+    margin-bottom: 0px;
+
+}
+@media (min-width: 1450px) {
+    .section03{
+        width: 75%;
+    }
+    
+}
+@media (max-width:965px) {
+    .section-grid{
+        grid-template-columns: 1fr;
+        column-gap: 0px;
+    row-gap: 5px;
+    }
+    
+}
