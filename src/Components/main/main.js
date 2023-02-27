@@ -1,8 +1,11 @@
 import React from 'react'
 import "./main.css"
+import { menu1 } from '../Header/mobileHamburger/menuArray';
+
 const Main = () => {
 
-  const section03List = ["shoes",
+  const section03List = [
+    "shoes",
     "sneakers",
     "running shoes",
     "tracksuits",
@@ -24,6 +27,39 @@ const Main = () => {
 
     }, 150);
   }
+
+
+
+
+  // accordian functionality=========>
+  const accorordianTrigger = (id) => {
+    const activeAccor01 = document.querySelector(".activeAccor");
+    const clickedAccor02 = document.querySelector("#accor" + id);
+    const clickedAccorDiv03 = document.querySelector('#div' + id);
+    const clickedAccorBtn04 = document.querySelector("#div" + id + " .accordianButton01");
+
+
+    if (activeAccor01 && activeAccor01 != clickedAccor02) {
+      const activeAccorBtn05 = document.querySelector('#div' + activeAccor01.id.substring(5) + " .accordianButton01")
+
+      activeAccor01.classList.remove("activeAccor");
+      activeAccorBtn05.style.backgroundColor = "#ffffff";
+
+    }
+    if (clickedAccor02.classList.contains('activeAccor')) {
+
+      clickedAccor02.classList.remove('activeAccor');
+      clickedAccorBtn04.style.backgroundColor = "#ffffff";
+
+    } else {
+      clickedAccor02.classList.add('activeAccor');
+      clickedAccorDiv03.scrollIntoView({ behavior: "smooth" });
+      clickedAccorBtn04.style.backgroundColor = "#eceff1";
+
+    }
+
+  }
+  console.log(menu1.c1);
   return (
     <div>
       <div id='discount10' className='d-flex justify-content-center align-items-center pe-5 p-md-2' style={{ backgroundColor: "#007bc6" }}>
@@ -142,26 +178,106 @@ const Main = () => {
             Now popular in men's
           </div>
           <div className='section-grid'>
-          {section03List.map((each)=>{
-            return(
-              <a href={"/"+each} className='a-button'>
+            {section03List.map((each) => {
+              return (
+                <a href={"/" + each} className='a-button'>
 
-              <div role='button' className='section03-box'>
-              <h1 className=''>
+                  <div role='button' className='section03-box'>
+                    <h1 className=''>
 
-              {each}
-              </h1>
-            </div>
-            </a>
+                      {each}
+                    </h1>
+                  </div>
+                </a>
 
-            )
-          })}
-            
-            
+              )
+            })}
+
+
           </div>
         </div>
 
       </section>
+      <section className='section04'>
+        <div>
+          {menu1.c1.map((each) => {
+            return (
+              <div id={'div' + each.main}>
+                <div role='button' className='accordianButton01 fs-4 fw-bold' onClick={() => { accorordianTrigger(each.main) }}>
+                  {each.main}
+                  <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                </div>
+                <div id={"accor" + each.main} className='d-none '>
+                  {each.sub.map((subEach) => {
+                    return(
+
+                    <div role='button' className='accordianButton01 text-secondary border-top fs-5'>
+                      {subEach.main}
+                      <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                    </div>
+                    )
+                  })}
+
+                  
+                </div>
+              </div>
+            )
+          })}
+          {menu1.c2.map((each) => {
+            return (
+              <div id={'div' + each.main}>
+                <div role='button' className='accordianButton01 fs-4' onClick={() => { accorordianTrigger(each.main) }}>
+                  {each.main}
+                  <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                </div>
+                <div id={"accor" + each.main} className='d-none accordianContent'>
+                {each.sub.map((subEach) => {
+                    return(
+
+                    <div role='button' className='accordianButton01 text-secondary border-top fs-5'>
+                      {subEach.main}
+                      <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                    </div>
+                    )
+                  })}
+                </div>
+              </div>
+            )
+
+          })}
+          <div role='button' className='accordianButton01 py-2 fs-4'>
+            TERREX
+          </div>
+          <div role='button' className='accordianButton01 py-2 fs-4'>
+            ADIDAS SPORTSWEAR
+          </div>
+          <div id={'div' + menu1.c4.main}>
+
+            <div role='button' className='accordianButton01 text-danger py-2 fs-4 fw-bold' onClick={() => { accorordianTrigger(menu1.c4.main) }}>
+              {menu1.c4.main}
+              <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+            </div>
+            <div id={"accor" + menu1.c4.main} className='d-none accordianContent'>
+
+            {menu1.c4.sub.map((subEach) => {
+                    return(
+
+                    <div role='button' className='accordianButton01 text-secondary border-top fs-5'>
+                      {subEach.main}
+                      <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                    </div>
+                    )
+                  })}
+            </div>
+          </div>
+
+        </div>
+
+
+      </section>
+      <div style={{ height: "1000px" }}>
+        hjkjb
+      </div>
 
 
 
