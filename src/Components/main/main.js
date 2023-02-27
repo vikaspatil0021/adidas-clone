@@ -245,15 +245,15 @@ const Main = () => {
             )
 
           })}
-          <div role='button' className='accordianButton01 py-2 fs-4'>
+          <div role='button' className='accordianButton01 fs-4'>
             TERREX
           </div>
-          <div role='button' className='accordianButton01 py-2 fs-4'>
+          <div role='button' className='accordianButton01 fs-4'>
             ADIDAS SPORTSWEAR
           </div>
           <div id={'div' + menu1.c4.main}>
 
-            <div role='button' className='accordianButton01 text-danger py-2 fs-4 fw-bold' onClick={() => { accorordianTrigger(menu1.c4.main) }}>
+            <div role='button' className='accordianButton01 text-danger fs-4 fw-bold' onClick={() => { accorordianTrigger(menu1.c4.main) }}>
               {menu1.c4.main}
               <i className='fa-solid fa-angle-down me-3 fs-6'></i>
             </div>
@@ -276,7 +276,7 @@ const Main = () => {
 
       </section>
       <div style={{ height: "1000px" }}>
-        hjkjb
+        
       </div>
 
 

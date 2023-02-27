@@ -86,7 +86,6 @@
 .section03{
     width: 100%;
     margin: 5% 3%;
-    margin-bottom: 2%;
 }
 .section-grid{
     display: grid;
@@ -145,7 +144,7 @@ font-size: 20px;
 
 
 .accordianButton01{
-    padding: 10px 20px;
+    padding: 5px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
