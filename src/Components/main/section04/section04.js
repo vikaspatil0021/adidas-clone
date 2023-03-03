@@ -85,7 +85,7 @@ const Section04 = () => {
               <div id={'div' + each.main}>
                 <div role='button' className='accordianButton01 fs-4 fw-bold' onClick={() => { accorordianTrigger01(each.main) }}>
                   {each.main}
-                  <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                  <i className='fa-solid fa-angle-down me-3 fs-4'></i>
                 </div>
                 <div id={"accor" + each.main} className='d-none '>
                   {each.sub.map((subEach) => {
@@ -94,7 +94,7 @@ const Section04 = () => {
 
                         <div role='button' className='accordianButton01 border-top fs-5' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
                           {subEach.main}
-                          <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                          <i className='fa-solid fa-angle-down me-3 fs-4'></i>
                         </div>
                         <div id={'accor' + each.main + (subEach.main).substring(0, 3)} className='d-none'>
                           {subEach.supersub.map((superSubEach) => {
@@ -119,7 +119,7 @@ const Section04 = () => {
               <div id={'div' + each.main}>
                 <div role='button' className='accordianButton01 fs-4' onClick={() => { accorordianTrigger01(each.main) }}>
                   {each.main}
-                  <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                  <i className='fa-solid fa-angle-down me-3 fs-4'></i>
                 </div>
                 <div id={"accor" + each.main} className='d-none'>
                   {each.sub.map((subEach) => {
@@ -129,7 +129,7 @@ const Section04 = () => {
 
                         <div role='button' className='accordianButton01 border-top fs-5' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
                           {subEach.main}
-                          <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                          <i className='fa-solid fa-angle-down me-3 fs-4'></i>
                         </div>
                         <div id={'accor' + each.main + (subEach.main).substring(0, 3)} className='d-none'>
                           {subEach.supersub.map((superSubEach) => {
@@ -158,7 +158,7 @@ const Section04 = () => {
 
             <div role='button' className='accordianButton01 text-danger fs-4 fw-bold' onClick={() => { accorordianTrigger01(menu1.c4.main) }}>
               {menu1.c4.main}
-              <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+              <i className='fa-solid fa-angle-down me-3 fs-4'></i>
             </div>
             <div id={"accor" + menu1.c4.main} className='d-none '>
 
@@ -169,7 +169,7 @@ const Section04 = () => {
 
                     <div role='button' className='accordianButton01 border-top fs-5' onClick={() => { accorordianTrigger02(menu1.c4.main + (subEach.main).substring(0, 3)) }}>
                       {subEach.main}
-                      <i className='fa-solid fa-angle-down me-3 fs-6'></i>
+                      <i className='fa-solid fa-angle-down me-3 fs-4'></i>
                     </div>
                     <div id={'accor' + menu1.c4.main + (subEach.main).substring(0, 3)} className='d-none'>
                       {subEach.supersub.map((superSubEach) => {
