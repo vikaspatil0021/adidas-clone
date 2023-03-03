@@ -144,17 +144,18 @@ font-size: 20px;
 
 
 .accordianButton01{
-    padding: 5px 20px;
+    padding: 7px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 
-.activeAccor{
+.activeAccor,.activeAccor02{
     display: block !important;
     
 }
+
 
 
 @media (max-width:965px) {
