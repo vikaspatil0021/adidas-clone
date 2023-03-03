@@ -90,16 +90,16 @@ const Section04 = () => {
                 <div id={"accor" + each.main} className='d-none '>
                   {each.sub.map((subEach) => {
                     return (
-                      <div id={'div' + each.main + (subEach.main).substring(0, 2)}>
+                      <div id={'div' + each.main + (subEach.main).substring(0, 3)}>
 
-                        <div role='button' className='accordianButton01 fw-light border-top fs-5' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 2)) }}>
+                        <div role='button' className='accordianButton01 fw-light border-top fs-5' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
                           {subEach.main}
                           <i className='fa-solid fa-angle-down me-3 fs-6'></i>
                         </div>
-                        <div id={'accor' + each.main + (subEach.main).substring(0, 2)} className='d-none'>
+                        <div id={'accor' + each.main + (subEach.main).substring(0, 3)} className='d-none'>
                           {subEach.supersub.map((superSubEach) => {
                             return (
-                              <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6 ms-2'>
+                              <div role='button' className='accordianButton01 fw-light text-dark border-top fs-6 ms-2'>
                                 {superSubEach}
                               </div>
                             )
@@ -125,16 +125,16 @@ const Section04 = () => {
                   {each.sub.map((subEach) => {
                     return (
 
-                      <div id={'div' + each.main + (subEach.main).substring(0, 2)}>
+                      <div id={'div' + each.main + (subEach.main).substring(0, 3)}>
 
-                        <div role='button' className='accordianButton01 fw-light border-top fs-5' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 2)) }}>
+                        <div role='button' className='accordianButton01 fw-light border-top fs-5' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
                           {subEach.main}
                           <i className='fa-solid fa-angle-down me-3 fs-6'></i>
                         </div>
-                        <div id={'accor' + each.main + (subEach.main).substring(0, 2)} className='d-none'>
+                        <div id={'accor' + each.main + (subEach.main).substring(0, 3)} className='d-none'>
                           {subEach.supersub.map((superSubEach) => {
                             return (
-                              <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6 ms-2'>
+                              <div role='button' className='accordianButton01 fw-light text-dark border-top fs-6 ms-2'>
                                 {superSubEach}
                               </div>
                             )
@@ -165,16 +165,16 @@ const Section04 = () => {
               {menu1.c4.sub.map((subEach) => {
                 return (
 
-                  <div id={'div' + menu1.c4.main + (subEach.main).substring(0, 2)}>
+                  <div id={'div' + menu1.c4.main + (subEach.main).substring(0, 3)}>
 
-                    <div role='button' className='accordianButton01 fw-light border-top fs-5' onClick={() => { accorordianTrigger02(menu1.c4.main + (subEach.main).substring(0, 2)) }}>
+                    <div role='button' className='accordianButton01 fw-light border-top fs-5' onClick={() => { accorordianTrigger02(menu1.c4.main + (subEach.main).substring(0, 3)) }}>
                       {subEach.main}
                       <i className='fa-solid fa-angle-down me-3 fs-6'></i>
                     </div>
-                    <div id={'accor' + menu1.c4.main + (subEach.main).substring(0, 2)} className='d-none'>
+                    <div id={'accor' + menu1.c4.main + (subEach.main).substring(0, 3)} className='d-none'>
                       {subEach.supersub.map((superSubEach) => {
                         return (
-                          <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6 ms-2'>
+                          <div role='button' className='accordianButton01 fw-light text-dark border-top fs-6 ms-2'>
                             {superSubEach}
                           </div>
                         )
