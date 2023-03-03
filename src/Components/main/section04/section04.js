@@ -99,7 +99,7 @@ const Section04 = () => {
                         <div id={'accor' + each.main + (subEach.main).substring(0, 2)} className='d-none'>
                           {subEach.supersub.map((superSubEach) => {
                             return (
-                              <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6'>
+                              <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6 ms-2'>
                                 {superSubEach}
                               </div>
                             )
@@ -134,7 +134,7 @@ const Section04 = () => {
                         <div id={'accor' + each.main + (subEach.main).substring(0, 2)} className='d-none'>
                           {subEach.supersub.map((superSubEach) => {
                             return (
-                              <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6'>
+                              <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6 ms-2'>
                                 {superSubEach}
                               </div>
                             )
@@ -174,7 +174,7 @@ const Section04 = () => {
                     <div id={'accor' + menu1.c4.main + (subEach.main).substring(0, 2)} className='d-none'>
                       {subEach.supersub.map((superSubEach) => {
                         return (
-                          <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6'>
+                          <div role='button' className='accordianButton01 fw-light text-muted border-top fs-6 ms-2'>
                             {superSubEach}
                           </div>
                         )
