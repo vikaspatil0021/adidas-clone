@@ -92,7 +92,7 @@ const Section04 = () => {
                     return (
                       <div id={'div' + each.main + (subEach.main).substring(0, 3)}>
 
-                        <div role='button' className='accordianButton01 border-top fs-5' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
+                        <div role='button' className='accordianButton01 border-top fs-5 ms-1' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
                           {subEach.main}
                           <i className='fa-solid fa-angle-down me-3 fs-4'></i>
                         </div>
@@ -127,7 +127,7 @@ const Section04 = () => {
 
                       <div id={'div' + each.main + (subEach.main).substring(0, 3)}>
 
-                        <div role='button' className='accordianButton01 border-top fs-5' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
+                        <div role='button' className='accordianButton01 border-top fs-5 ms-1' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
                           {subEach.main}
                           <i className='fa-solid fa-angle-down me-3 fs-4'></i>
                         </div>
@@ -167,7 +167,7 @@ const Section04 = () => {
 
                   <div id={'div' + menu1.c4.main + (subEach.main).substring(0, 3)}>
 
-                    <div role='button' className='accordianButton01 border-top fs-5' onClick={() => { accorordianTrigger02(menu1.c4.main + (subEach.main).substring(0, 3)) }}>
+                    <div role='button' className='accordianButton01 border-top fs-5 ms-1' onClick={() => { accorordianTrigger02(menu1.c4.main + (subEach.main).substring(0, 3)) }}>
                       {subEach.main}
                       <i className='fa-solid fa-angle-down me-3 fs-4'></i>
                     </div>
