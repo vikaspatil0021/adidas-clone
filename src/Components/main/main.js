@@ -184,9 +184,9 @@ const Main = () => {
                 <source media="(min-width: 960px)" srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/evergreen-homepage-gender-navigation-men-dt_tcm209-761437.jpg" />
                 <source media="(min-width: 600px)" srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/evergreen-homepage-gender-navigation-men-tb_tcm209-761432.jpg" />
                 <source srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/evergreen-homepage-gender-navigation-men-mb_tcm209-761438.jpg" />
-                <img class="high-res-picture___3SJ41 loaded___3ltPt img___zgj1u ms-2" id="tcm:209-761453" src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/evergreen-homepage-gender-navigation-men-dt_tcm209-761437.jpg" decoding="async" loading="lazy" />
+                <img class="high-res-picture___3SJ41 loaded___3ltPt img___zgj1u" id="tcm:209-761453" src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/evergreen-homepage-gender-navigation-men-dt_tcm209-761437.jpg" decoding="async" loading="lazy" />
               </picture>
-              <div className='fw-bold fs-5 m-3'>
+              <div className='fw-bold fs-5 m-2 ms-3'>
                 MEN
               </div>
             </div>
@@ -195,7 +195,7 @@ const Main = () => {
                 <source media="(min-width: 960px)" srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/womens_1_tcm209-792193.png" />
                 <source media="(min-width: 600px)" srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/womens_3_tcm209-792187.png" />
                 <source srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/womens_2_tcm209-792186.png" />
-                <img class="high-res-picture___3SJ41 loaded___3ltPt img___zgj1u" id="tcm:209-761452" src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/womens_1_tcm209-792193.png" decoding="async" loading="lazy" />
+                <img class="high-res-picture___3SJ41 loaded___3ltPt img___zgj1" id="tcm:209-761452" src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/womens_1_tcm209-792193.png" decoding="async" loading="lazy" />
               </picture>
               <div className='fw-bold fs-5 m-2'>
                 WOMEN
@@ -206,7 +206,7 @@ const Main = () => {
             <source media="(min-width: 960px)" srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/kids_1_tcm209-792188.png" />
             <source media="(min-width: 600px)" srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/kids_3_tcm209-792189.png" />
             <source srcset="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/kids_2_tcm209-792185.png" />
-            <img class="high-res-picture___3SJ41 loaded___3ltPt img___zgj1u me-2" id="tcm:209-761454" src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/kids_1_tcm209-792188.png" decoding="async" loading="lazy" />
+            <img class="high-res-picture___3SJ41 loaded___3ltPt img___zgj1 pe-3" id="tcm:209-761454" src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/if_w_gt_800,w_800/enIN/Images/kids_1_tcm209-792188.png" decoding="async" loading="lazy" />
             </picture>
             <div className='fw-bold fs-5 m-2'>
                 KIDS

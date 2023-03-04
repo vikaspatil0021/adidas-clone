@@ -182,7 +182,7 @@ font-size: 20px;
     object-fit: cover;
     height: 60vh;
     width: 100%;
-    padding: 0% 5px;
+    padding-left: 15px;
 }
 @media (min-width: 1450px) {
     .section05{
