@@ -170,7 +170,7 @@ font-size: 20px;
 .section05{
     height: 100%;
     width: 100%;
-    padding: 4% 2%;
+    padding: 4% 0%;
 
 }
 .section05-grid{
@@ -182,7 +182,7 @@ font-size: 20px;
     object-fit: cover;
     height: 60vh;
     width: 100%;
-    padding: 0% 8px;
+    padding: 0% 5px;
 }
 @media (min-width: 1450px) {
     .section05{
@@ -199,8 +199,11 @@ font-size: 20px;
         scroll-behavior: smooth;
 
     }
+    .section05-grid::-webkit-scrollbar {
+        display: none;
+    }
     .section05-grid img{
         width: 290px;
-        height: 60vh;
+        height: 45vh;
     }
 }
