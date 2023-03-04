@@ -170,7 +170,7 @@ font-size: 20px;
 .section05{
     height: 100%;
     width: 100%;
-    padding: 4% 0%;
+    padding: 4% 2%;
 
 }
 .section05-grid{
@@ -193,6 +193,10 @@ font-size: 20px;
 }
 
 @media (max-width:965px) {
+    .section05{
+        padding: 4% 0%;
+
+    }
     
     .section05-grid{
         overflow: auto;
@@ -205,5 +209,7 @@ font-size: 20px;
     .section05-grid img{
         width: 290px;
         height: 45vh;
+        padding-left: 10px;
+
     }
 }
