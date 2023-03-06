@@ -33,7 +33,7 @@ Sold out
                             </span>
                         </div>
                         <div className='card06-heart'>
-                            <i className='bi bi-heart fw-bolder fs-5' />
+                            <i className='fa-regular fa-heart fs-5' />
                         </div>
                     </div>
                 </div>
