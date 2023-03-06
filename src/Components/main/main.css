@@ -377,10 +377,10 @@ display: flex;
         font-size: smaller;
     }
 
-    .mobileScoller{
+    .mobileScroller{
         overflow: auto;
     }
-    .mobileScoller::-webkit-scrollbar{
+    .mobileScroller::-webkit-scrollbar{
         display: none;
     }
     .card-title05{

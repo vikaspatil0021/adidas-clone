@@ -206,9 +206,7 @@ const Section05 = () => {
 
 
 
-        const section05scrollBar = document.querySelector('.scrollBar');
 
-        section05scrollBar.scrollLeft = 0;
 
 
         
@@ -226,6 +224,12 @@ const Section05 = () => {
         var x = window.matchMedia("(max-width: 965px)")
 
         if (x.matches) {
+            var section05scrollBar = document.querySelectorAll('.mobileScroller');
+
+            section05scrollBar.forEach((each)=>{
+                each.scrollLeft = 0;
+            })
+
             if (clickedId == "men") {
                 var val = "10";
             } else if (clickedId == "women") {
@@ -234,6 +238,8 @@ const Section05 = () => {
                 val = "185";
             }
         } else {
+            section05scrollBar = document.querySelector('.scrollBar');
+            section05scrollBar.scrollLeft = 0;
 
             if (clickedId == "men") {
                 val = "10";
@@ -340,7 +346,7 @@ const Section05 = () => {
                     <div className='afterClick-Content scrollBar paddingLeft'>
                     {selectedTab.map((each)=>{
                         return(
-                            <div className='d-flex mobileScoller'>
+                            <div className='d-flex mobileScroller'>
 
                             <div className='card05-category'>
                                 <div className='category-title'>
