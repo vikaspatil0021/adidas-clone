@@ -451,7 +451,6 @@ scroll-behavior: smooth;
     background-color: #fff;
     padding: 2px 4px;
     transition: bottom .1s ease-in-out;
-    font-weight: lighter;
 }
 .card06:hover .price-tag{
     bottom: 8px;
