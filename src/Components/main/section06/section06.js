@@ -133,7 +133,7 @@ const Section06 = () => {
                                         </div>
                                     </div>
                                 </picture>
-                                <div className='pb-5 p-2'>
+                                <div className='pb-4 p-2'>
 
                                     <div className='fw-light '>
                                         {each.t1}
