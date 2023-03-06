@@ -343,7 +343,7 @@ const Section05 = () => {
                 </div>
                 <div className=''>
 
-                    <div className='afterClick-Content scrollBar paddingLeft'>
+                    <div className='afterClick-Content scrollBar'>
                     {selectedTab.map((each)=>{
                         return(
                             <div className='d-flex mobileScroller'>
