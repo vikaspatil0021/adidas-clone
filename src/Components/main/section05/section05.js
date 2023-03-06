@@ -33,7 +33,7 @@ const Section05 = () => {
            }else if(clickedId=="women"){
                val = "90";
            }else{
-               val = "190";
+               val = "185";
            }
         }else{
 
