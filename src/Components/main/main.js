@@ -2,6 +2,7 @@ import React from 'react'
 import "./main.css"
 import Section04 from './section04/section04';
 import Section05 from './section05/section05';
+import Section06 from './section06/section06';
 
 const Main = () => {
 
@@ -174,8 +175,13 @@ const Main = () => {
         <Section04 />
       </section>
       <section >
-      <Section05 />
-        
+        <Section05 />
+
+
+      </section>
+      <section >
+        <Section06 />
+
 
       </section>
       <div style={{ height: "1000px" }}>

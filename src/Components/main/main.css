@@ -325,6 +325,7 @@ scroll-behavior: smooth;
 .category-button:hover{
     opacity: .6;
 }
+
 .scrollBar::-webkit-scrollbar{
     display: none;
     
@@ -393,4 +394,76 @@ scroll-behavior: smooth;
         font-weight: bold;
     }
 
+}
+/* Section06==========================> */
+.section06{
+    height: 100%;
+    width: 100%;
+    padding: 4% 2%;
+    /* padding-top: 0; */
+
+}
+
+.title06{
+    font-size: 35px;
+    font-weight: bolder;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+
+
+
+.card06{
+    position: relative;
+    margin-right: 30px;
+    min-width: 300px;
+    width: 300px;
+    transition: border .1s ease-in-out;
+    border: #fff 1px solid;
+}
+
+.card06:hover{
+    border: #000 1px solid;
+}
+
+.card06 img{
+    width: 100%;
+}
+
+.card-title06{
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.card06-heart{
+    position: absolute;
+    top: 0;
+    padding: 20px;
+    right: 0;
+
+}
+
+.price-tag{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    background-color: #fff;
+    padding: 2px 4px;
+    transition: bottom .1s ease-in-out;
+}
+.card06:hover .price-tag{
+    bottom: 8px;
+}
+@media (max-width:965px) {
+    .title06{
+        font-size: 25px;
+    }
+    .card06{
+        width: 150px;
+        min-width: 150px;
+    }
+
+    .card06-heart{
+        padding: 10px;
+    }
 }
