@@ -3,6 +3,7 @@ import "./main.css"
 import Section04 from './section04/section04';
 import Section05 from './section05/section05';
 import Section06 from './section06/section06';
+import Section07 from './section07/section07';
 import Section08 from './section08/section08';
 
 const Main = () => {
@@ -184,6 +185,9 @@ const Main = () => {
         <Section06 />
 
 
+      </section>
+      <section>
+        <Section07 />
       </section>
       <section >
         <Section08 />

@@ -197,7 +197,7 @@
 .dropdown-content {
     background-color: #ffffff;
     width: 100%;
-    margin: 17px 0px;
+    margin: 16px 0px;
     position: absolute;
     z-index: 1;
     left: 0;
@@ -230,7 +230,7 @@
 }
 
 .drop-lia {
-    font-size: 14px;
+    font-size: 13px;
 
     cursor: pointer;
 }

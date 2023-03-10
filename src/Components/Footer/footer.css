@@ -20,6 +20,8 @@
     /* column-gap: 15px; */
     padding: 50px 30px;
     max-width: 1200px;
+    font-size: 15px;
+
 }
 .footer-quicklinks div{
     padding-left: 10px;
@@ -38,6 +40,8 @@
     display: flex;
     font-weight: 300;
     color: #fff;
+    font-size: 13px;
+
 }
 
 
@@ -96,6 +100,5 @@ display: none;
         display: flex;
         justify-content: center;
         padding:  10px 0px;
-        font-size: 13px;
     }
 }

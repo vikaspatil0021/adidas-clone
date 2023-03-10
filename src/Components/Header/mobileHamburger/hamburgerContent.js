@@ -18,7 +18,7 @@ const HamburgerContent = (props) => {
                     menu1.c1.map((each) => {
                         return (
                             <div>
-                                <div role='button' className='d-flex justify-content-between my-3 fs-5 fw-bold' onClick={() => { offCanvasSubmenu(each.main) }}>
+                                <div role='button' className='d-flex justify-content-between align-items-center my-3 fs-5 fw-bold' onClick={() => { offCanvasSubmenu(each.main) }}>
                                     {each.main}
                                     <i className='fa-solid fa-angle-right me-3 fs-6'></i>
                                 </div>
@@ -38,7 +38,7 @@ const HamburgerContent = (props) => {
                                         if (subEach.main === "Outlet") {
                                             return (
                                                 <div>
-                                                    <div role='button' className='d-flex text-danger justify-content-between ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0, 2)) }}>
+                                                    <div role='button' className='d-flex text-danger justify-content-between align-items-center ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0, 2)) }}>
                                                         {subEach.main}
                                                         <i className='fa-solid fa-angle-right me-5 fs-6'></i>
                                                     </div>
@@ -70,7 +70,7 @@ const HamburgerContent = (props) => {
                                             return (
                                                 <div>
 
-                                                    <div role='button' className='d-flex justify-content-between ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0, 2)) }}>
+                                                    <div role='button' className='d-flex justify-content-between align-items-center ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0, 2)) }}>
                                                         {subEach.main}
                                                         <i className='fa-solid fa-angle-right me-5 fs-6'></i>
                                                     </div>
@@ -116,7 +116,7 @@ const HamburgerContent = (props) => {
                         return (
 
                             <div>
-                                <div role='button' className='d-flex justify-content-between my-3 fs-5' onClick={() => { offCanvasSubmenu(each.main) }}>
+                                <div role='button' className='d-flex justify-content-between align-items-center my-3 fs-5' onClick={() => { offCanvasSubmenu(each.main) }}>
                                     {each.main}
                                     <i className='fa-solid fa-angle-right me-3 fs-6'></i>
                                 </div>
@@ -138,7 +138,7 @@ const HamburgerContent = (props) => {
                                             
                                             <div>
 
-                                                    <div role='button' className='d-flex justify-content-between ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0, 2)) }}>
+                                                    <div role='button' className='d-flex justify-content-between align-items-center ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(each.main + (subEach.main).substring(0, 2)) }}>
                                                         {subEach.main}
                                                         <i className='fa-solid fa-angle-right me-5 fs-6'></i>
                                                     </div>
@@ -188,7 +188,7 @@ const HamburgerContent = (props) => {
                 </a>
                 <div>
 
-                    <div role='button' className='d-flex justify-content-between my-3 fs-5 fw-bold text-danger' onClick={() => { offCanvasSubmenu(menu1.c4.main) }}>
+                    <div role='button' className='d-flex justify-content-between align-items-center my-3 fs-5 fw-bold text-danger' onClick={() => { offCanvasSubmenu(menu1.c4.main) }}>
                         {menu1.c4.main}
                         <i className='fa-solid fa-angle-right me-3 fs-6'></i>
                     </div>
@@ -209,7 +209,7 @@ const HamburgerContent = (props) => {
                             return (
                                 <div>
 
-                                                    <div role='button' className='d-flex justify-content-between ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(menu1.c4.main + (subEach.main).substring(0, 2)) }}>
+                                                    <div role='button' className='d-flex justify-content-between align-items-center ms-5 mb-3 fs-5' onClick={() => { offCanvasSubmenu(menu1.c4.main + (subEach.main).substring(0, 2)) }}>
                                                         {subEach.main}
                                                         <i className='fa-solid fa-angle-right me-5 fs-6'></i>
                                                     </div>
