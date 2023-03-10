@@ -582,6 +582,13 @@ scroll-behavior: smooth;
     }
 }
 
+@media (max-width:965px) {
+    .card07{
+       width:  300px;
+    }
+    
+}
+
 /* section08==============> */
 .section08{
     height: 100%;
