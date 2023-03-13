@@ -54,6 +54,7 @@
     transition:color .3s ease-in-out;
     position: relative;
     transition: transform .15s ease-in-out;
+    letter-spacing: 2px;
 
 
 }

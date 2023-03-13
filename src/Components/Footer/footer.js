@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import RegisterModal from '../AuthPages/registerModal';
 import "./footer.css";
 
 
@@ -68,6 +69,7 @@ const arr = [
     }
 ]
 const Footer = () => {
+    const [seed,setSeed]=useState('');
     // button click animation------------------>
     const addButtonClass = (id) => {
         document.querySelector("#" + id).classList.toggle('main-btn-onClick');
@@ -78,6 +80,15 @@ const Footer = () => {
             document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
 
         }, 150);
+    }
+
+    const toggleRegisterModal = ()=>{
+        setTimeout(() => {
+            
+            document.querySelector('#registerModal').classList.toggle("d-none");
+                setSeed(Math.random());
+
+        }, 500);
     }
     return (
         <section>
@@ -106,13 +117,17 @@ const Footer = () => {
                 <div className='fs-2 mb-4 mx-5 fw-bolder text-center'>
                     JOIN OUR ADICLUB & GET 15% OFF
                 </div>
-                <button id='footerBtn01' role='button' className=' main-btn mb-4 m-0' onClick={() => addButtonClass("footerBtn01")}>
+                <button id='footerBtn01' role='button' className=' main-btn mb-4 m-0' onClick={() => {addButtonClass("footerBtn01"); toggleRegisterModal()}}>
                     SIGN UP FOR FREE
                     <i class="bi bi-arrow-right fs-4 ms-3"></i>
                     <div className='border-button'>
 
                     </div>
                 </button>
+                    <div id='registerModal' className='d-none'>
+
+                    <RegisterModal key={seed} toggleRegisterModal={toggleRegisterModal} />
+                    </div>
             </div>
             <div className='d-flex justify-content-center'>
                 <div className='footer-quicklinks'>

@@ -1,0 +1,149 @@
+.closeRegisterModal{
+    background-color: #ffffff;
+    position: absolute;
+    top: 3%; 
+    right: 23%;
+    padding: 13px 20px;
+    border: #000 1px solid;
+    z-index: 1050;
+}
+
+.opacityBackColor{
+    opacity: .6;
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1035;
+}
+.signupModal{
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1045;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.modalBox{
+
+    background-color: #fff;
+    width: 50%;
+    height: 85%;
+    /* margin: 5% 0; */
+    overflow: auto;
+    padding: 25px;
+    position: relative;
+
+}
+
+.inputGroup{
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 200;
+}
+.inputGroup input{
+    width: 100%;
+    margin-top: 10px ;
+    padding: 16px;
+    outline: none;
+    font-size: 18px;
+
+    border: 1px #000 solid;
+}
+
+.inputBorder{
+    border-bottom: #e71e1e 2px solid !important;
+}
+
+.inputIcon{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    padding: 16px;
+    color: red;
+    pointer-events: none;
+}
+
+
+.inputGroup label{
+    position: absolute;
+    margin: 0 13px;
+    padding: 0 4px;
+    margin-top: 10px;
+    pointer-events: none;
+    color: #5c5b5b;
+    transform: translateY(0);
+    font-size: 18px;
+
+    background-color: #fff;
+    transition: all .2s ease-in-out;
+    /* transition: transform .5s ease-in-out; */
+}
+.inputLabelAni{
+    transform: translateY(-33px) !important;
+    font-size: 13px !important;
+
+}
+
+
+.showPassBtn{
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+.showPassBtn:hover{
+    color: #fff;
+    background-color: #000;
+}
+
+/* checkbox */
+.checkboxGroup{
+    position: relative;
+    display: inline-flex;
+    /* align-items: center; */
+    margin: 10px 0;
+    font-size: 17px;
+    font-weight: 200;
+
+}
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom checkbox appearance */
+    display: inline-block;
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+
+    border: 2px solid #000000;
+    background-color: #ffffff;
+    cursor: pointer;
+    pointer-events: none;
+
+
+   
+}
+/* input[type=checkbox]:checked{
+        background-color: #000000;
+} */
+
+
+.checkbox-mark{
+    position: absolute;
+    top: 0;
+    left: 5px;
+    color: #fff;
+    pointer-events: none;
+}
+
