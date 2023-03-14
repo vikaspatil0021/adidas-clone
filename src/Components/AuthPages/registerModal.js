@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import "./registerModal.css"
+import "./registerModal.css";
+import axios from "axios";
 
 const RegisterModal = (props) => {
     const [data, setData] = useState({
         Email: '',
         Password: ''
-    })
+    });
 
 
     const addButtonClass = (id) => {
@@ -266,13 +267,50 @@ const RegisterModal = (props) => {
 
     }
 
-    const registerAccount = () => {
+    const registerAccount = async() => {
         const r = registerValidator()
         if(r==4){
-            console.log('go ahead');
+            const emailCheckIcon = document.querySelector('#emailCheckIcon i');
+
+            const emailInputWarn = document.querySelector('#warningEmailInput01');
+            const emailInput = document.querySelector('#signupEmail');
+
+
+            await axios.post('https://adidas-clone-backend.vercel.app/register',{email:data.Email,password:data.Password})
+            .then((res)=>{
+                console.log(res.data);
+
+                if(res.data.error){
+                    emailInputWarn.classList.remove('d-none');
+                    emailInputWarn.innerHTML=res.data.error;
+                    emailInput.style.borderBottom = "3px solid red";
+
+                    emailCheckIcon.classList.replace('fa-check', 'fa-xmark');
+                    emailCheckIcon.classList.remove('text-success');
+
+
+                }else if(res.data.token){
+                    localStorage.setItem("Token01", res.data.token);
+                    props.toggleRegisterModal();
+
+                }
+            }).catch((err)=>{
+                console.log(err);
+            })
         }
 
     }
+    // useEffect(()=>{
+    //     var token01 = localStorage.getItem("Token01");
+    //     if(token01){
+    //         axios.get('https://adidas-clone-backend.vercel.app/secret',{headers:{'Authorization':"Bearer " + token01 }})
+    //         .then((res)=>{
+    //             console.log(res.data);
+    //         }).catch((err)=>{
+    //             console.log(err);
+    //         })
+    //     }
+    // },[])
     return (
         <div>
 
@@ -280,7 +318,7 @@ const RegisterModal = (props) => {
 
             <div className='signupModal'>
                 <div className='modalBox'>
-                    <div className='fs-2 fw-bolder'>
+                    <div className='fs-2 fw-bolder me-5 pe-5'>
                         CREATE YOUR ACCOUNT
                     </div>
                     <div className='fs-6 fw-light py-1 pb-3'>
@@ -298,7 +336,7 @@ const RegisterModal = (props) => {
                         </div>
                     </div>
 
-                    <div id='warningEmailInput01' className='text-danger fw-lighter ms-3 d-none'>
+                    <div id='warningEmailInput01' className='text-danger fw-light ms-3 d-none'>
                         Please enter a valid e-mail address
                     </div>
 
@@ -322,7 +360,7 @@ const RegisterModal = (props) => {
 
                         </div>
                     </div>
-                    <div id='warningPasswordInput01' className='text-muted mx-3 fw-lighter'>
+                    <div id='warningPasswordInput01' className='text-muted mx-3 fw-light'>
                         Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number.
                     </div>
 
@@ -336,7 +374,7 @@ const RegisterModal = (props) => {
                             <i class="fa-solid fa-check"></i>
                         </div>
                     </div>
-                    <div id='warningcheckInput01' className='text-danger fw-lighter d-none'>
+                    <div id='warningcheckInput01' className='text-danger fw-light d-none'>
                         You are too young to register / order.
                     </div>
 
@@ -366,7 +404,7 @@ const RegisterModal = (props) => {
                         </div>
                     </div>
 
-                    <div id='warningcheckInput03' className='text-danger fw-lighter d-none'>
+                    <div id='warningcheckInput03' className='text-danger fw-light d-none'>
                         Invalid value
                     </div>
 

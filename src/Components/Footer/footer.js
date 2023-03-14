@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RegisterModal from '../AuthPages/registerModal';
 import "./footer.css";
 
@@ -68,8 +68,20 @@ const arr = [
         ]
     }
 ]
-const Footer = () => {
+const Footer = (props) => {
+    var token01 = localStorage.getItem("Token01");
+
     const [seed,setSeed]=useState('');
+    const [auth,setAuth] = useState(false);
+    useEffect(()=>{
+
+        (token01)?setAuth(true):setAuth(false);
+        console.log(auth);
+
+    }
+    ,[token01])
+    console.log(auth);
+    
     // button click animation------------------>
     const addButtonClass = (id) => {
         document.querySelector("#" + id).classList.toggle('main-btn-onClick');
@@ -91,7 +103,7 @@ const Footer = () => {
         }, 500);
     }
     return (
-        <section>
+        <section >
             <div role='button' className='py-3 backtoTop' onClick={() => window.scrollTo(0, 0)}>
                 <i className='fa-solid fa-angle-up fs-4 mx-3 ' />
                 BACK TO TOP
@@ -99,10 +111,14 @@ const Footer = () => {
             </div>
             <div className='py-3 mobile-options' >
                 <div >
-                    <span role='button'>
+                    {(auth)?<span role='button'>
+                    MY ACCOUNT
 
-                        LOGIN
-                    </span>
+                    </span>:
+                    <span role='button'>
+                    LOGIN
+
+                    </span>}
                 </div>
                 <div >
                     <span role='button'>
@@ -113,6 +129,7 @@ const Footer = () => {
 
             </div>
 
+            {(auth)?null:
             <div className='d-flex flex-wrap justify-content-center pt-5 pb-4 align-items-center' style={{ backgroundColor: "#ede734" }}>
                 <div className='fs-2 mb-4 mx-5 fw-bolder text-center'>
                     JOIN OUR ADICLUB & GET 15% OFF
@@ -128,7 +145,7 @@ const Footer = () => {
 
                     <RegisterModal key={seed} toggleRegisterModal={toggleRegisterModal} />
                     </div>
-            </div>
+            </div>}
             <div className='d-flex justify-content-center'>
                 <div className='footer-quicklinks'>
                     {arr.map((each) => {
