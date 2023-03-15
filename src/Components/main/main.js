@@ -1,5 +1,4 @@
 import React from 'react'
-import RegisterModal from '../AuthPages/registerModal';
 import "./main.css"
 import Section04 from './section04/section04';
 import Section05 from './section05/section05';

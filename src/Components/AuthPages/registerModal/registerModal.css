@@ -43,7 +43,24 @@
     position: relative;
 
 }
+.loader {
+    border: 2px solid #000;
+    border-radius: 50%;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    width: 23px;
+    height: 23px;
+    animation: spin .7s linear infinite;
+    /* position: absolute; */
+    margin: 6px 0;
+  }
+  
 
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 @media (max-width:965px) {
     .closeRegisterModal{
         top: 10%;
@@ -54,6 +71,14 @@
     }
     .modalBox{
         width: 100%;
+    }
+    .registerBtn{
+        width: 100% ;
+    display: flex;
+    }
+    .registerBtn button{
+        width: 100%;
+        justify-content: space-between;
     }
 }
 
@@ -129,6 +154,10 @@
     font-weight: 400;
 
 }
+
+
+
+
 input[type=checkbox] {
     -webkit-appearance: none;
     -moz-appearance: none;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./header.css";
 import DropdownMen from "./dropdownContent/men";
 import DropdownWomen from "./dropdownContent/women";
@@ -9,11 +9,24 @@ import DropdownBrands from "./dropdownContent/brands";
 import DropdownCollections from "./dropdownContent/collections"
 import HamburgerContent from './mobileHamburger/hamburgerContent';
 
+import LoginModal from '../AuthPages/loginModal/loginModal';
 
-const Header = () => {
+
+const Header = (props) => {
+  var token01 = localStorage.getItem("Token01");
+  const [auth,setAuth] = useState(false);
+  useEffect(()=>{
+
+      (token01)?setAuth(true):setAuth(false);
+      console.log(auth);
+
+  }
+  ,[token01])
 
   // Fading effectr in the discount header==============>
   const [DisHeader, setDisHeader] = useState({ no: 1, content: "SIGNUP & GET 15% OFF" });
+  const [seed,setSeed] = useState('');
+
 
   setTimeout(() => {
     document.getElementById("dis-header").style.opacity = 0
@@ -62,6 +75,16 @@ const Header = () => {
         }
         prevScrollpos = currentScrollPos;
     }
+
+
+    const toggleLoginModal = ()=>{
+      setTimeout(() => {
+          
+          document.querySelector('#loginModal').classList.toggle("d-none");
+              setSeed(Math.random());
+
+      }, 500);
+  }
 
   return (
     <header id='sticky-top-header' className="fixed-top bg-white border-bottom">
@@ -258,8 +281,12 @@ const Header = () => {
                 </div>
               </div>
 
-              <div className='d-flex align-items-center mx-3'>
+              <div role='button' className='d-flex align-items-center mx-3' onClick={(auth)?null:toggleLoginModal}>
                 <i class="fa-regular fa-user fs-5"></i>
+              </div>
+              <div id='loginModal' className='d-none'>
+
+                    <LoginModal key={seed} changeRe={props.changeRe} toggleLoginModal={toggleLoginModal} />
               </div>
 
               <div role='button' className='mobile-search-icon' onClick={openCanvasMobileSearch}>

@@ -7,10 +7,16 @@ import Header from './Components/Header/header';
 import Main from './Components/main/main';
 
 function App() {
+  const [re,setRe] = useState(0)
+
+  const changeRe =  () =>{
+    setRe(Math.random());
+    console.log('ok');
+  }
   
   return (
     <div className="App">
-      <Header />
+      <Header changeRe={changeRe} />
       <div className='top-width'>
 
       <Router>
@@ -19,7 +25,7 @@ function App() {
         </Routes>
       </Router>
       </div>
-      <Footer />
+      <Footer changeRe={changeRe} />
       
     </div>
   );

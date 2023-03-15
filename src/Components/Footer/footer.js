@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import RegisterModal from '../AuthPages/registerModal';
+import RegisterModal from '../AuthPages/registerModal/registerModal';
 import "./footer.css";
 
 
@@ -143,7 +143,7 @@ const Footer = (props) => {
                 </button>
                     <div id='registerModal' className='d-none'>
 
-                    <RegisterModal key={seed} toggleRegisterModal={toggleRegisterModal} />
+                    <RegisterModal key={seed} changeRe={props.changeRe} toggleRegisterModal={toggleRegisterModal} />
                     </div>
             </div>}
             <div className='d-flex justify-content-center'>

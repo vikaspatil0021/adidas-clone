@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./registerModal.css";
 import axios from "axios";
 
@@ -173,14 +173,22 @@ const RegisterModal = (props) => {
         if (ele.checked) {
             ele.checked = false;
             ele.style.backgroundColor = 'white';
+            if(warningEle){
 
-            warningEle.classList.remove('d-none')
+                warningEle.classList.remove('d-none')
+            }
+
+
 
 
         } else {
             ele.checked = true;
             ele.style.backgroundColor = 'black';
-            warningEle.classList.add('d-none')
+
+            if(warningEle){
+
+            warningEle.classList.add('d-none');
+            }
 
         }
 
@@ -266,38 +274,66 @@ const RegisterModal = (props) => {
 
 
     }
+    const midProcess = useRef(false)
+    const registerAccount = async () => {
+        midProcess.current=true;
+        const registerBtn = document.querySelector('#registerModalBtn');
+        const registerArrowIcon = document.querySelector('#registerModalBtn i');
+        const registerLoader = document.querySelector('#registerLoader');
 
-    const registerAccount = async() => {
-        const r = registerValidator()
-        if(r==4){
+
+        registerBtn.style.opacity = .6;
+        registerBtn.style.cursor = 'not-allowed';
+        registerArrowIcon.classList.add('d-none');
+        registerLoader.classList.remove('d-none');
+
+        var r = registerValidator()
+
+        if (r == 4) {
             const emailCheckIcon = document.querySelector('#emailCheckIcon i');
 
             const emailInputWarn = document.querySelector('#warningEmailInput01');
             const emailInput = document.querySelector('#signupEmail');
 
 
-            await axios.post('https://adidas-clone-backend.vercel.app/register',{email:data.Email,password:data.Password})
-            .then((res)=>{
-                console.log(res.data);
+            await axios.post('https://adidas-clone-backend.vercel.app/register', { email: data.Email, password: data.Password })
+                .then((res) => {
+                    console.log(res.data);
 
-                if(res.data.error){
-                    emailInputWarn.classList.remove('d-none');
-                    emailInputWarn.innerHTML=res.data.error;
-                    emailInput.style.borderBottom = "3px solid red";
+                    if (res.data.error) {
+                        emailInputWarn.classList.remove('d-none');
+                        emailInputWarn.innerHTML = res.data.error;
+                        emailInput.style.borderBottom = "3px solid red";
 
-                    emailCheckIcon.classList.replace('fa-check', 'fa-xmark');
-                    emailCheckIcon.classList.remove('text-success');
+                        emailCheckIcon.classList.replace('fa-check', 'fa-xmark');
+                        emailCheckIcon.classList.remove('text-success');
 
 
-                }else if(res.data.token){
-                    localStorage.setItem("Token01", res.data.token);
-                    props.toggleRegisterModal();
+                    } else if (res.data.token) {
+                        localStorage.setItem("Token01", res.data.token);
+                        props.toggleRegisterModal();
+                        props.changeRe()
 
-                }
-            }).catch((err)=>{
-                console.log(err);
-            })
+                    }
+
+
+
+                }).catch((err) => {
+                    console.log(err);
+                })
         }
+        setTimeout(() => {
+
+            registerBtn.style.opacity = 1;
+            registerArrowIcon.classList.remove('d-none')
+            registerLoader.classList.add('d-none');
+            registerBtn.style.cursor = 'pointer';
+            midProcess.current=false;
+
+
+
+        }, 300)
+
 
     }
     // useEffect(()=>{
@@ -407,14 +443,24 @@ const RegisterModal = (props) => {
                     <div id='warningcheckInput03' className='text-danger fw-light d-none'>
                         Invalid value
                     </div>
+                    <div id='rBtn' className='registerBtn py-1'>
 
-                    <button id='registerModalBtn' role='button' className='main-btn my-3 m-0' onClick={() => { addButtonClass("registerModalBtn"); registerAccount() }}>
-                        REGISTER
-                        <i class="bi bi-arrow-right fs-4 ms-3"></i>
-                        <div className='border-button'>
+                        <button id='registerModalBtn' type='button' role='button' className='main-btn  my-3 m-0' onClick={() => {
+                            if (midProcess.current==false) {
+                            addButtonClass("registerModalBtn");
+                                registerAccount()
+                            }
+                        }}>
+                            REGISTER
+                            <div className='border-button'></div>
+                            <div>
 
-                        </div>
-                    </button>
+                                <i id='registerArrowIcon' class="bi bi-arrow-right fs-4 ms-3"></i>
+                                <div id='registerLoader' class="loader ms-3 d-none"></div>
+                            </div>
+
+                        </button>
+                    </div>
 
 
 

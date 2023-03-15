@@ -1,0 +1,82 @@
+.closeLoginModal{
+    background-color: #ffffff;
+    /* width: 500px; */
+    margin-left: auto;
+    padding: 13px 20px;
+    border: #000 1px solid;
+}
+
+.loginModal{
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1045;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalBoxLogin{
+    background-color: #fff;
+    width: 450px;
+    height: 75%;
+    /* margin: 5% 0; */
+    overflow: auto;
+    padding: 25px;
+    position: relative;
+}
+.closeModalDiv{
+width: 450px;
+position: absolute;
+top: 8%;
+transform: translateX(25px);
+
+z-index: 1050;
+display: flex;
+
+
+}
+
+.loginInputIcon{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    padding: 16px;
+    color: red;
+    pointer-events: none;
+}
+
+
+.loginBtn,.lBtn{
+    width: 100% ;
+    display: flex;
+}
+
+.loginBtn button{
+    width: 100%;
+    justify-content: space-between;
+}
+
+@media (max-width:965px) {
+    .modalBoxLogin{
+        width: 100%;
+
+    }
+    .lBtn button{
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .loginModal{
+        align-items: end;
+    }
+    .closeModalDiv{
+        transform: translateX(0);
+        right: 2%;
+        top: 20%;
+    }
+    
+}
