@@ -301,7 +301,7 @@ const RegisterModal = (props) => {
             const emailInput = document.querySelector('#signupEmail');
 
 
-            await axios.post('https://adidas-clone-backend.vercel.app/register', { email: data.Email, password: data.Password })
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/register', { email: data.Email, password: data.Password })
                 .then((res) => {
                     console.log(res.data);
 

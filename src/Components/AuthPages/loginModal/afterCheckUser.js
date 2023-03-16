@@ -170,7 +170,7 @@ const AfterCheckUserLogin = (props) => {
       passwordCheckIcon.classList.remove('d-none')
 
     } else {
-      await axios.post('https://adidas-clone-backend.vercel.app/login', { email: data.Email, password: data.Password })
+      await axios.post(process.env.REACT_APP_SERVER_URL + '/login', { email: data.Email, password: data.Password })
         .then((res) => {
           const passwordErr = document.querySelector("#warningPasswordError");
           console.log(res.data);
@@ -433,7 +433,7 @@ const AfterCheckUserRegister = (props) => {
       
 
 
-      await axios.post('https://adidas-clone-backend.vercel.app/register', { email: data.Email, password: data.Password })
+      await axios.post(process.env.REACT_APP_SERVER_URL + '/register', { email: data.Email, password: data.Password })
         .then((res) => {
           console.log(res.data);
 

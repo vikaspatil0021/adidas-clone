@@ -112,7 +112,7 @@ const LoginModal = (props) => {
             emailInputWarn.classList.remove('d-none')
 
         }else if ((data.Email).includes('@gmail.com')) {
-            await axios.post('https://adidas-clone-backend.vercel.app/checkUser', { email: data.Email })
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/checkUser', { email: data.Email })
                 .then((res) => {
                     const modalContent = document.querySelector('#loginModalBox-content')
                     console.log(res.data);
