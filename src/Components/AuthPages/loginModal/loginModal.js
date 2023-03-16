@@ -53,7 +53,7 @@ const LoginModal = (props) => {
                     emailInputWarn.textContent = "Please enter a valid e-mail address";
 
                 } else {
-                    if ((data.Email).includes('@gmail.com')) {
+                    if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ') ) {
                         emailInput.style.borderBottom = "3px solid green";
 
 
@@ -70,7 +70,7 @@ const LoginModal = (props) => {
     }
     const emailCheckIcon = document.querySelector('#loginEmailCheckIcon i');
 
-    if ((data.Email).includes('@gmail.com')) {
+    if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ')) {
         if (emailCheckIcon) {
 
             emailCheckIcon.classList.remove('d-none')
@@ -106,6 +106,9 @@ const LoginModal = (props) => {
         continueArrowIcon.classList.add('d-none');
         continueLoader.classList.remove('d-none');
         if(data.Email==''){
+            emailInputWarn.classList.remove('d-none')
+
+        }else if((data.Email).includes(' ')){
             emailInputWarn.classList.remove('d-none')
 
         }else if ((data.Email).includes('@gmail.com')) {

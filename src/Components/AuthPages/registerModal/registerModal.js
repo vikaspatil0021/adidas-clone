@@ -69,7 +69,7 @@ const RegisterModal = (props) => {
                     emailInputWarn.textContent = "Please enter a valid e-mail address";
 
                 } else {
-                    if ((data.Email).includes('@gmail.com')) {
+                    if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ')) {
                         emailInput.style.borderBottom = "3px solid green";
 
 
@@ -127,7 +127,7 @@ const RegisterModal = (props) => {
     const passwordCheckIcon = document.querySelector('#passwordCheckIcon i');
     const passwordInputWarn = document.querySelector('#warningPasswordInput01');
 
-    if ((data.Email).includes('@gmail.com')) {
+    if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ')) {
         emailCheckIcon.classList.remove('d-none')
 
 
@@ -228,7 +228,12 @@ const RegisterModal = (props) => {
 
         } else if (!(data.Email).includes('@gmail.com')) {
             emailInputWarn.textContent = "The email address is invalid.";
-        } else {
+        }
+        else if ((data.Email).includes(' ')) {
+            emailInputWarn.textContent = "The email address is invalid.";
+        }
+        
+         else {
             arr.push('good');
             console.log(arr);
         }

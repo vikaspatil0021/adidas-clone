@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./header.css";
 import DropdownMen from "./dropdownContent/men";
 import DropdownWomen from "./dropdownContent/women";
@@ -24,25 +24,23 @@ const Header = (props) => {
   ,[token01])
 
   // Fading effectr in the discount header==============>
-  const [DisHeader, setDisHeader] = useState({ no: 1, content: "SIGNUP & GET 15% OFF" });
   const [seed,setSeed] = useState('');
+const dHeaderContent = ["SIGNUP & GET 15% OFF","FREE DELIVERY","UPI & NET BANKING AVAILABLE"]
 
-
-  setTimeout(() => {
-    document.getElementById("dis-header").style.opacity = 0
-  }, 4800)
-
-  setTimeout(() => {
-    document.getElementById("dis-header").style.opacity = 1
-
-    if (DisHeader.no === 1) {
-
-      setDisHeader({ no: 2, content: "FREE DELIVERY" })
-    } else if (DisHeader.no === 2) {
-      setDisHeader({ no: 3, content: "UPI & NET BANKING AVAILABLE" })
-    } else if (DisHeader.no === 3) {
-      setDisHeader({ no: 1, content: "SIGNUP & GET 15% OFF" })
+  setInterval(() => {
+    document.getElementById("dis-header").style.opacity = 0;
+  }, 4920)
+let count =1;
+  setInterval(() => {
+    document.getElementById("dis-header").style.opacity = 1;
+    document.getElementById("dis-headerContent").innerHTML = dHeaderContent[count];
+    count++;
+    if(count>=dHeaderContent.length){
+      count=0;
     }
+
+
+    
   }, 5000)
 
   // offCanvas toggle 
@@ -91,7 +89,9 @@ const Header = (props) => {
       <div>
         <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center  discount-header'>
           <div id='dis-header' className='my-2 d-flex align-items-center'>
-            {DisHeader.content}
+          <div id='dis-headerContent'>
+          SIGNUP & GET 15% OFF
+          </div>
             <i class="fa-solid fa-angle-down mx-3 dis-arrowDown fs-6"></i>
           </div>
 
