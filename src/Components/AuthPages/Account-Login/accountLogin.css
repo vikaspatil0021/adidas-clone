@@ -1,0 +1,25 @@
+.loginPageContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 1300px;
+}
+.box01{
+    padding: 50px;
+}
+
+.box01 h1{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.forgottenBtn{
+    text-decoration: underline;
+    font-size: 17px;
+    margin: 10px 0;
+    display: inline;
+    font-weight: 300;
+}
+.forgottenBtn:hover{
+    color: #fff;
+    background-color: #000;
+}

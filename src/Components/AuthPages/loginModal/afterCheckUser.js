@@ -161,7 +161,8 @@ const AfterCheckUserLogin = (props) => {
     loginArrowIcon.classList.add('d-none');
     loginLoader.classList.remove('d-none');
 
-
+    const passwordInputWarn = document.querySelector('#warningPasswordInput02');
+    const passwordCheckIcon = document.querySelector('#passwordCheckIconl i');
 
     if (data.Password == '') {
       passwordInputWarn.classList.remove('d-none');

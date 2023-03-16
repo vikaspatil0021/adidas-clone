@@ -341,17 +341,7 @@ const RegisterModal = (props) => {
 
 
     }
-    // useEffect(()=>{
-    //     var token01 = localStorage.getItem("Token01");
-    //     if(token01){
-    //         axios.get('https://adidas-clone-backend.vercel.app/secret',{headers:{'Authorization':"Bearer " + token01 }})
-    //         .then((res)=>{
-    //             console.log(res.data);
-    //         }).catch((err)=>{
-    //             console.log(err);
-    //         })
-    //     }
-    // },[])
+   
     return (
         <div>
 

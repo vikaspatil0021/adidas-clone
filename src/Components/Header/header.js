@@ -76,7 +76,13 @@ let count =1;
 
 
     const toggleLoginModal = ()=>{
+      
+      const loginBadge =document.querySelector('#loginBadge')
       setTimeout(() => {
+        if(loginBadge){
+
+          loginBadge.classList.add('d-none')
+        }
           
           document.querySelector('#loginModal').classList.toggle("d-none");
               setSeed(Math.random());
@@ -281,8 +287,10 @@ let count =1;
                 </div>
               </div>
 
-              <div role='button' className='d-flex align-items-center mx-3' onClick={(auth)?null:toggleLoginModal}>
+              <div role='button' className='d-flex align-items-center mx-3 position-relative' onClick={(auth)?null:toggleLoginModal}>
                 <i class="fa-regular fa-user fs-5"></i>
+                {(auth)?null:
+                <span id='loginBadge' className='badge text-bg-warning rounded-circle position-absolute translate-middle top-0 start-100'>1</span>}
               </div>
               <div id='loginModal' className='d-none'>
 
