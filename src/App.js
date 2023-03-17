@@ -23,7 +23,7 @@ function App() {
       <Router>
         <Routes>
         <Route path="/" exact element={<Main />} />
-        <Route path="/account-login" exact element={<AccountLogin />} />
+        <Route path="/account-login" exact element={<AccountLogin changeRe={changeRe} />} />
 
         </Routes>
       </Router>

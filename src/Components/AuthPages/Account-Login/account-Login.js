@@ -243,14 +243,16 @@ const AccountLogin = () => {
         if (arr.length == 0) {
             await axios.post(process.env.REACT_APP_SERVER_URL + '/login', { email: data.Email, password: data.Password })
                 .then((res) => {
-                    const passwordErr = document.querySelector("#warningPasswordError");
+                    const passwordErr = document.querySelector("#warningPasswordError01");
                     console.log(res.data);
                     if (res.data.message) {
-                        passwordErr.classList.remove('d-none')
+                        passwordErr.classList.remove('d-none');
                     } else if (res.data.token) {
                         passwordErr.classList.add('d-none');
                         localStorage.setItem("Token01", res.data.token);
-                        navigate('/');
+                        setTimeout(()=>{
+                            navigate('/');
+                        },3000)
 
                     }
 
@@ -319,8 +321,9 @@ const AccountLogin = () => {
                     <div id='warningPasswordInput02' className='text-muted mx-3 fw-light d-none'>
                         Please enter a password
                     </div>
-                    <div id='warningPasswordError' className='text-danger mx-3 d-none'>
-                        Incorrect email/password – please check and retry                    </div>
+                    <div id='warningPasswordError01' className='text-danger mx-3 d-none'>
+                        Incorrect email/password – please check and retry                    
+                        </div>
 
                     <div role='button' className="checkboxGroup mt-3" onClick={() => checkMark("checkInput01")}>
                         <input id='checkInput01' type='checkbox' className='me-2' />
