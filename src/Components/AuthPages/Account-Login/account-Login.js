@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useHistory } from 'react-router-dom';
 import "./accountLogin.css"
 const AccountLogin = (props) => {
     const navigate = useNavigate();
+    const history = useHistory();
+
     var token01 = localStorage.getItem("Token01");
 
         
@@ -270,10 +272,7 @@ const AccountLogin = (props) => {
         }, 300)
     }
     if (token01) {
-        useEffect(()=>{
-
-            navigate('/')
-        },[])
+        history.push('/')
     }else{
     return (
         <div className='d-flex justify-content-center'>
