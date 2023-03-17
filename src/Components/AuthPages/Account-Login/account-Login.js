@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 import "./accountLogin.css"
 const AccountLogin = (props) => {
+    const navigate = useNavigate();
     var token01 = localStorage.getItem("Token01");
 
         
@@ -245,8 +246,8 @@ const AccountLogin = (props) => {
                     } else if (res.data.token) {
                         passwordErr.classList.add('d-none');
                         localStorage.setItem("Token01", res.data.token);
-                        window.location = "/";
-                        props.changeRe();
+navigate('/') ;
+                       props.changeRe();
 
                     }
 
@@ -269,7 +270,7 @@ const AccountLogin = (props) => {
         }, 300)
     }
     if (token01) {
-        window.location = "/";
+        return(<Navigate to='/' />)
     }else{
     return (
         <div className='d-flex justify-content-center'>
