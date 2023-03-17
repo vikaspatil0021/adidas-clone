@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import AccountLogin from './Components/AuthPages/Account-Login/account-Login';
+import AccountRegister from './Components/AuthPages/Account-register/account-register';
 import Footer from './Components/Footer/footer';
 import Header from './Components/Header/header';
 import Main from './Components/main/main';
@@ -24,6 +25,8 @@ function App() {
         <Routes>
         <Route path="/" exact element={<Main />} />
         <Route path="/account-login" exact element={<AccountLogin changeRe={changeRe} />} />
+        <Route path="/account-register" exact element={<AccountRegister changeRe={changeRe} />} />
+
 
         </Routes>
       </Router>

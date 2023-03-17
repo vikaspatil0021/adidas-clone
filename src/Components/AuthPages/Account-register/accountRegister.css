@@ -1,0 +1,42 @@
+.registerPageContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 1300px;
+}
+
+
+.ifLogin{
+    background-color: #eceff1;
+    padding: 30px;
+}
+
+.radioBtn{
+    margin: 10px 10px;
+    font-size: 20px;
+    display: flex;align-items: center;
+}
+input[type='radio']{
+    appearance: none;
+    height: 25px;
+    width: 25px;
+    border: #666565 2px solid;
+    border-radius: 50%;
+    transition: border .1s ease-in-out;
+}
+input[type='radio']:hover{
+    border: #000 2px solid;
+}
+input[type='radio']:checked{
+    border: #000 9px solid;
+}
+
+
+.radioBtn label{
+    padding:  10px;
+}
+@media (max-width:965px) {
+    .registerPageContainer{
+        grid-template-columns: 1fr;
+    }
+    
+}

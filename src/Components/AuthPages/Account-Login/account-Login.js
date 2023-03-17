@@ -386,21 +386,21 @@ const AccountLogin = (props) => {
                         <div role='button' className='fs-5 fw-light mt-2'>
                             Join now to start earning points, reach new levels and unlock more rewards and benefits from adiClub.
                         </div>
-                        <div className='lBtn'>
+                        <a href='/account-register'>
+                            <div className='lBtn'>
+                                <button id='joinTheClubBtn' role='button' className='main-btn my-3 m-0' onClick={() => {
+                                    addButtonClass("joinTheClubBtn");
+                                }}>
+                                    JOIN THE CLUB
+                                    <div className='border-button'>
 
-                        <button id='joinTheClubBtn' role='button' className='main-btn my-3 m-0' onClick={() => {
-                            addButtonClass("joinTheClubBtn");
-                            navigate('/account-register')
-                        }}>
-                            JOIN THE CLUB
-                            <div className='border-button'>
+                                    </div>
 
+                                    <i class="bi bi-arrow-right fs-4 ms-3"></i>
+
+                                </button>
                             </div>
-
-                            <i class="bi bi-arrow-right fs-4 ms-3"></i>
-
-                        </button>
-                        </div>
+                        </a>
                         <div>
                             <img src="https://www.adidas.co.in/glass/react/d5e2a4e/assets/img/adiClub-account-register.jpeg" alt="adiClub teaser" height="100%" width="100%" />
                         </div>
