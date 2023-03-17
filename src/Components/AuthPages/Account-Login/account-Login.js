@@ -270,7 +270,10 @@ const AccountLogin = (props) => {
         }, 300)
     }
     if (token01) {
-        navigate('/')
+        useEffect(()=>{
+
+            navigate('/')
+        },[])
     }else{
     return (
         <div className='d-flex justify-content-center'>
