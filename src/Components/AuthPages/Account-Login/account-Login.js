@@ -5,12 +5,8 @@ import "./accountLogin.css"
 const AccountLogin = (props) => {
     const navigate = useNavigate();
     var token01 = localStorage.getItem("Token01");
-    useEffect(() => {
 
-        if (token01) {
-            navigate('/')
-        }
-    }, [])
+        
 
     const [data, setData] = useState({
         Email: '',
@@ -273,6 +269,9 @@ const AccountLogin = (props) => {
 
         }, 300)
     }
+    if (token01) {
+        navigate('/')
+    }else{
     return (
         <div className='d-flex justify-content-center'>
 
@@ -365,7 +364,7 @@ const AccountLogin = (props) => {
             </div>
         </div>
 
-    )
+    )}
 }
 
 export default AccountLogin;
