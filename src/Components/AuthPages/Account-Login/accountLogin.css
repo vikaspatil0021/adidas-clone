@@ -3,11 +3,11 @@
     grid-template-columns: 1fr 1fr;
     width: 1300px;
 }
-.box01{
+.box01,.box02{
     padding: 50px;
 }
 
-.box01 h1{
+.box01 h1,.box02 h1{
     font-size: 40px;
     font-weight: 700;
 }
@@ -22,4 +22,14 @@
 .forgottenBtn:hover{
     color: #fff;
     background-color: #000;
+}
+
+
+@media (max-width:965px) {
+    .loginPageContainer{
+        grid-template-columns: 1fr;
+    }
+    .box01,.box02{
+        padding:40px 20px;
+    }
 }

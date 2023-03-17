@@ -6,7 +6,7 @@ const AccountLogin = (props) => {
     const navigate = useNavigate();
     var token01 = localStorage.getItem("Token01");
 
-        
+
 
     const [data, setData] = useState({
         Email: '',
@@ -246,8 +246,8 @@ const AccountLogin = (props) => {
                     } else if (res.data.token) {
                         passwordErr.classList.add('d-none');
                         localStorage.setItem("Token01", res.data.token);
-navigate('/') ;
-                       props.changeRe();
+                        navigate('/');
+                        props.changeRe();
 
                     }
 
@@ -270,101 +270,149 @@ navigate('/') ;
         }, 300)
     }
     if (token01) {
-        return(<Navigate to='/' />)
-    }else{
-    return (
-        <div className='d-flex justify-content-center'>
+        return (<Navigate to='/' />)
+    } else {
+        return (
+            <div className='d-flex justify-content-center'>
 
-            <div className='loginPageContainer'>
-                <div className='box01'>
-                    <h1>LOG IN</h1>
+                <div className='loginPageContainer'>
+                    <div className='box01'>
+                        <h1>LOG IN</h1>
 
-                    <div role='button' className='forgottenBtn'>
-                        Forgotten Your Password?
-                    </div>
-                    <div className='inputGroup mt-3'>
-                        <input id='loginEmail01' type='email' value={data.Email} onChange={(e) => setData({
-                            Email: e.target.value,
-                            Password: data.Password
-                        })} onBlur={() => labelAni("loginlabelEmail01", 'off')} onFocus={() => labelAni("loginlabelEmail01", 'on')} />
-                        <label id='loginlabelEmail01' for='loginEmail01' className=''>Email *</label>
-                        <div id='loginEmailCheckIcon01' className='loginInputIcon'>
-                            <i class="fa-solid fa-xmark fs-4 d-none"></i>
+                        <div role='button' className='forgottenBtn'>
+                            Forgotten Your Password?
+                        </div>
+                        <div className='inputGroup mt-3'>
+                            <input id='loginEmail01' type='email' value={data.Email} onChange={(e) => setData({
+                                Email: e.target.value,
+                                Password: data.Password
+                            })} onBlur={() => labelAni("loginlabelEmail01", 'off')} onFocus={() => labelAni("loginlabelEmail01", 'on')} />
+                            <label id='loginlabelEmail01' for='loginEmail01' className=''>Email *</label>
+                            <div id='loginEmailCheckIcon01' className='loginInputIcon'>
+                                <i class="fa-solid fa-xmark fs-4 d-none"></i>
 
+                            </div>
+                        </div>
+                        <div id='loginWarningEmail1' className='text-danger fw-light ms-3 d-none'>
+                            Please enter a valid e-mail address
+                        </div>
+
+                        <div className='d-flex align-items-center mt-2'>
+
+                            <i id='showPassIcon' class="fa-regular fa-eye ms-auto"></i>
+                            <div className='mx-2 showPassBtn' onClick={showPass}>
+                                SHOW
+
+                            </div>
+                        </div>
+                        <div className='inputGroup'>
+                            <input id='loginPassword01' type='password' value={data.Password} onChange={(e) => setData({
+                                Email: data.Email,
+                                Password: e.target.value
+                            })} onBlur={() => labelAni('labelLoginPassword01', 'off')} onFocus={() => labelAni('labelLoginPassword01', 'on')} />
+                            <label id='labelLoginPassword01' for='loginPassword'> Password *</label>
+                            <div id='passwordCheckIcon02' className='inputIcon'>
+                                <i class="fa-solid fa-xmark fs-4 d-none"></i>
+
+                            </div>
+                        </div>
+                        <div id='warningPasswordInput02' className='text-muted mx-3 fw-light d-none'>
+                            Please enter a password
+                        </div>
+                        <div id='warningPasswordError01' className='text-danger mx-3 d-none'>
+                            Incorrect email/password – please check and retry
+                        </div>
+
+                        <div role='button' className="checkboxGroup mt-3" onClick={() => checkMark("checkInput01")}>
+                            <input id='checkInput01' type='checkbox' className='me-2' />
+                            <span>
+
+                                Keep me logged in. More info
+                            </span>
+                            <div className='checkbox-mark'>
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div className='lBtn'>
+                            <button id='loginModalBtn' role='button' className='main-btn my-3 m-0' onClick={() => {
+                                if (midProcess.current == false) {
+                                    addButtonClass("loginModalBtn");
+                                    loginAccount()
+                                }
+                            }}>
+                                LOG IN
+                                <div className='border-button'>
+
+                                </div>
+                                <div>
+
+                                    <i class="bi bi-arrow-right fs-4 ms-3"></i>
+                                    <div id='loginLoader' class="loader ms-3 d-none"></div>
+                                </div>
+
+                            </button>
+                        </div>
+                        <div>
+                            By clicking "LOG IN", I agree to the Terms & Conditions, the adiClub Terms & Conditions and the adidas Privacy Policy.
                         </div>
                     </div>
-                    <div id='loginWarningEmail1' className='text-danger fw-light ms-3 d-none'>
-                        Please enter a valid e-mail address
-                    </div>
-
-                    <div className='d-flex align-items-center mt-2'>
-
-                        <i id='showPassIcon' class="fa-regular fa-eye ms-auto"></i>
-                        <div className='mx-2 showPassBtn' onClick={showPass}>
-                            SHOW
-
+                    <div className='box02'>
+                        <h1>
+                            JOIN THE CLUB. GET REWARDED.
+                        </h1>
+                        <div role='button' className='fs-5 fw-light'>
+                            JOIN ADICLUB. GET REWARDED TODAY.
                         </div>
-                    </div>
-                    <div className='inputGroup'>
-                        <input id='loginPassword01' type='password' value={data.Password} onChange={(e) => setData({
-                            Email: data.Email,
-                            Password: e.target.value
-                        })} onBlur={() => labelAni('labelLoginPassword01', 'off')} onFocus={() => labelAni('labelLoginPassword01', 'on')} />
-                        <label id='labelLoginPassword01' for='loginPassword'> Password *</label>
-                        <div id='passwordCheckIcon02' className='inputIcon'>
-                            <i class="fa-solid fa-xmark fs-4 d-none"></i>
-
+                        <div className='fs-6 fw-light pt-3  d-flex align-items-center'>
+                            <i className='fa-solid fa-check fs-4 me-2' />
+                            Free delivery
                         </div>
-                    </div>
-                    <div id='warningPasswordInput02' className='text-muted mx-3 fw-light d-none'>
-                        Please enter a password
-                    </div>
-                    <div id='warningPasswordError01' className='text-danger mx-3 d-none'>
-                        Incorrect email/password – please check and retry
-                    </div>
-
-                    <div role='button' className="checkboxGroup mt-3" onClick={() => checkMark("checkInput01")}>
-                        <input id='checkInput01' type='checkbox' className='me-2' />
-                        <span>
-
-                            Keep me logged in. More info
-                        </span>
-                        <div className='checkbox-mark'>
-                            <i class="fa-solid fa-check"></i>
+                        <div className='fs-6 fw-light pt-3  d-flex align-items-center'>
+                            <i className='fa-solid fa-check fs-4 me-2' />
+                            A 15% off voucher for your next purchase
                         </div>
-                    </div>
-                    <div className='lBtn'>
-                        <button id='loginModalBtn' role='button' className='main-btn my-3 m-0' onClick={() => {
-                            if (midProcess.current == false) {
-                                addButtonClass("loginModalBtn");
-                                loginAccount()
-                            }
+                        <div className='fs-6 fw-light pt-3  d-flex align-items-center'>
+                            <i className='fa-solid fa-check fs-4 me-2' />
+                            Access to Members Only products and sales
+                        </div>
+                        <div className='fs-6 fw-light pt-3  d-flex align-items-center'>
+                            <i className='fa-solid fa-check fs-4 me-2' />
+                            Access to adidas Running and Training apps
+                        </div>
+                        <div className='fs-6 fw-light pt-3  d-flex align-items-center'>
+                            <i className='fa-solid fa-check fs-4 me-2' />
+                            Special offers and promotions
+                        </div>
+                        <div role='button' className='fs-5 fw-light mt-2'>
+                            Join now to start earning points, reach new levels and unlock more rewards and benefits from adiClub.
+                        </div>
+                        <div className='lBtn'>
+
+                        <button id='joinTheClubBtn' role='button' className='main-btn my-3 m-0' onClick={() => {
+                            addButtonClass("joinTheClubBtn");
+                            navigate('/account-register')
                         }}>
-                            LOG IN
+                            JOIN THE CLUB
                             <div className='border-button'>
 
                             </div>
-                            <div>
 
-                                <i class="bi bi-arrow-right fs-4 ms-3"></i>
-                                <div id='loginLoader' class="loader ms-3 d-none"></div>
-                            </div>
+                            <i class="bi bi-arrow-right fs-4 ms-3"></i>
 
                         </button>
+                        </div>
+                        <div>
+                            <img src="https://www.adidas.co.in/glass/react/d5e2a4e/assets/img/adiClub-account-register.jpeg" alt="adiClub teaser" height="100%" width="100%" />
+                        </div>
+
                     </div>
-                    <div>
-                        By clicking "LOG IN", I agree to the Terms & Conditions, the adiClub Terms & Conditions and the adidas Privacy Policy.
-                    </div>
-                </div>
-                <div className='box02'>
-                    j
-                </div>
 
 
+                </div>
             </div>
-        </div>
 
-    )}
+        )
+    }
 }
 
 export default AccountLogin;
