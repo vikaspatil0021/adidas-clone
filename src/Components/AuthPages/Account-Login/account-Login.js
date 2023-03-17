@@ -5,12 +5,12 @@ import "./accountLogin.css"
 const AccountLogin = (props) => {
     const navigate = useNavigate();
     var token01 = localStorage.getItem("Token01");
-    useEffect(()=>{
+    useEffect(() => {
 
         if (token01) {
             navigate('/')
         }
-    },[])
+    }, [])
 
     const [data, setData] = useState({
         Email: '',
@@ -250,10 +250,8 @@ const AccountLogin = (props) => {
                     } else if (res.data.token) {
                         passwordErr.classList.add('d-none');
                         localStorage.setItem("Token01", res.data.token);
-                        setTimeout(()=>{
-                            navigate('/');
-                            props.changeRe();
-                        },3000)
+                        navigate('/');
+                        props.changeRe();
 
                     }
 
@@ -323,8 +321,8 @@ const AccountLogin = (props) => {
                         Please enter a password
                     </div>
                     <div id='warningPasswordError01' className='text-danger mx-3 d-none'>
-                        Incorrect email/password – please check and retry                    
-                        </div>
+                        Incorrect email/password – please check and retry
+                    </div>
 
                     <div role='button' className="checkboxGroup mt-3" onClick={() => checkMark("checkInput01")}>
                         <input id='checkInput01' type='checkbox' className='me-2' />
