@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./accountLogin.css"
-const AccountLogin = () => {
+const AccountLogin = (props) => {
     const navigate = useNavigate();
     var token01 = localStorage.getItem("Token01");
     useEffect(()=>{
@@ -252,6 +252,7 @@ const AccountLogin = () => {
                         localStorage.setItem("Token01", res.data.token);
                         setTimeout(()=>{
                             navigate('/');
+                            props.changeRe();
                         },3000)
 
                     }
