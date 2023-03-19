@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { scrollEffect } from '../../Repeaters/scrollEffect';
 
 const afterClickArray = {
     men: [
@@ -255,17 +256,7 @@ const Section05 = () => {
     }
 
 
-    const scrollEffect = (whichSide) =>{
-
-        const section05scrollBar = document.querySelector('.scrollBar');
-        if(whichSide=='right'){
-            section05scrollBar.scrollLeft += 2000;
-        }else{
-            section05scrollBar.scrollLeft -= 2000;
-
-        }
-
-    }
+    
     return (
         <div className='d-flex flex-wrap justify-content-center'>
             <div id='beforeClick' className='section05'>
@@ -331,10 +322,10 @@ const Section05 = () => {
                     </div>
                     <div className='arrowScroller'>
 
-                        <button className='arrowBtn05' onClick={()=>scrollEffect("left")}>
+                        <button className='arrowBtn05' onClick={()=>scrollEffect("left","scrollBar")}>
                             <i class='fa fa-solid fa-angle-left' />
                         </button>
-                        <button className='arrowBtn05' onClick={()=>scrollEffect("right")}>
+                        <button className='arrowBtn05' onClick={()=>scrollEffect("right",'scrollBar')}>
                             <i class='fa fa-solid fa-angle-right' />
 
                         </button>

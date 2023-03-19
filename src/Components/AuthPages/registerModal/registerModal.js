@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./registerModal.css";
 import axios from "axios";
+import { addButtonClass } from '../../Repeaters/addButtonClass';
+import { showPass } from '../../Repeaters/AuthPages/showPass';
+import { checkMark } from '../../Repeaters/AuthPages/checkMark';
+import { labelAnimation } from '../../Repeaters/AuthPages/labelAnimation';
+import { passwordValidation } from '../../Repeaters/AuthPages/passwordValidation';
 
 const RegisterModal = (props) => {
     const [data, setData] = useState({
@@ -8,154 +13,40 @@ const RegisterModal = (props) => {
         Password: ''
     });
 
-
-    const addButtonClass = (id) => {
-        document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-        document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-        setTimeout(() => {
-            document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-            document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-        }, 150);
-    }
-
-
-
-    const passwordValidation = () => {
-        if (data.Password.length >= 8 && data.Password.match(/[0-9]/g) && data.Password.match(/[A-Z]/g) && data.Password.match(/[a-z]/g) && data.Password.match(/[^A-Za-z0-9]/g)) {
-            return "good";
-        } else {
-            return "bad"
-        }
-    }
-
-    const labelAni = (id, state) => {
-        const ele = document.querySelector('#' + id);
-
-        const emailInputWarn = document.querySelector('#warningEmailInput01');
-        const emailInput = document.querySelector('#signupEmail');
-        const emailCheckIcon = document.querySelector('#emailCheckIcon i');
-
-        const passwordInputWarn = document.querySelector('#warningPasswordInput01');
-        const passwordInput = document.querySelector('#signupPassword');
-        const passwordCheckIcon = document.querySelector('#passwordCheckIcon i');
-        if (state == 'on') {
-            ele.classList.add("inputLabelAni");
-
-
-            if ("labelEmail" == id) {
-
-                emailInputWarn.classList.add('d-none');
-            } else {
-                passwordInputWarn.innerHTML = 'Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number.'
-            }
-
-
-        } else {
-
-
-
-            if ("labelEmail" == id) {
-                emailCheckIcon.classList.remove('d-none')
-
-
-                if (data.Email == '') {
-                    emailInputWarn.classList.remove('d-none')
-                    emailInput.style.borderBottom = "3px solid red";
-
-
-                    ele.classList.remove("inputLabelAni");
-                    emailInputWarn.textContent = "Please enter a valid e-mail address";
-
-                } else {
-                    if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ')) {
-                        emailInput.style.borderBottom = "3px solid green";
-
-
-                    } else {
-                        emailInputWarn.classList.remove('d-none')
-                        emailInput.style.borderBottom = "3px solid red";
-
-                        emailInputWarn.textContent = "The email address is invalid.";
-
-                    }
-                }
-
-                // document.querySelector('#warningEmailInput01').textContent = "The email address is invalid.";
-            } else if ("labelPassword" == id) {
-                // ele.classList.remove("inputLabelAni");
-
-                passwordCheckIcon.classList.remove('d-none')
-
-
-                if (data.Password == '') {
-                    passwordInputWarn.classList.remove('d-none')
-                    passwordInput.style.borderBottom = "3px solid red";
-
-
-                    ele.classList.remove("inputLabelAni");
-                    passwordInputWarn.textContent = "Please enter a password";
-                    passwordInputWarn.classList.replace("text-muted", 'text-danger')
-
-                } else {
-                    // password validation
-                    const r = passwordValidation()
-                    if (r == "good") {
-
-                        passwordInput.style.borderBottom = "3px solid green";
-                        passwordInputWarn.classList.replace("text-danger", 'text-muted')
-
-                    } else {
-                        passwordInput.style.borderBottom = "3px solid red";
-                        passwordInputWarn.classList.replace("text-muted", 'text-danger')
-                    }
-
-                }
-
-            }
-
-
-        }
-
-
-    }
-
-
-
-    const emailCheckIcon = document.querySelector('#emailCheckIcon i');
-    const passwordCheckIcon = document.querySelector('#passwordCheckIcon i');
-    const passwordInputWarn = document.querySelector('#warningPasswordInput01');
+   
+    const emailCheckIcon = document.querySelector('#signupEmailModal-checkIcon i');
+    const passwordCheckIcon = document.querySelector('#signupPasswordModal-checkIcon i');
+    const passwordInputWarn = document.querySelector('#signupPasswordModal-warning');
 
     if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ')) {
         emailCheckIcon.classList.remove('d-none')
 
 
-        document.querySelector('#signupEmail').style.borderBottom = "3px solid green";
+        document.querySelector('#signupEmailModal').style.borderBottom = "3px solid green";
         emailCheckIcon.classList.replace('fa-xmark', 'fa-check');
         emailCheckIcon.classList.add('text-success');
 
 
     } else {
         if (emailCheckIcon && emailCheckIcon.classList.contains('fa-check')) {
-            document.querySelector('#signupEmail').style.borderBottom = "3px solid red";
+            document.querySelector('#signupEmailModal').style.borderBottom = "3px solid red";
 
             emailCheckIcon.classList.replace('fa-check', 'fa-xmark');
             emailCheckIcon.classList.remove('text-success');
         }
     }
 
-    if (passwordValidation() == 'good') {
+    if (passwordValidation(data) == 'good') {
         passwordCheckIcon.classList.remove('d-none')
 
-        document.querySelector('#signupPassword').style.borderBottom = "3px solid green";
+        document.querySelector('#signupPasswordModal').style.borderBottom = "3px solid green";
         passwordCheckIcon.classList.replace('fa-xmark', 'fa-check');
         passwordCheckIcon.classList.add('text-success');
         passwordInputWarn.classList.replace("text-danger", 'text-muted')
 
     } else {
         if (passwordCheckIcon && passwordCheckIcon.classList.contains('fa-check')) {
-            document.querySelector('#signupPassword').style.borderBottom = "3px solid red";
+            document.querySelector('#signupPasswordModal').style.borderBottom = "3px solid red";
 
             passwordCheckIcon.classList.replace('fa-check', 'fa-xmark');
             passwordCheckIcon.classList.remove('text-success');
@@ -166,60 +57,13 @@ const RegisterModal = (props) => {
 
 
 
-    const checkMark = (id) => {
-        const ele = document.querySelector('#' + id)
-        const warningEle = document.querySelector('#warning' + id)
+   
 
-        if (ele.checked) {
-            ele.checked = false;
-            ele.style.backgroundColor = 'white';
-            if(warningEle){
-
-                warningEle.classList.remove('d-none')
-            }
-
-
-
-
-        } else {
-            ele.checked = true;
-            ele.style.backgroundColor = 'black';
-
-            if(warningEle){
-
-            warningEle.classList.add('d-none');
-            }
-
-        }
-
-
-    }
-
-
-
-    const showPass = () => {
-        const ele = document.querySelector('#signupPassword');
-        const clickedBtn = document.querySelector('.showPassBtn');
-        const showPassIcon = document.querySelector('#showPassIcon');
-        if (ele.type == "password") {
-            ele.type = "text";
-            clickedBtn.textContent = 'HIDE';
-            showPassIcon.classList.replace('fa-eye', 'fa-eye-slash')
-        } else {
-            ele.type = "password";
-            clickedBtn.textContent = 'SHOW';
-            showPassIcon.classList.replace('fa-eye-slash', 'fa-eye')
-
-
-        }
-
-    }
-
-    const registerValidator = () => {
+    const registerValidatorModal = () => {
         const arr = [];
 
-        const emailInputWarn = document.querySelector('#warningEmailInput01');
-        const emailInput = document.querySelector('#signupEmail');
+        const emailInputWarn = document.querySelector('#signupEmailModal-warning');
+        const emailInput = document.querySelector('#signupEmailModal');
 
         if (data.Email == '') {
             emailInputWarn.classList.remove('d-none');
@@ -238,24 +82,24 @@ const RegisterModal = (props) => {
             console.log(arr);
         }
 
-        const passwordInputWarn = document.querySelector('#warningPasswordInput01');
-        const passwordInput = document.querySelector('#signupPassword');
+        const passwordInputWarn = document.querySelector('#signupPasswordModal-warning');
+        const passwordInput = document.querySelector('#signupPasswordModal');
         if (data.Password == '') {
             passwordInputWarn.classList.remove('d-none')
             passwordInput.style.borderBottom = "3px solid red";
             passwordInputWarn.textContent = "Please enter a password";
             passwordInputWarn.classList.replace("text-muted", 'text-danger')
-        } else if (passwordValidation() == 'good') {
+        } else if (passwordValidation(data) == 'good') {
 
             arr.push('good');
             console.log(arr);
         }
 
 
-        const check01 = document.querySelector('#checkInput01');
-        const check03 = document.querySelector('#checkInput03');
-        const checkwarn01 = document.querySelector('#warningcheckInput01');
-        const checkwarn03 = document.querySelector('#warningcheckInput03');
+        const check01 = document.querySelector('#checkInputModal01');
+        const check03 = document.querySelector('#checkInputModal03');
+        const checkwarn01 = document.querySelector('#checkInputModal01-warning');
+        const checkwarn03 = document.querySelector('#checkInputModal03-warning');
 
 
         if (check01.checked) {
@@ -280,7 +124,7 @@ const RegisterModal = (props) => {
 
     }
     const midProcess = useRef(false)
-    const registerAccount = async () => {
+    const registerAccountModal = async () => {
         midProcess.current=true;
         const registerBtn = document.querySelector('#registerModalBtn');
         const registerArrowIcon = document.querySelector('#registerModalBtn i');
@@ -292,13 +136,13 @@ const RegisterModal = (props) => {
         registerArrowIcon.classList.add('d-none');
         registerLoader.classList.remove('d-none');
 
-        var r = registerValidator()
+        var r = registerValidatorModal()
 
         if (r == 4) {
-            const emailCheckIcon = document.querySelector('#emailCheckIcon i');
+            const emailCheckIcon = document.querySelector('#signupEmailModal-checkIcon i');
 
-            const emailInputWarn = document.querySelector('#warningEmailInput01');
-            const emailInput = document.querySelector('#signupEmail');
+            const emailInputWarn = document.querySelector('#signupEmailModal-warning');
+            const emailInput = document.querySelector('#signupEmailModal');
 
 
             await axios.post(process.env.REACT_APP_SERVER_URL + '/register', { email: data.Email, password: data.Password })
@@ -356,18 +200,18 @@ const RegisterModal = (props) => {
                         Sign up now and get 15% off your first order.
                     </div>
                     <div className='inputGroup'>
-                        <input id='signupEmail' type='email' value={data.Email} onChange={(e) => setData({
+                        <input id='signupEmailModal' type='email' value={data.Email} onChange={(e) => setData({
                             Email: e.target.value,
                             Password: data.Password
-                        })} onBlur={() => labelAni("labelEmail", 'off')} onFocus={() => labelAni("labelEmail", 'on')} autoComplete='off' />
-                        <label id='labelEmail' for='signupEmail' className=''>Email *</label>
-                        <div id='emailCheckIcon' className='inputIcon'>
+                    })} onBlur={() => labelAnimation("signupEmailModal", 'off',"email",data)} onFocus={() => labelAnimation("signupEmailModal", 'on',"email",data)} autoComplete='off' />
+                        <label id='signupEmailModal-label' for='signupEmail' className=''>Email *</label>
+                        <div id='signupEmailModal-checkIcon' className='inputIcon'>
                             <i class="fa-solid fa-xmark fs-4 d-none"></i>
 
                         </div>
                     </div>
 
-                    <div id='warningEmailInput01' className='text-danger fw-light ms-3 d-none'>
+                    <div id='signupEmailModal-warning' className='text-danger fw-light ms-3 d-none'>
                         Please enter a valid e-mail address
                     </div>
 
@@ -375,28 +219,28 @@ const RegisterModal = (props) => {
                     <div className='d-flex align-items-center mt-2'>
 
                         <i id='showPassIcon' class="fa-regular fa-eye ms-auto"></i>
-                        <div className='mx-2 showPassBtn' onClick={showPass}>
+                        <div className='mx-2 showPassBtn' onClick={()=>{showPass('signupPasswordModal')}}>
                             SHOW
 
                         </div>
                     </div>
                     <div className='inputGroup'>
-                        <input id='signupPassword' type='password' value={data.Password} onChange={(e) => setData({
+                        <input id='signupPasswordModal' type='password' value={data.Password} onChange={(e) => setData({
                             Email: data.Email,
                             Password: e.target.value
-                        })} onBlur={() => labelAni('labelPassword', 'off')} onFocus={() => labelAni('labelPassword', 'on')} />
-                        <label id='labelPassword' for='signupPassword'> Password *</label>
-                        <div id='passwordCheckIcon' className='inputIcon'>
+                        })} onBlur={() => labelAnimation('signupPasswordModal', 'off','passwordRegister',data)} onFocus={() => labelAnimation('signupPasswordModal', 'on',"passwordRegister",data)} />
+                        <label id='signupPasswordModal-label' for='signupPasswordModal'> Password *</label>
+                        <div id='signupPasswordModal-checkIcon' className='inputIcon'>
                             <i class="fa-solid fa-xmark fs-4 d-none"></i>
 
                         </div>
                     </div>
-                    <div id='warningPasswordInput01' className='text-muted mx-3 fw-light'>
+                    <div id='signupPasswordModal-warning' className='text-muted mx-3 fw-light'>
                         Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number.
                     </div>
 
-                    <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInput01")}>
-                        <input id='checkInput01' type='checkbox' className='me-2' />
+                    <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInputModal01")}>
+                        <input id='checkInputModal01' type='checkbox' className='me-2' />
                         <span>
 
                             Yes, I am over 18 years old
@@ -405,15 +249,15 @@ const RegisterModal = (props) => {
                             <i class="fa-solid fa-check"></i>
                         </div>
                     </div>
-                    <div id='warningcheckInput01' className='text-danger fw-light d-none'>
+                    <div id='checkInputModal01-warning' className='text-danger fw-light d-none'>
                         You are too young to register / order.
                     </div>
 
 
 
 
-                    <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInput02")}>
-                        <input id='checkInput02' type='checkbox' className='me-2' />
+                    <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInputModal02")}>
+                        <input id='checkInputModal02' type='checkbox' className='me-2' />
                         <span>
 
                             I would like to stay up to date with adidas. I agree to receive personalised marketing messages from adidas India Marketing Pvt. Ltd.
@@ -423,8 +267,8 @@ const RegisterModal = (props) => {
                             <i class="fa-solid fa-check"></i>
                         </div>
                     </div>
-                    <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInput03")}>
-                        <input id='checkInput03' type='checkbox' className='me-2' />
+                    <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInputModal03")}>
+                        <input id='checkInputModal03' type='checkbox' className='me-2' />
                         <span>
 
 
@@ -435,7 +279,7 @@ const RegisterModal = (props) => {
                         </div>
                     </div>
 
-                    <div id='warningcheckInput03' className='text-danger fw-light d-none'>
+                    <div id='checkInputModal03-warning' className='text-danger fw-light d-none'>
                         Invalid value
                     </div>
                     <div id='rBtn' className='registerBtn py-1'>
@@ -443,7 +287,7 @@ const RegisterModal = (props) => {
                         <button id='registerModalBtn' type='button' role='button' className='main-btn  my-3 m-0' onClick={() => {
                             if (midProcess.current==false) {
                             addButtonClass("registerModalBtn");
-                                registerAccount()
+                            registerAccountModal()
                             }
                         }}>
                             REGISTER

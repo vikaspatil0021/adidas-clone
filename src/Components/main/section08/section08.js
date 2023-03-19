@@ -1,4 +1,5 @@
 import React from 'react';
+import { scrollEffect } from '../../Repeaters/scrollEffect';
 
 const arr = [
     {
@@ -67,17 +68,7 @@ const arr = [
 
 const Section08 = () => {
 
-    const scrollEffect = (whichSide) => {
 
-        const section08scrollBar = document.querySelector('.section08-overflow');
-        if (whichSide == 'right') {
-            section08scrollBar.scrollLeft += 1700;
-        } else {
-            section08scrollBar.scrollLeft -= 1700;
-
-        }
-
-    }
     // css in this section is same same as section06 
     return (
         <div className='d-flex flex-wrap justify-content-center'>
@@ -89,10 +80,10 @@ const Section08 = () => {
                 </div>
                 <div className='arrowScroller'>
 
-                    <button className='arrowBtn05' onClick={() => scrollEffect("left")}>
+                    <button className='arrowBtn05' onClick={() => scrollEffect("left","section08-overflow")}>
                         <i class='fa fa-solid fa-angle-left' />
                     </button>
-                    <button className='arrowBtn05' onClick={() => scrollEffect("right")}>
+                    <button className='arrowBtn05' onClick={() => scrollEffect("right","section08-overflow")}>
                         <i class='fa fa-solid fa-angle-right' />
 
                     </button>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import RegisterModal from '../AuthPages/registerModal/registerModal';
+import { addButtonClass } from '../Repeaters/addButtonClass';
 import "./footer.css";
 
 
@@ -81,18 +82,6 @@ const Footer = (props) => {
     }
     ,[token01])
     console.log(auth);
-    
-    // button click animation------------------>
-    const addButtonClass = (id) => {
-        document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-        document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-        setTimeout(() => {
-            document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-            document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-        }, 150);
-    }
 
     const toggleRegisterModal = ()=>{
         setTimeout(() => {
@@ -260,11 +249,6 @@ const Footer = (props) => {
                     </div>
                 </div>
             </div>
-
-
-
-
-
 
         </section>
     )

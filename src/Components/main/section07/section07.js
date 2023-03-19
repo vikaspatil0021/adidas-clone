@@ -1,4 +1,5 @@
 import React from 'react';
+import { scrollEffect } from '../../Repeaters/scrollEffect';
 
 
 const arr = [
@@ -47,16 +48,7 @@ const arr = [
 ]
 
 const Section07 = () => {
-    const scrollEffect = (side) =>{
-        const ele = document.querySelector(".scroller07");
-        console.log(ele.scrollLeft);
-        if(side == "left"){
-            ele.scrollLeft -= 1100;
-        }else{
-            ele.scrollLeft += 1100;
-
-        }
-    }
+   
     return (
         <div className='paddingLeft section07'>
             <div className='header07'>
@@ -94,11 +86,11 @@ const Section07 = () => {
                 </div>
 
             </div>
-                <button role='button' className='arrow-btn07-left' onClick={()=>scrollEffect("left")}>
+                <button role='button' className='arrow-btn07-left' onClick={()=>scrollEffect("left","scroller07")}>
                 <i className='fa-solid fa-arrow-left fs-3' />
 
                 </button>
-                <button role='button' className='arrow-btn07-right' onClick={()=>scrollEffect("right")}>
+                <button role='button' className='arrow-btn07-right' onClick={()=>scrollEffect("right","scroller07")}>
                 <i className='fa-solid fa-arrow-right fs-3' />
 
                 </button>

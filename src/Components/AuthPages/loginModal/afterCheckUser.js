@@ -1,100 +1,17 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
+import { addButtonClass } from '../../Repeaters/addButtonClass';
+import { checkMark } from '../../Repeaters/AuthPages/checkMark';
+import { labelAnimation } from '../../Repeaters/AuthPages/labelAnimation';
+import { passwordValidation } from '../../Repeaters/AuthPages/passwordValidation';
+import { showPass } from '../../Repeaters/AuthPages/showPass';
 
 
 
 
-const labelAni = (id, state, data) => {
-  console.log(data);
-  const ele = document.querySelector('#' + id);
-
-  const passwordInputWarn = document.querySelector('#warningPasswordInput02');
-  const passwordInput = document.querySelector('#loginPassword');
-  const passwordCheckIcon = document.querySelector('#passwordCheckIconl i');
-  if (state == 'on') {
-    ele.classList.add("inputLabelAni");
-    passwordInputWarn.classList.add('d-none')
 
 
 
-
-  } else {
-    // ele.classList.remove("inputLabelAni");
-
-    passwordCheckIcon.classList.remove('d-none')
-
-
-    if (data.Password == '') {
-      passwordInputWarn.classList.remove('d-none')
-      passwordInput.style.borderBottom = "3px solid red";
-
-
-      ele.classList.remove("inputLabelAni");
-      passwordInputWarn.classList.replace("text-muted", 'text-danger')
-
-    } else {
-
-      passwordInput.style.borderBottom = "3px solid green";
-      passwordInputWarn.classList.replace("text-danger", 'text-muted')
-
-
-
-    }
-
-
-  }
-}
-const showPass = () => {
-  const ele = document.querySelector('#loginPassword');
-  const clickedBtn = document.querySelector('.showPassBtn');
-  const showPassIcon = document.querySelector('#showPassIcon');
-  if (ele.type == "password") {
-    ele.type = "text";
-    clickedBtn.textContent = 'HIDE';
-    showPassIcon.classList.replace('fa-eye', 'fa-eye-slash')
-  } else {
-    ele.type = "password";
-    clickedBtn.textContent = 'SHOW';
-    showPassIcon.classList.replace('fa-eye-slash', 'fa-eye')
-
-
-  }
-
-}
-const checkMark = (id) => {
-  const ele = document.querySelector('#' + id)
-  const warningEle = document.querySelector('#warning' + id)
-
-  if (ele.checked) {
-    ele.checked = false;
-    ele.style.backgroundColor = 'white';
-    if (warningEle) {
-
-      warningEle.classList.remove('d-none')
-    }
-
-  } else {
-    ele.checked = true;
-    ele.style.backgroundColor = 'black';
-
-    if (warningEle) {
-
-      warningEle.classList.add('d-none');
-    }
-
-  }
-}
-
-const addButtonClass = (id) => {
-  document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-  document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-  setTimeout(() => {
-    document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-    document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-  }, 150);
-}
 
 
 
@@ -112,21 +29,21 @@ const AfterCheckUserLogin = (props) => {
 
 
 
-  const passwordInputWarn = document.querySelector('#warningPasswordInput02');
-  const passwordCheckIcon = document.querySelector('#passwordCheckIconl i');
+  const passwordInputWarn = document.querySelector('#loginPasswordModal-warning');
+  const passwordCheckIcon = document.querySelector('#loginPasswordModal-checkIcon i');
   useEffect(() => {
 
     if (data.Password != '') {
       passwordCheckIcon.classList.remove('d-none')
 
-      document.querySelector('#loginPassword').style.borderBottom = "3px solid green";
+      document.querySelector('#loginPasswordModal').style.borderBottom = "3px solid green";
       passwordCheckIcon.classList.replace('fa-xmark', 'fa-check');
       passwordCheckIcon.classList.add('text-success');
       passwordInputWarn.classList.replace("text-danger", 'text-muted')
 
     } else {
       if (passwordCheckIcon && passwordCheckIcon.classList.contains('fa-check')) {
-        document.querySelector('#loginPassword').style.borderBottom = "3px solid red";
+        document.querySelector('#loginPasswordModal').style.borderBottom = "3px solid red";
 
         passwordCheckIcon.classList.replace('fa-check', 'fa-xmark');
         passwordCheckIcon.classList.remove('text-success');
@@ -161,12 +78,12 @@ const AfterCheckUserLogin = (props) => {
     loginArrowIcon.classList.add('d-none');
     loginLoader.classList.remove('d-none');
 
-    const passwordInputWarn = document.querySelector('#warningPasswordInput02');
-    const passwordCheckIcon = document.querySelector('#passwordCheckIconl i');
+    const passwordInputWarn = document.querySelector('#loginPasswordModal-warning');
+    const passwordCheckIcon = document.querySelector('#loginPasswordModal-checkIcon i');
 
     if (data.Password == '') {
       passwordInputWarn.classList.remove('d-none');
-      document.querySelector('#loginPassword').style.borderBottom = "3px solid red";
+      document.querySelector('#loginPasswordModal').style.borderBottom = "3px solid red";
       passwordInputWarn.classList.replace("text-muted", 'text-danger');
       passwordCheckIcon.classList.remove('d-none')
 
@@ -215,23 +132,23 @@ const AfterCheckUserLogin = (props) => {
       <div className='d-flex align-items-center mt-2'>
 
         <i id='showPassIcon' class="fa-regular fa-eye ms-auto"></i>
-        <div className='mx-2 showPassBtn' onClick={showPass}>
+        <div className='mx-2 showPassBtn' onClick={()=>{showPass('loginPasswordModal')}}>
           SHOW
 
         </div>
       </div>
       <div className='inputGroup'>
-        <input id='loginPassword' type='password' value={data.Password} onChange={(e) => setData({
+        <input id='loginPasswordModal' type='password' value={data.Password} onChange={(e) => setData({
           Email: data.Email,
           Password: e.target.value
-        })} onBlur={() => labelAni('labelLoginPassword', 'off', data)} onFocus={() => labelAni('labelLoginPassword', 'on', data)} />
-        <label id='labelLoginPassword' for='loginPassword'> Password *</label>
-        <div id='passwordCheckIconl' className='inputIcon'>
+        })} onBlur={() => labelAnimation('loginPasswordModal', 'off',"passwordLogin" ,data)} onFocus={() => labelAnimation('loginPasswordModal', 'on','passwordLogin', data)} />
+        <label id='loginPasswordModal-label' for='loginPassword'> Password *</label>
+        <div id='loginPasswordModal-checkIcon' className='inputIcon'>
           <i class="fa-solid fa-xmark fs-4 d-none"></i>
 
         </div>
       </div>
-      <div id='warningPasswordInput02' className='text-muted mx-3 fw-light d-none'>
+      <div id='loginPasswordModal-warning' className='text-muted mx-3 fw-light d-none'>
         Please enter a password
       </div>
       <div id='warningPasswordError' className='text-danger mx-3 d-none'>
@@ -241,8 +158,8 @@ const AfterCheckUserLogin = (props) => {
       <div role='button' id='warningPasswordInput02' className='text-decoration-underline my-3 fw-light'>
         Reset your password
       </div>
-      <div role='button' className="checkboxGroup" onClick={() => checkMark("lCheckInput01")}>
-        <input id='lCheckInput01' type='checkbox' className='me-2' />
+      <div role='button' className="checkboxGroup" onClick={() => checkMark("CheckInputAfter01")}>
+        <input id='CheckInputAfter01' type='checkbox' className='me-2' />
         <span>
 
           Keep me logged in. Applies to each option below. More info
@@ -282,13 +199,8 @@ const AfterCheckUserLogin = (props) => {
 }
 
 
-const passwordValidation = (data) => {
-  if (data.Password.length >= 8 && data.Password.match(/[0-9]/g) && data.Password.match(/[A-Z]/g) && data.Password.match(/[a-z]/g) && data.Password.match(/[^A-Za-z0-9]/g)) {
-    return "good";
-  } else {
-    return "bad"
-  }
-}
+
+
 
 const AfterCheckUserRegister = (props) => {
   const [data, setData] = useState({
@@ -296,69 +208,23 @@ const AfterCheckUserRegister = (props) => {
     Password: ''
   });
 
-  const labelAnimation = (id, state, data) => {
-    console.log(data);
-    const ele = document.querySelector('#' + id);
+  
 
-    const passwordInputWarn = document.querySelector('#warningPasswordInput02');
-    const passwordInput = document.querySelector('#signupPassword');
-    const passwordCheckIcon = document.querySelector('#passwordCheckIconl i');
-    if (state == 'on') {
-      ele.classList.add("inputLabelAni");
-      passwordInputWarn.innerHTML = 'Minimum 8 characters with at least one uppercase, one lowercase, one special character and a number.'
-
-
-
-
-    } else {
-      // ele.classList.remove("inputLabelAni");
-
-      passwordCheckIcon.classList.remove('d-none')
-
-
-      if (data.Password == '') {
-        passwordInputWarn.classList.remove('d-none')
-        passwordInput.style.borderBottom = "3px solid red";
-
-
-        ele.classList.remove("inputLabelAni");
-        passwordInputWarn.textContent = "Please enter a password";
-        passwordInputWarn.classList.replace("text-muted", 'text-danger')
-
-      } else {
-        // password validation
-        const r = passwordValidation(data)
-        if (r == "good") {
-
-          passwordInput.style.borderBottom = "3px solid green";
-          passwordInputWarn.classList.replace("text-danger", 'text-muted')
-
-        } else {
-          passwordInput.style.borderBottom = "3px solid red";
-          passwordInputWarn.classList.replace("text-muted", 'text-danger')
-        }
-
-      }
-
-
-    }
-  }
-
-  const passwordInputWarn = document.querySelector('#warningPasswordInput02');
-  const passwordCheckIcon = document.querySelector('#passwordCheckIconl i');
+  const passwordInputWarn = document.querySelector('#loginPasswordModal02-warning');
+  const passwordCheckIcon = document.querySelector('#loginPasswordModal02-checkIcon i');
   useEffect(() => {
 
     if (data.Password != '' && passwordValidation(data) == 'good') {
       passwordCheckIcon.classList.remove('d-none')
 
-      document.querySelector('#signupPassword').style.borderBottom = "3px solid green";
+      document.querySelector('#loginPasswordModal02').style.borderBottom = "3px solid green";
       passwordCheckIcon.classList.replace('fa-xmark', 'fa-check');
       passwordCheckIcon.classList.add('text-success');
       passwordInputWarn.classList.replace("text-danger", 'text-muted')
 
     } else {
       if (passwordCheckIcon && passwordCheckIcon.classList.contains('fa-check')) {
-        document.querySelector('#signupPassword').style.borderBottom = "3px solid red";
+        document.querySelector('#loginPasswordModal02').style.borderBottom = "3px solid red";
 
         passwordCheckIcon.classList.replace('fa-check', 'fa-xmark');
         passwordCheckIcon.classList.remove('text-success');
@@ -373,8 +239,8 @@ const AfterCheckUserRegister = (props) => {
   const registerValidator = () => {
     const arr = [];
 
-    const passwordInputWarn = document.querySelector('#warningPasswordInput02');
-    const passwordInput = document.querySelector('#signupPassword');
+    const passwordInputWarn = document.querySelector('#loginPasswordModal02-warning');
+    const passwordInput = document.querySelector('#loginPasswordModal02');
     if (data.Password == '') {
       passwordInputWarn.classList.remove('d-none')
       passwordInput.style.borderBottom = "3px solid red";
@@ -387,10 +253,10 @@ const AfterCheckUserRegister = (props) => {
     }
 
 
-    const check01 = document.querySelector('#checkInput01');
-    const check03 = document.querySelector('#checkInput03');
-    const checkwarn01 = document.querySelector('#warningcheckInput01');
-    const checkwarn03 = document.querySelector('#warningcheckInput03');
+    const check01 = document.querySelector('#checkInputR01');
+    const check03 = document.querySelector('#checkInputR03');
+    const checkwarn01 = document.querySelector('#checkInputR01-warning');
+    const checkwarn03 = document.querySelector('#checkInputR03-warning');
 
 
     if (check01.checked) {
@@ -478,29 +344,29 @@ const AfterCheckUserRegister = (props) => {
       <div className='d-flex align-items-center'>
 
         <i id='showPassIcon' class="fa-regular fa-eye ms-auto"></i>
-        <div className='mx-2 showPassBtn' onClick={showPass}>
+        <div className='mx-2 showPassBtn' onClick={()=>showPass('loginPasswordModal02')}>
           SHOW
 
         </div>
       </div>
       <div className='inputGroup'>
-        <input id='signupPassword' type='password' value={data.Password} onChange={(e) => setData({
+        <input id='loginPasswordModal02' type='password' value={data.Password} onChange={(e) => setData({
           Email: data.Email,
           Password: e.target.value
-        })} onBlur={() => labelAnimation('labelSignupPassword', 'off', data)} onFocus={() => labelAnimation('labelSignupPassword', 'on', data)} />
-        <label id='labelSignupPassword' for='signupPassword'> Password *</label>
-        <div id='passwordCheckIconl' className='inputIcon'>
+        })} onBlur={() => labelAnimation('loginPasswordModal02', 'off', "passwordRegister",data)} onFocus={() => labelAnimation('loginPasswordModal02', 'on',"passwordRegister", data)} />
+        <label id='loginPasswordModal02-label' for='signupPassword'> Password *</label>
+        <div id='loginPasswordModal02-checkIcon' className='inputIcon'>
           <i class="fa-solid fa-xmark fs-4 d-none"></i>
 
         </div>
       </div>
-      <div id='warningPasswordInput02' className='text-muted mx-3 fw-light d-none'>
+      <div id='loginPasswordModal02-warning' className='text-muted mx-3 fw-light d-none'>
         Please enter a password
       </div>
 
 
-      <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInput02")}>
-        <input id='checkInput02' type='checkbox' className='me-2' />
+      <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInputR02")}>
+        <input id='checkInputR02' type='checkbox' className='me-2' />
         <span>
 
           I would like to stay up to date with adidas. I agree to receive personalised marketing messages from adidas India Marketing Pvt. Ltd.
@@ -510,8 +376,8 @@ const AfterCheckUserRegister = (props) => {
           <i class="fa-solid fa-check"></i>
         </div>
       </div>
-      <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInput03")}>
-        <input id='checkInput03' type='checkbox' className='me-2' />
+      <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInputR03")}>
+        <input id='checkInputR03' type='checkbox' className='me-2' />
         <span>
 
 
@@ -522,11 +388,11 @@ const AfterCheckUserRegister = (props) => {
         </div>
       </div>
 
-      <div id='warningcheckInput03' className='text-danger fw-light d-none'>
+      <div id='checkInputR03-warning' className='text-danger fw-light d-none'>
         Invalid value
       </div>
-      <div role='button' className="checkboxGroup w-100" onClick={() => checkMark("checkInput01")}>
-        <input id='checkInput01' type='checkbox' className='me-2' />
+      <div role='button' className="checkboxGroup w-100" onClick={() => checkMark("checkInputR01")}>
+        <input id='checkInputR01' type='checkbox' className='me-2' />
         <span>
 
           Yes, I am over 18 years old
@@ -535,12 +401,12 @@ const AfterCheckUserRegister = (props) => {
           <i class="fa-solid fa-check"></i>
         </div>
       </div>
-      <div id='warningcheckInput01' className='text-danger fw-light d-none'>
+      <div id='checkInputR01-warning' className='text-danger fw-light d-none'>
         You are too young to register / order.
       </div>
 
-      <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInput04")}>
-        <input id='checkInput04' type='checkbox' className='me-2' />
+      <div role='button' className="checkboxGroup" onClick={() => checkMark("checkInputR04")}>
+        <input id='checkInputR04' type='checkbox' className='me-2' />
         <span>
 
           Keep me logged in. Applies to each option below. More info

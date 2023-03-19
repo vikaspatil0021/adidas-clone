@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
+import { addButtonClass } from '../../Repeaters/addButtonClass';
+import { labelAnimation } from '../../Repeaters/AuthPages/labelAnimation';
 import { AfterCheckUserLogin, AfterCheckUserRegister } from './afterCheckUser';
 import "./loginModal.css"
 
@@ -10,65 +12,8 @@ const LoginModal = (props) => {
 
     const [showAfterCheck, setShowAfterCheck] = useState({ login: false, register: false });
 
-    const addButtonClass = (id) => {
-        document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-        document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-        setTimeout(() => {
-            document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-            document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-        }, 150);
-    }
-
-    const labelAni = (id, state) => {
-        const ele = document.querySelector('#' + id);
-
-        const emailInputWarn = document.querySelector('#loginWarningEmailInput01');
-        const emailInput = document.querySelector('#loginEmail');
-        const emailCheckIcon = document.querySelector('#loginEmailCheckIcon i');
-
-   
-        if (state == 'on') {
-            ele.classList.add("inputLabelAni");
-            if ("loginlabelEmail" == id) {
-
-                emailInputWarn.classList.add('d-none');
-            }
-
-
-
-        } else {
-
-            if ("loginlabelEmail" == id) {
-                emailCheckIcon.classList.remove('d-none')
-
-
-                if (data.Email == '') {
-                    emailInputWarn.classList.remove('d-none')
-                    emailInput.style.borderBottom = "3px solid red";
-
-
-                    ele.classList.remove("inputLabelAni");
-                    emailInputWarn.textContent = "Please enter a valid e-mail address";
-
-                } else {
-                    if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ') ) {
-                        emailInput.style.borderBottom = "3px solid green";
-
-
-                    } else {
-                        emailInputWarn.classList.remove('d-none')
-                        emailInput.style.borderBottom = "3px solid red";
-
-                        emailInputWarn.textContent = "The email address is invalid.";
-
-                    }
-                }
-            }
-        }
-    }
-    const emailCheckIcon = document.querySelector('#loginEmailCheckIcon i');
+    
+    const emailCheckIcon = document.querySelector('#loginEmailModal-checkIcon i');
 
     if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ')) {
         if (emailCheckIcon) {
@@ -76,7 +21,7 @@ const LoginModal = (props) => {
             emailCheckIcon.classList.remove('d-none')
 
 
-            document.querySelector('#loginEmail').style.borderBottom = "3px solid green";
+            document.querySelector('#loginEmailModal').style.borderBottom = "3px solid green";
             emailCheckIcon.classList.replace('fa-xmark', 'fa-check');
             emailCheckIcon.classList.add('text-success');
 
@@ -84,7 +29,7 @@ const LoginModal = (props) => {
 
     } else {
         if (emailCheckIcon && emailCheckIcon.classList.contains('fa-check')) {
-            document.querySelector('#loginEmail').style.borderBottom = "3px solid red";
+            document.querySelector('#loginEmailModal').style.borderBottom = "3px solid red";
 
             emailCheckIcon.classList.replace('fa-check', 'fa-xmark');
             emailCheckIcon.classList.remove('text-success');
@@ -94,7 +39,7 @@ const LoginModal = (props) => {
     const midProcess = useRef(false)
 
     const checkUserAccount = async () => {
-        const emailInputWarn = document.querySelector('#loginWarningEmailInput01');
+        const emailInputWarn = document.querySelector('#loginEmailModal-warning');
 
         midProcess.current = true;
         const continueBtn = document.querySelector('#continueModalBtn');
@@ -171,16 +116,16 @@ const LoginModal = (props) => {
                     </div>
 
                     <div className='inputGroup'>
-                        <input id='loginEmail' type='email' value={data.Email} onChange={(e) => setData({
+                        <input id='loginEmailModal' type='email' value={data.Email} onChange={(e) => setData({
                             Email: e.target.value
-                        })} onBlur={() => labelAni("loginlabelEmail", 'off')} onFocus={() => labelAni("loginlabelEmail", 'on')} />
-                        <label id='loginlabelEmail' for='loginEmail' className=''>Email *</label>
-                        <div id='loginEmailCheckIcon' className='loginInputIcon'>
+                        })} onBlur={() => labelAnimation("loginEmailModal", 'off',"email",data)} onFocus={() => labelAnimation("loginEmailModal", 'on',"email",data)} />
+                        <label id='loginEmailModal-label' for='loginEmail' className=''>Email *</label>
+                        <div id='loginEmailModal-checkIcon' className='loginInputIcon'>
                             <i class="fa-solid fa-xmark fs-4 d-none"></i>
 
                         </div>
                     </div>
-                    <div id='loginWarningEmailInput01' className='text-danger fw-light ms-3 d-none'>
+                    <div id='loginEmailModal-warning' className='text-danger fw-light ms-3 d-none'>
                         Please enter a valid e-mail address
                     </div>
                     <div className='loginBtn'>

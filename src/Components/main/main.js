@@ -1,4 +1,5 @@
 import React from 'react'
+import { addButtonClass } from '../Repeaters/addButtonClass';
 import "./main.css"
 import Section04 from './section04/section04';
 import Section05 from './section05/section05';
@@ -21,16 +22,6 @@ const Main = () => {
     document.querySelector('#discount10').classList.add("d-none");
   }
 
-  const addButtonClass = (id) => {
-    document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-    document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-    setTimeout(() => {
-      document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-      document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-    }, 150);
-  }
 
 
 

@@ -1,6 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
+import { addButtonClass } from '../../Repeaters/addButtonClass';
+import { checkMark } from '../../Repeaters/AuthPages/checkMark';
+import { labelAnimation } from '../../Repeaters/AuthPages/labelAnimation';
+import { showPass } from '../../Repeaters/AuthPages/showPass';
 import "./accountLogin.css"
 const AccountLogin = (props) => {
     const navigate = useNavigate();
@@ -13,16 +17,7 @@ const AccountLogin = (props) => {
         Password: ''
     });
 
-    const addButtonClass = (id) => {
-        document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-        document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-        setTimeout(() => {
-            document.querySelector("#" + id).classList.toggle('main-btn-onClick');
-            document.querySelector("#" + id + " .border-button").classList.toggle('border-button-onClick');
-
-        }, 150);
-    }
+    
 
     const labelAni = (id, state) => {
         const ele = document.querySelector('#' + id);
@@ -111,22 +106,22 @@ const AccountLogin = (props) => {
 
     }
 
-    const emailCheckIcon = document.querySelector('#loginEmailCheckIcon01 i');
-    const passwordCheckIcon = document.querySelector('#passwordCheckIcon02 i');
-    const passwordInputWarn = document.querySelector('#warningPasswordInput02');
+    const emailCheckIcon = document.querySelector('#loginEmailAcc-checkIcon i');
+    const passwordCheckIcon = document.querySelector('#loginPasswordAcc-checkIcon i');
+    const passwordInputWarn = document.querySelector('#loginPasswordAcc-warning');
 
     if ((data.Email).includes('@gmail.com') && !(data.Email).includes(' ')) {
         emailCheckIcon.classList.remove('d-none')
 
 
-        document.querySelector('#loginEmail01').style.borderBottom = "3px solid green";
+        document.querySelector('#loginEmailAcc').style.borderBottom = "3px solid green";
         emailCheckIcon.classList.replace('fa-xmark', 'fa-check');
         emailCheckIcon.classList.add('text-success');
 
 
     } else {
         if (emailCheckIcon && emailCheckIcon.classList.contains('fa-check')) {
-            document.querySelector('#loginEmail01').style.borderBottom = "3px solid red";
+            document.querySelector('#loginEmailAcc').style.borderBottom = "3px solid red";
 
             emailCheckIcon.classList.replace('fa-check', 'fa-xmark');
             emailCheckIcon.classList.remove('text-success');
@@ -137,14 +132,14 @@ const AccountLogin = (props) => {
     if (data.Password != '') {
         passwordCheckIcon.classList.remove('d-none')
 
-        document.querySelector('#loginPassword01').style.borderBottom = "3px solid green";
+        document.querySelector('#loginPasswordAcc').style.borderBottom = "3px solid green";
         passwordCheckIcon.classList.replace('fa-xmark', 'fa-check');
         passwordCheckIcon.classList.add('text-success');
         passwordInputWarn.classList.replace("text-danger", 'text-muted')
 
     } else {
         if (passwordCheckIcon && passwordCheckIcon.classList.contains('fa-check')) {
-            document.querySelector('#loginPassword01').style.borderBottom = "3px solid red";
+            document.querySelector('#loginPasswordAcc').style.borderBottom = "3px solid red";
 
             passwordCheckIcon.classList.replace('fa-check', 'fa-xmark');
             passwordCheckIcon.classList.remove('text-success');
@@ -154,47 +149,7 @@ const AccountLogin = (props) => {
     }
 
 
-    const checkMark = (id) => {
-        const ele = document.querySelector('#' + id)
 
-        if (ele.checked) {
-            ele.checked = false;
-            ele.style.backgroundColor = 'white';
-
-
-
-
-
-        } else {
-            ele.checked = true;
-            ele.style.backgroundColor = 'black';
-
-
-
-        }
-
-
-    }
-
-
-
-    const showPass = () => {
-        const ele = document.querySelector('#loginPassword01');
-        const clickedBtn = document.querySelector('.showPassBtn');
-        const showPassIcon = document.querySelector('#showPassIcon');
-        if (ele.type == "password") {
-            ele.type = "text";
-            clickedBtn.textContent = 'HIDE';
-            showPassIcon.classList.replace('fa-eye', 'fa-eye-slash')
-        } else {
-            ele.type = "password";
-            clickedBtn.textContent = 'SHOW';
-            showPassIcon.classList.replace('fa-eye-slash', 'fa-eye')
-
-
-        }
-
-    }
     useEffect(() => {
 
         const ele = document.querySelector('#checkInput01');
@@ -218,19 +173,19 @@ const AccountLogin = (props) => {
         loginArrowIcon.classList.add('d-none');
         loginLoader.classList.remove('d-none');
 
-        const passwordCheckIcon = document.querySelector('#passwordCheckIcon02 i');
-        const passwordInputWarn = document.querySelector('#warningPasswordInput02');
-        const emailInputWarn = document.querySelector('#loginWarningEmail1');
+        const passwordCheckIcon = document.querySelector('#loginPasswordAcc-checkIcon i');
+        const passwordInputWarn = document.querySelector('#loginPasswordAcc-warning');
+        const emailInputWarn = document.querySelector('#loginEmailAcc-warning');
         const arr = [];
         if (data.Email == '' || !(data.Email).includes('@gmail.com') || (data.Email).includes(' ')) {
-            document.querySelector('#loginEmail01').style.borderBottom = "3px solid red";
+            document.querySelector('#loginPasswordAcc').style.borderBottom = "3px solid red";
             emailInputWarn.classList.remove('d-none');
             arr.push('bad');
 
         }
         if (data.Password == '') {
             passwordInputWarn.classList.remove('d-none');
-            document.querySelector('#loginPassword01').style.borderBottom = "3px solid red";
+            document.querySelector('#loginPasswordAcc').style.borderBottom = "3px solid red";
             passwordInputWarn.classList.replace("text-muted", 'text-danger');
             passwordCheckIcon.classList.remove('d-none')
             arr.push('bad');
@@ -283,40 +238,40 @@ const AccountLogin = (props) => {
                             Forgotten Your Password?
                         </div>
                         <div className='inputGroup mt-3'>
-                            <input id='loginEmail01' type='email' value={data.Email} onChange={(e) => setData({
+                            <input id='loginEmailAcc' type='email' value={data.Email} onChange={(e) => setData({
                                 Email: e.target.value,
                                 Password: data.Password
-                            })} onBlur={() => labelAni("loginlabelEmail01", 'off')} onFocus={() => labelAni("loginlabelEmail01", 'on')} />
-                            <label id='loginlabelEmail01' for='loginEmail01' className=''>Email *</label>
-                            <div id='loginEmailCheckIcon01' className='loginInputIcon'>
+                            })} onBlur={() => labelAnimation("loginEmailAcc", 'off','email',data)} onFocus={() => labelAnimation("loginEmailAcc", 'on',"email",data)} />
+                            <label id='loginEmailAcc-label' for='loginEmail01' className=''>Email *</label>
+                            <div id='loginEmailAcc-checkIcon' className='loginInputIcon'>
                                 <i class="fa-solid fa-xmark fs-4 d-none"></i>
 
                             </div>
                         </div>
-                        <div id='loginWarningEmail1' className='text-danger fw-light ms-3 d-none'>
+                        <div id='loginEmailAcc-warning' className='text-danger fw-light ms-3 d-none'>
                             Please enter a valid e-mail address
                         </div>
 
                         <div className='d-flex align-items-center mt-2'>
 
                             <i id='showPassIcon' class="fa-regular fa-eye ms-auto"></i>
-                            <div className='mx-2 showPassBtn' onClick={showPass}>
+                            <div className='mx-2 showPassBtn' onClick={()=>showPass('loginPasswordAcc')}>
                                 SHOW
 
                             </div>
                         </div>
                         <div className='inputGroup'>
-                            <input id='loginPassword01' type='password' value={data.Password} onChange={(e) => setData({
+                            <input id='loginPasswordAcc' type='password' value={data.Password} onChange={(e) => setData({
                                 Email: data.Email,
                                 Password: e.target.value
-                            })} onBlur={() => labelAni('labelLoginPassword01', 'off')} onFocus={() => labelAni('labelLoginPassword01', 'on')} />
-                            <label id='labelLoginPassword01' for='loginPassword'> Password *</label>
-                            <div id='passwordCheckIcon02' className='inputIcon'>
+                            })} onBlur={() => labelAnimation('loginPasswordAcc', 'off',"passwordLogin",data)} onFocus={() => labelAnimation('loginPasswordAcc', 'on',"passwordLogin",data)} />
+                            <label id='loginPasswordAcc-label' for='loginPassword'> Password *</label>
+                            <div id='loginPasswordAcc-checkIcon' className='inputIcon'>
                                 <i class="fa-solid fa-xmark fs-4 d-none"></i>
 
                             </div>
                         </div>
-                        <div id='warningPasswordInput02' className='text-muted mx-3 fw-light d-none'>
+                        <div id='loginPasswordAcc-warning' className='text-muted mx-3 fw-light d-none'>
                             Please enter a password
                         </div>
                         <div id='warningPasswordError01' className='text-danger mx-3 d-none'>
