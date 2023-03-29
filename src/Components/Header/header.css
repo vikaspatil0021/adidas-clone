@@ -4,6 +4,7 @@
 
     transition: top .3s ease-in-out;
     transition-delay: .3s;
+    z-index: 1035;
 }
 
 

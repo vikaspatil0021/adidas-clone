@@ -63,6 +63,8 @@ let count =1;
   }
 
   // header animation 
+  if(!window.location.pathname.includes('/my-account')){
+
   var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
         var currentScrollPos = window.pageYOffset;
@@ -74,6 +76,7 @@ let count =1;
         prevScrollpos = currentScrollPos;
     }
 
+  }
 
     const toggleLoginModal = ()=>{
       

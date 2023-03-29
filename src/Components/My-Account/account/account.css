@@ -1,0 +1,93 @@
+.acc-body{
+    padding: 60px 3%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.acc-tabs{
+    /* margin: 10px; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* w */
+}
+.acc-tabs h5{
+font-weight: bold;
+}
+
+.acc-tabs button{
+    width: 100% !important;
+    all: unset;
+    cursor: pointer;
+    padding: 20px;
+    font-weight: light;
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+    background-color: #fff;
+    transition: background-color .1s ease-in-out;
+}
+.acc-tabs button:hover{
+    background-color: black;
+    color: #fff;
+}
+
+.active-Acc-btn{
+    font-weight: bolder !important;
+}
+.active-Acc-btn:hover{
+    text-decoration: underline;
+}
+
+
+@media (min-width:1400px) {
+    .acc-body{
+        padding: 60px 7%;
+    }
+}
+
+
+
+.acc-tabs-content{
+    margin: 0 7%;
+    padding: 4%;
+    background-color: #fff;
+}
+
+#profile-EditBtn{
+    all: unset;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.Acc-logout-Btn{
+    display: flex;
+    all: unset;
+    cursor: pointer;
+    padding: 13px 20px;
+    border: #000 1px solid;
+    width: 50%;
+}
+.Acc-logout-Btn:hover{
+    color: #959595;
+}
+
+@media (max-width:965px) {
+    .acc-body{
+        grid-template-columns: 1fr;
+        padding-top: 0;
+
+    }
+
+    .acc-tabs-content{
+        margin-left: 0;
+    }
+    .Acc-logout-Btn{
+        width: auto;
+    }
+    #acc-overview{
+        display: none;
+    }
+}

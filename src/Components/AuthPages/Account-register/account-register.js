@@ -275,7 +275,7 @@ const AccountRegister = (props) => {
                     } else if (res.data.token) {
                         localStorage.setItem("Token01", res.data.token);
                         props.changeRe()
-                        navigate('/');
+                        navigate('/my-account/profile');
 
                     }
 

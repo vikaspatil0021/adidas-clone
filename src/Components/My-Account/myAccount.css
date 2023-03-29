@@ -1,0 +1,77 @@
+.myAcc-header{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px groove #dcdbdb;
+    position: sticky;
+    top: 0;
+    z-index: 1025;
+    background-color: #fff;
+}
+
+
+
+.myAcc-header ul{
+    display: flex;
+    margin: 0;
+}
+.myAcc-header ul li{
+    padding:20px 15px;
+    margin: 5px;
+    margin-bottom: 0;
+    font-weight: 200;
+    color: rgb(165, 158, 158);
+}
+.myAcc-header ul li:hover{
+        border-bottom: 3px solid #000;
+
+}
+
+.active-tab{
+    font-weight: 700 !important;
+    color: black !important;
+    border-bottom: 3px solid #000;
+
+}
+
+.bgColor{
+    background-color: #f7f7f7;
+}
+
+.need-help-box{
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 10px;
+    padding: 20px;
+}
+.needHelp{
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+}
+.need-help-box div{
+    cursor: pointer;
+    background-color: #fff;
+    
+    font-size: 20px;
+    font-weight: 300;
+    transition: background-color .2s ease-in-out;
+}
+.need-help-box div:hover{
+    background-color: #000;
+    color: #fff;
+
+}
+
+@media (max-width:965px) {
+    .bgColor{
+        background-color: #fff;
+    }
+    .need-help-box{
+        grid-template-columns: 1fr;
+    }
+    .needHelp{
+        justify-content: start;
+    }
+}

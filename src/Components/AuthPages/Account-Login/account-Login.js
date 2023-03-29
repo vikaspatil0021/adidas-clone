@@ -201,7 +201,7 @@ const AccountLogin = (props) => {
                     } else if (res.data.token) {
                         passwordErr.classList.add('d-none');
                         localStorage.setItem("Token01", res.data.token);
-                        navigate('/');
+                        navigate('/my-account/profile');
                         props.changeRe();
 
                     }
