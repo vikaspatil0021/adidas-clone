@@ -32,7 +32,7 @@ function App() {
         <Route path="/my-account" exact element={<MyAccount />}>
           <Route path='order-history' element={<Orders />} />
           <Route path='profile' element={<Account changeRe={changeRe} />} />
-          <Route path='address-book' element={<Account />} />
+          <Route path='address-book' element={<Account changeRe={changeRe} />} />
 
         </Route>
 

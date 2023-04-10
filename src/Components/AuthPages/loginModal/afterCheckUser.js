@@ -97,6 +97,8 @@ const AfterCheckUserLogin = (props) => {
           } else if (res.data.token) {
             passwordErr.classList.add('d-none');
             localStorage.setItem("Token01", res.data.token);
+            localStorage.setItem("Email", data.Email);
+
             props.toggleLoginModal()
             props.changeRe();
 
@@ -306,6 +308,8 @@ const AfterCheckUserRegister = (props) => {
 
           if (res.data.token) {
             localStorage.setItem("Token01", res.data.token);
+            localStorage.setItem("Email", data.Email);
+
             props.toggleLoginModal();
             props.changeRe()
 

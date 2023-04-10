@@ -160,6 +160,8 @@ const RegisterModal = (props) => {
 
                     } else if (res.data.token) {
                         localStorage.setItem("Token01", res.data.token);
+                        localStorage.setItem("Email", data.Email);
+
                         props.toggleRegisterModal();
                         props.changeRe()
 
