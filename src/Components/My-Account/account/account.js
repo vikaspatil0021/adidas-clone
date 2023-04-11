@@ -109,7 +109,7 @@ const Account = (props) => {
         <div className='acc-tabs-content'>
           <div id='mobile-backBtn'>
 
-            <div role='button' className=' d-inline-flex align-items-center fs-4 fw-bold mb-4' onClick={mobContentShow}>
+            <div role='button' className=' d-inline-flex align-items-center fs-4 fw-bold my-4' onClick={mobContentShow}>
               <i class="fa-solid fa-arrow-left me-3 fs-4"></i>
               Back
             </div>

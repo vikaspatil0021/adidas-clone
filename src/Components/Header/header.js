@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 import "./header.css";
 import DropdownMen from "./dropdownContent/men";
 import DropdownWomen from "./dropdownContent/women";
@@ -13,6 +14,7 @@ import LoginModal from '../AuthPages/loginModal/loginModal';
 
 
 const Header = (props) => {
+
   var token01 = localStorage.getItem("Token01");
   const [auth,setAuth] = useState(false);
   useEffect(()=>{
@@ -290,7 +292,7 @@ let count =1;
                 </div>
               </div>
 
-              <div role='button' className='d-flex align-items-center mx-3 position-relative' onClick={(auth)?null:toggleLoginModal}>
+              <div role='button' className='d-flex align-items-center mx-3 position-relative' onClick={(auth)?()=>{window.location.pathname='/my-account/profile'}:toggleLoginModal}>
                 <i class="fa-regular fa-user fs-5"></i>
                 {(auth)?null:
                 <span id='loginBadge' className='badge text-bg-warning rounded-circle position-absolute translate-middle top-0 start-100'>1</span>}

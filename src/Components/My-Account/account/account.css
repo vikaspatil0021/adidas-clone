@@ -98,6 +98,9 @@ font-weight: bold;
 
     }
 
+    .Acc-address{
+        grid-template-columns: 1fr;
+    }
     .acc-tabs-content{
         margin-left: 0;
     }
@@ -164,5 +167,16 @@ font-weight: bold;
 @media (max-width:965px) {
     #mobile-backBtn{
         display: inline-flex;
+    }
+    .Acc-passModal{
+        align-items: end;
+    }
+    .modalBox-passModal{
+        width: 100%;
+    }
+
+    .EditPassword-modal{
+        top: 33%;
+        right: 3%;
     }
 }
