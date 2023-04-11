@@ -1,0 +1,117 @@
+.container-stock{
+    max-width: 1150px;
+    width: 100%;
+}
+
+.quickLink{
+    margin: 0 10px;
+    text-decoration: underline;
+    padding-bottom:5px ;
+}
+.quickLink:hover{
+    color: #fff;
+    background-color: #000;
+}
+
+
+/* category and filter box */
+.categoryAndFilter-Box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: #dedede 1px solid;
+}
+
+.categoryOption{
+    display: flex;
+    overflow: auto;
+    min-height: 50px;
+
+}
+.categoryOption::-webkit-scrollbar{
+    display: none;
+}
+.categoryOption div{
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.categoryOption-active{
+    border-bottom: #000 4px solid;
+    font-weight: bold;
+
+}
+
+.filterBtn{
+    padding: 5px 15px;
+    display: inline-flex;
+    align-items: center;
+    border: #000 1px solid;
+    font-weight: bold;
+    margin-bottom: 4px;
+
+}
+.filterBtn-mobile{
+    display: none;
+}
+
+
+
+@media (max-width:965px) {
+    
+    .filterBtn{
+        display: none;
+    }
+    .filterBtn-mobile{
+        padding: 5px 15px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+}
+
+/* product grid css */
+.products-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.product-card{
+    position: relative;
+    transition: border .1s ease-in-out;
+    border: #fff 1px solid;
+}
+.product-card img{
+    width: 100%;
+}
+.product-card:hover{
+    border: #000 1px solid;
+}
+
+.product-priceTag{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    background-color: #fff;
+    padding: 2px 4px;
+    transition: bottom .1s ease-in-out;
+}
+.product-card:hover .product-priceTag{
+    bottom: 8px;
+}
+@media (max-width:965px) {
+    .products-grid{
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+}
+@media (max-width:600px) {
+    .products-grid{
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
