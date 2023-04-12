@@ -126,7 +126,9 @@
         grid-template-columns: 1fr 1fr 1fr;
 
     }
-    
+    .product-card:hover{
+        border: #ffffff 0px solid;
+    }
 }
 @media (max-width:600px) {
     .products-grid{
