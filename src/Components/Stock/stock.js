@@ -147,7 +147,7 @@ const Stock = () => {
                                 })}
                                 </div>
 
-                                <div className='pb-4 p-2'>
+                                <div className='pb-4 p-2 fs'>
 
                                     <div className='fw-light '>
                                         {each.name}
