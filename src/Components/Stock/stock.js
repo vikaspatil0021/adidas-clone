@@ -5,7 +5,9 @@ import axios from 'axios';
 
 const Stock = () => {
 
-    const [productData, setProductData] = useState([])
+    const [productData, setProductData] = useState([]);
+    const [initialData, setinitialData] = useState([]);
+
     useEffect(() => {
 
         document.getElementById('top-width').style.marginTop = 0;
@@ -23,6 +25,7 @@ const Stock = () => {
             .then((res) => {
                 console.log(res.data);
                 setProductData(res.data)
+                setinitialData(res.data)
             })
     }, [])
     const activeCategoryOption = (id) => {
@@ -31,7 +34,15 @@ const Stock = () => {
             activeoption.classList.remove('categoryOption-active');
         }
 
-        document.querySelector('#category-' + id).classList.add('categoryOption-active')
+        document.querySelector('#category-' + id).classList.add('categoryOption-active');
+        const filArr = initialData.filter((each) => {
+            if(id==='All'){
+                return each;
+            }else if (id === each.category) {
+                return each;
+            }
+        })
+        setProductData(filArr)
     }
 
     var x = window.matchMedia("(max-width: 965px)");
