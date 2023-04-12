@@ -16,33 +16,33 @@ import LoginModal from '../AuthPages/loginModal/loginModal';
 const Header = (props) => {
 
   var token01 = localStorage.getItem("Token01");
-  const [auth,setAuth] = useState(false);
-  useEffect(()=>{
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
 
-      (token01)?setAuth(true):setAuth(false);
-      console.log(auth);
+    (token01) ? setAuth(true) : setAuth(false);
+    console.log(auth);
 
   }
-  ,[token01])
+    , [token01])
 
   // Fading effectr in the discount header==============>
-  const [seed,setSeed] = useState('');
-const dHeaderContent = ["SIGNUP & GET 15% OFF","FREE DELIVERY","UPI & NET BANKING AVAILABLE"]
+  const [seed, setSeed] = useState('');
+  const dHeaderContent = ["SIGNUP & GET 15% OFF", "FREE DELIVERY", "UPI & NET BANKING AVAILABLE"]
 
   setInterval(() => {
     document.getElementById("dis-header").style.opacity = 0;
   }, 4920)
-let count =1;
+  let count = 1;
   setInterval(() => {
     document.getElementById("dis-header").style.opacity = 1;
     document.getElementById("dis-headerContent").innerHTML = dHeaderContent[count];
     count++;
-    if(count>=dHeaderContent.length){
-      count=0;
+    if (count >= dHeaderContent.length) {
+      count = 0;
     }
 
 
-    
+
   }, 5000)
 
   // offCanvas toggle 
@@ -64,35 +64,38 @@ let count =1;
 
   }
 
+  const path = window.location.pathname;
+  const result = path.includes('/men') || path.includes('/my-account')
+  console.log(path,result);
   // header animation 
-  if(!window.location.pathname.includes('/my-account')){
+  if (!result) {
 
-  var prevScrollpos = window.pageYOffset;
+    var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
-        var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            document.getElementById("sticky-top-header").style.top = "0";
-        } else {
-            document.getElementById("sticky-top-header").style.top = "-155px";
-        }
-        prevScrollpos = currentScrollPos;
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("sticky-top-header").style.top = "0";
+      } else {
+        document.getElementById("sticky-top-header").style.top = "-155px";
+      }
+      prevScrollpos = currentScrollPos;
     }
 
   }
 
-    const toggleLoginModal = ()=>{
-      
-      const loginBadge =document.querySelector('#loginBadge')
-      setTimeout(() => {
-        if(loginBadge){
+  const toggleLoginModal = () => {
 
-          loginBadge.classList.add('d-none')
-        }
-          
-          document.querySelector('#loginModal').classList.toggle("d-none");
-              setSeed(Math.random());
+    const loginBadge = document.querySelector('#loginBadge')
+    setTimeout(() => {
+      if (loginBadge) {
 
-      }, 500);
+        loginBadge.classList.add('d-none')
+      }
+
+      document.querySelector('#loginModal').classList.toggle("d-none");
+      setSeed(Math.random());
+
+    }, 500);
   }
 
   return (
@@ -100,9 +103,9 @@ let count =1;
       <div>
         <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center  discount-header'>
           <div id='dis-header' className='my-2 d-flex align-items-center'>
-          <div id='dis-headerContent'>
-          SIGNUP & GET 15% OFF
-          </div>
+            <div id='dis-headerContent'>
+              SIGNUP & GET 15% OFF
+            </div>
             <i class="fa-solid fa-angle-down mx-3 dis-arrowDown fs-6"></i>
           </div>
 
@@ -189,7 +192,7 @@ let count =1;
                 <i class="fa-solid fa-bars fs-4"></i>
               </div>
               <div className='offCanvas-hamburger'>
-                
+
                 <div role='button' className='mb-3 hamburger-closeButton' onClick={openCanvasHamburger}>
                   <i class="fa-solid fa-xmark fs-2"></i>
                 </div>
@@ -292,14 +295,14 @@ let count =1;
                 </div>
               </div>
 
-              <div role='button' className='d-flex align-items-center mx-3 position-relative' onClick={(auth)?()=>{window.location.pathname='/my-account/profile'}:toggleLoginModal}>
+              <div role='button' className='d-flex align-items-center mx-3 position-relative' onClick={(auth) ? () => { window.location.pathname = '/my-account/profile' } : toggleLoginModal}>
                 <i class="fa-regular fa-user fs-5"></i>
-                {(auth)?null:
-                <span id='loginBadge' className='badge text-bg-warning rounded-circle position-absolute translate-middle top-0 start-100'>1</span>}
+                {(auth) ? null :
+                  <span id='loginBadge' className='badge text-bg-warning rounded-circle position-absolute translate-middle top-0 start-100'>1</span>}
               </div>
               <div id='loginModal' className='d-none'>
 
-                    <LoginModal key={seed} changeRe={props.changeRe} toggleLoginModal={toggleLoginModal} />
+                <LoginModal key={seed} changeRe={props.changeRe} toggleLoginModal={toggleLoginModal} />
               </div>
 
               <div role='button' className='mobile-search-icon' onClick={openCanvasMobileSearch}>
@@ -308,10 +311,10 @@ let count =1;
               </div>
               <div className="mobile-search-offcanvas">
                 <div className='d-flex ' style={{ backgroundColor: "#eceff1" }}>
-                <div role='button' onClick={openCanvasMobileSearch}>
+                  <div role='button' onClick={openCanvasMobileSearch}>
 
-                  <i class="fa-solid fa-angle-left m-3 pt-2 ps-2 mx-4 fs-5"></i>
-                </div>
+                    <i class="fa-solid fa-angle-left m-3 pt-2 ps-2 mx-4 fs-5"></i>
+                  </div>
 
                   <input placeholder='Search' className='search-mobile-input' />
                 </div>
