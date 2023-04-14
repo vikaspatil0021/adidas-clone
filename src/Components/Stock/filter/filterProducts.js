@@ -65,6 +65,22 @@ const FilterProducts = (props) => {
 
         })
     })
+
+    const filterArray =()=>{
+        const rangeMin = document.querySelector('.range-min');
+        const rangeMax = document.querySelector('.range-max');
+
+        const filterArr = props.requestedData.filter(each=>{
+            let priceTag = parseInt(each.priceTag.replace(' ',''));
+            if(rangeMin.value<priceTag && priceTag<rangeMax.value){
+                return each;
+            } 
+        })
+        console.log(filterArr)
+        console.log(rangeMin.value,rangeMax.value)
+        props.setProductData(filterArr);
+        props.filterModalToggle()
+    }
     return (
         <div>
             <div id='opacityBackColor' className='opacityBackColor d-none' onClick={() => props.filterModalToggle()} ></div>
@@ -105,6 +121,7 @@ const FilterProducts = (props) => {
                     <button id='applyFilterBtn' type='button' role='button' className='main-btn w-100 justify-content-between  my-3 m-0' onClick={() => {
                         // if (midProcess.current==false) {
                         addButtonClass("applyFilterBtn");
+                        filterArray()
                         // }
                     }}>
                         APPLY

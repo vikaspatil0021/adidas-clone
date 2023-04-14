@@ -121,6 +121,15 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     padding-top: 2px;
 }
+
+
+.colors-optionImg{
+    border-bottom: 2px #fff solid;
+}
+.colors-optionImg:hover{
+    border-bottom: 2px #000 solid;
+
+}
 @media (max-width:965px) {
     .products-grid{
         grid-template-columns: 1fr 1fr 1fr;
