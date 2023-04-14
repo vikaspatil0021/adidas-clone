@@ -31,7 +31,8 @@ const Stock = () => {
         }
         
         document.querySelector('#category-' + id).classList.add('categoryOption-active');
-        setUrl(id)
+        setUrl(id);
+        window.scrollTo(0, 0)
     }
 
         useEffect(()=>{
@@ -141,7 +142,7 @@ const Stock = () => {
                 </div>
 
                 <FilterProducts filterModalToggle={filterModalToggle} />
-                {(productData.length===0)?<div className='d-flex justify-content-center'><div class="loader"></div></div>:
+                {(productData.length===0)?<div className='d-flex justify-content-center'><div class="pre-loader"></div></div>:
                 <div className='products-grid'>
 
                     {productData.map((each) => {

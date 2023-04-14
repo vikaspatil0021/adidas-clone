@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useEffect, useState }  from 'react'
 import { addButtonClass } from '../Repeaters/addButtonClass';
 import "./main.css"
 import Section04 from './section04/section04';
@@ -8,7 +8,7 @@ import Section07 from './section07/section07';
 import Section08 from './section08/section08';
 
 const Main = () => {
-
+  const [showContent,setShow] = useState(false)
   const section03List = [
     "shoes",
     "sneakers",
@@ -21,13 +21,25 @@ const Main = () => {
   const discountOfferTrigger = () => {
     document.querySelector('#discount10').classList.add("d-none");
   }
+  useEffect(()=>{
+    setTimeout(()=>{
+      setShow(true)
+    },2000)
+  },[])
 
 
 
+  if(!showContent){
+    return(
+      <div className='d-flex justify-content-center'><div class="pre-loader"></div></div>
+    )
+  }else{
 
-
+  
   return (
     <div>
+                    {/* {(productData.length===0)?<div className='d-flex justify-content-center'><div class="pre-loader"></div></div>: */}
+
       <div id='discount10' className='d-flex justify-content-center align-items-center pe-5 p-md-2' style={{ backgroundColor: "#007bc6" }}>
         <div className='text-white text-center ps-4 pe-2 py-2 ms-3'>
 
@@ -224,6 +236,7 @@ const Main = () => {
 
     </div>
   )
+          }
 }
 
 export default Main;
