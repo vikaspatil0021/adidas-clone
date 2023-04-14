@@ -233,7 +233,7 @@ const Header = (props) => {
 
               <ul className='d-flex'>
 
-                <li className='dropdown'><a href='/men' className='fw-bold'>MEN                </a>
+                <li className='dropdown'><a href='/men/All' className='fw-bold'>MEN                </a>
                   <DropdownMen />
 
                 </li>

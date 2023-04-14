@@ -56,7 +56,7 @@ const Main = () => {
               EXTRA 10% FOR MEMBERS
             </div>
             <div className=''>
-              <a href='/men' className='a-button'>
+              <a href='/men/All' className='a-button'>
 
                 <button id='b01' role='button' className='main-btn' onClick={() => addButtonClass("b01")} >
 

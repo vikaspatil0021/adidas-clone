@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react'
 import './stock.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import FilterProducts from './filter/filterProducts';
 
 const Stock = () => {
 
     const [productData, setProductData] = useState([]);
-    const [initialData, setinitialData] = useState([]);
-
+    const [categoryUrl,setUrl] = useState(window.location.pathname.substring(5));
+    
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_SERVER_URL +'/men/' +  categoryUrl)
+        .then((res) => {
+            setProductData(res.data)
+        })
+    }, [categoryUrl])
     useEffect(() => {
 
         document.getElementById('top-width').style.marginTop = 0;
@@ -15,35 +22,22 @@ const Stock = () => {
 
         document.getElementById("sticky-top-header").style.top = "auto !important";
 
-
     }, [])
-    useEffect(() => {
-        document.querySelector('#category-All').classList.add('categoryOption-active');
-
-
-        axios.get(process.env.REACT_APP_SERVER_URL + '/products')
-            .then((res) => {
-                console.log(res.data);
-                setProductData(res.data)
-                setinitialData(res.data)
-            })
-    }, [])
+    
     const activeCategoryOption = (id) => {
         const activeoption = document.querySelector('.categoryOption-active');
         if (activeoption) {
             activeoption.classList.remove('categoryOption-active');
         }
-
+        
         document.querySelector('#category-' + id).classList.add('categoryOption-active');
-        const filArr = initialData.filter((each) => {
-            if(id==='All'){
-                return each;
-            }else if (id === each.category) {
-                return each;
-            }
-        })
-        setProductData(filArr)
+        setUrl(id)
     }
+
+        useEffect(()=>{
+
+            activeCategoryOption(window.location.pathname.substring(5))
+        },[productData])
 
     var x = window.matchMedia("(max-width: 965px)");
 
@@ -80,28 +74,29 @@ const Stock = () => {
         }
     }
     }
+
+    const filterModalToggle =()=>{
+        document.querySelector('#opacityBackColor').classList.toggle('d-none');
+        document.querySelector('.filter-modal').classList.toggle('width-filterModal')
+    }
+    if(window.location.pathname=='/men' || window.location.pathname=='/men/'){
+        window.location.pathname='/men/All';
+    }else{
+
+    
     return (
+
         <div className='d-flex justify-content-center p-3 pb-0'>
             <div className='container-stock'>
-                {(x.matches) ? null : <div className='pb-4'>
-                    <Link to='/' className='quickLink'>
-                        Home
-
-                    </Link>
-                    /
-                    <Link to='/men' className='quickLink'>
-                        Men
-
-                    </Link>
-                </div>}
+                
                 <div className='d-flex justify-content-between align-items-center'>
 
                     <h1 className='my-3'>
-                        <em>MEN</em>
+                        <em>MEN [{productData.length}]</em>
                     </h1>
                     <div>
                         {(x.matches) ?
-                            <div role='button' className='filterBtn-mobile'>
+                            <div role='button' className='filterBtn-mobile'  onClick={filterModalToggle}>
 
                                 <i class="bi bi-filter fs-1"></i>
                             </div> : null}
@@ -110,27 +105,45 @@ const Stock = () => {
 
                 <div className='categoryAndFilter-Box pt-2'>
                     <div className='categoryOption'>
+                        <Link to='All'>
+
                         <div id='category-All' onClick={() => activeCategoryOption('All')}>
                             All
                         </div>
+                        </Link>
+                        <Link to='Footwear'>
+
+
                         <div id='category-Footwear' onClick={() => activeCategoryOption('Footwear')}>
                             Footwear
                         </div>
+                        </Link>
+                        <Link to='Clothing'>
+
                         <div id='category-Clothing' onClick={() => activeCategoryOption('Clothing')}>
                             Clothing
                         </div>
+                        </Link>
+                        <Link to='Accessories'>
+
                         <div id='category-Accessories' onClick={() => activeCategoryOption('Accessories')}>
                             Accessories
                         </div>
+                        </Link>
                         
 
                     </div>
-                    <div role='button' className='filterBtn'>
+                    <div role='button' className='filterBtn' onClick={filterModalToggle}>
                         Filter & Sort
                         <i class="bi bi-filter fs-4 ms-2"></i>
                     </div>
+
                 </div>
+
+                <FilterProducts filterModalToggle={filterModalToggle} />
+                {(productData.length===0)?<div className='d-flex justify-content-center'><div class="loader"></div></div>:
                 <div className='products-grid'>
+
                     {productData.map((each) => {
                         return (
 
@@ -176,11 +189,12 @@ const Stock = () => {
                             </div>
                         )
                     })}
-                </div>
+                </div>}
 
             </div>
         </div>
     )
+                }
 }
 
 export default Stock;
