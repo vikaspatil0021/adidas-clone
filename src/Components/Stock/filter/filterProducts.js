@@ -161,7 +161,7 @@ const FilterProducts = (props) => {
                             SORT BY
                             <i id='i-sort' className='fa-solid fa-angle-down fs-4' />
                         </div>
-                        <div id='option-content-sort' className='option-Content'>
+                        <div id='option-content-sort' className='option-Content d-none'>
                             <div id='sort01' className='sort-price my-3' onClick={()=>sortPriceActive('sort01')}>
                                 PRICE (LOW - HIGH)
                             </div>
