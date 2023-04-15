@@ -5,6 +5,8 @@ import axios from 'axios';
 import FilterProducts from './filter/filterProducts';
 
 const Stock = () => {
+const [seed,setSeed] = useState(0)
+
     const [productData, setProductData] = useState([]);
     const [requestedData, setrequestedData] = useState([]);
 
@@ -34,7 +36,9 @@ const Stock = () => {
         }
 
         document.querySelector('#category-' + id).classList.add('categoryOption-active');
+        setSeed(Math.random())
         setUrl(id);
+        
         window.scrollTo(0, 0)
     }
 
@@ -142,8 +146,10 @@ const Stock = () => {
                         </div>
 
                     </div>
+                    <div key={seed}>
 
-                    <FilterProducts setProductData={setProductData} requestedData={requestedData} filterModalToggle={filterModalToggle} />
+                    <FilterProducts setProductData={setProductData} requestedData={requestedData} filterModalToggle={filterModalToggle} setSeed={setSeed} />
+                    </div>
                                 {(productData.length === 0)?<div className='d-flex justify-content-center'><div className='fs-3 p-5'>No products available</div></div>:null}
                     {(requestedData.length === 0) ? <div className='d-flex justify-content-center'><div class="pre-loader"></div></div> :
                         <div className='products-grid'>

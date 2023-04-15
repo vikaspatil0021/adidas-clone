@@ -35,6 +35,13 @@
     border-top: solid 1px #c5c3c3;
 }
 
+.clear-all{
+    text-decoration: underline;
+    color: #000;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
 
 .filter-option{
     overflow: auto;
@@ -48,7 +55,8 @@
     cursor: pointer;
 }
 .option-Content{
-    padding: 20px;
+    padding:  20px;
+    padding-top: 0;
     position: relative;
 }
 .slider{
@@ -78,7 +86,7 @@
     /* appearance: none; */
     position:absolute;
     width: 100%;
-    top: 52px;
+    top: 31px;
     left: 0;
     padding: 20px;
     background: none;
