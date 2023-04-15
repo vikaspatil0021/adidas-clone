@@ -4,7 +4,7 @@ import { addButtonClass } from '../../Repeaters/addButtonClass';
 import { checkMark } from '../../Repeaters/AuthPages/checkMark';
 
 const FilterProducts = (props) => {
-    
+
     const containerToggle = (id) => {
         const eleI = document.querySelector('#i-' + id);
         const eleContent = document.querySelector('#option-content-' + id);
@@ -34,6 +34,13 @@ const FilterProducts = (props) => {
 
     }, [])
 
+    const sortPriceActive = (id)=>{
+        const activeEle = document.querySelector('.active-sort-price');
+        if(activeEle) activeEle.classList.remove('active-sort-price')
+        const ele = document.querySelector('#'+ id);
+        ele.classList.add('active-sort-price')
+    }
+
     const onChangeInput =(e)=>{
         const rangeMin = document.querySelector('.range-min');
         const rangeMax = document.querySelector('.range-max');
@@ -43,7 +50,6 @@ const FilterProducts = (props) => {
 
         let minVal = parseInt(rangeMin.value);
         let maxVal = parseInt(rangeMax.value);
-        console.log(minVal,maxVal);
         priceLabel.innerHTML = '₹' + minVal + '.00 - ₹' + maxVal + '.00';
             if (maxVal - minVal < 10000) {
                 if (e.target.className === 'range-min') {
@@ -73,8 +79,25 @@ const FilterProducts = (props) => {
 
 
     const applyFilterArray = () => {
+        const activeEle = document.querySelector('.active-sort-price');
+        if(activeEle){
+                var sortedArr = props.requestedData.sort((a,b)=>{
+                    let aprice = parseInt(a.priceTag.replace(' ', ''));
+                    let bprice = parseInt(b.priceTag.replace(' ', ''));
+                    if(activeEle.id==='sort01'){
+
+                    return aprice - bprice;
+                    }else{
+                        return  bprice - aprice;
+
+                    }
+                })
+            
+        } 
+
+
 // filter stocks based on price 
-        const filterOnPrice = props.requestedData.filter(each => {
+        const filterOnPrice = (sortedArr || props.requestedData).filter(each => {
             const rangeMin = document.querySelector('.range-min');
             const rangeMax = document.querySelector('.range-max');
 
@@ -97,6 +120,7 @@ const FilterProducts = (props) => {
             }
             
         })
+
     
         if(checkedArr.length!==0){
 
@@ -131,6 +155,21 @@ const FilterProducts = (props) => {
                     </div>
                 </div>
                 <div className='filter-options'>
+                <div className='border-bottom'>
+
+                        <div id='option-sort' className='option' onClick={() => containerToggle('sort')}>
+                            SORT BY
+                            <i id='i-sort' className='fa-solid fa-angle-down fs-4' />
+                        </div>
+                        <div id='option-content-sort' className='option-Content'>
+                            <div id='sort01' className='sort-price my-3' onClick={()=>sortPriceActive('sort01')}>
+                                PRICE (LOW - HIGH)
+                            </div>
+                            <div id='sort02' className='sort-price mb-3' onClick={()=>sortPriceActive('sort02')}>
+                                PRICE (HIGH - LOW)
+                            </div>
+                        </div>
+                    </div>
                     <div className='border-bottom'>
 
                         <div id='option-price' className='option' onClick={() => containerToggle('price')}>
