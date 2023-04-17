@@ -65,7 +65,7 @@ const Header = (props) => {
   }
 
   const path = window.location.pathname;
-  const result = path.includes('/men') || path.includes('/my-account') || path.includes('/women')
+  const result = path.includes('/men') || path.includes('/my-account') || path.includes('/women') ||path.includes('/kids')
   // header animation 
   if (!result) {
 
@@ -246,7 +246,7 @@ const Header = (props) => {
                 </li>
 
 
-                <li className='dropdown'><a href='' className='fw-bold'>KIDS                </a>
+                <li className='dropdown'><a href='/kids/All' className='fw-bold'>KIDS                </a>
 
                   <DropdownKids />
 

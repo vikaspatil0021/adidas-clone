@@ -12,8 +12,8 @@ const [seed,setSeed] = useState(0)
     const [productData, setProductData] = useState([]);
     const [requestedData, setrequestedData] = useState([]);
 
-    const [categoryUrl, setUrl] = useState((url.includes('/men'))?url.substring(5):url.substring(7));
-    const gender = (url.includes('/men'))?"/men/":"/women/";
+    const [categoryUrl, setUrl] = useState((url.includes('/men'))?url.substring(5):(url.includes('/kids'))?url.substring(6):url.substring(7));
+    const gender = (url.includes('/men'))?"/men/":(url.includes('/kids'))?"/kids/":"/women/";
     useEffect(() => {
         axios.get(process.env.REACT_APP_SERVER_URL + gender + categoryUrl)
             .then((res) => {
@@ -49,6 +49,9 @@ const [seed,setSeed] = useState(0)
             var st = url.substring(5);
         }else if(url.includes('/women')){
              st = url.substring(7);
+
+        }else{
+            st = url.substring(6);
 
         }
 
@@ -99,6 +102,9 @@ const [seed,setSeed] = useState(0)
     }else if(url == '/women' || url ==='/women/'){
         window.location.pathname = '/women/All';
 
+    }else if(url == '/kids' || url ==='/kids/'){
+        window.location.pathname = '/kids/All';
+
     } else {
 
 
@@ -110,7 +116,7 @@ const [seed,setSeed] = useState(0)
                     <div className='d-flex justify-content-between align-items-center'>
 
                         <h1 className='my-3'>
-                            <em>{(url.includes('/men'))?"MEN":"WOMEN"} [{productData.length}]</em>
+                            <em>{(url.includes('/men'))?"MEN":(url.includes('/kids'))?"KIDS":"WOMEN"} [{productData.length}]</em>
                         </h1>
                         <div>
                             {(x.matches) ?

@@ -89,7 +89,7 @@ const Main = () => {
                   </div>
                 </button>
               </a>
-              <a href='/kids' className='a-button'>
+              <a href='/kids/All' className='a-button'>
 
                 <button id='b03' role='button' className='main-btn' onClick={() => addButtonClass("b03")}>
                   SHOP KIDS
