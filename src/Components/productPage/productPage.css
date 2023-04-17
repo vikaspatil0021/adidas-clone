@@ -1,0 +1,70 @@
+.pPage-box01{
+    display: flex;
+    /* height: 100%; */
+}
+.b01{
+    width: 70%;
+}
+.img-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+}
+
+
+.b02{
+    position: sticky;
+    top: 0;
+    width: 30%;
+    align-self: flex-start;
+    padding:30px;
+    padding-top: 40px;
+}
+.b02-name{
+    padding-top: 15px;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+.priceDiv{
+    display: flex;
+    padding-top:20px ;
+}
+.priceDiv div{
+    font-weight: bold;
+    margin:0 10px 0 5px;
+}
+
+.bag-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 50px 0;
+}
+.bag-btn button{
+    margin: 0;
+    margin-right: 18px;
+}
+.bag-btn div{
+    border: #000 1px solid;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.product-sizes{
+    display: flex;
+    padding-top: 10px;
+}
+.product-sizes div{
+    padding: 7px 30px;
+    cursor: pointer;
+    border: #d5d4d4 1px solid;
+}
+.product-sizes div:hover{
+    background-color: #000;
+    color: #fff;
+}
+.activeProductSize{
+    background-color: #000;
+    color: #fff;
+}

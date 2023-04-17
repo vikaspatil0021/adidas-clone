@@ -174,6 +174,7 @@ const [seed,setSeed] = useState(0)
                                 
 
                                     return (
+                                        <Link to={url + '/' +each.productId}>
 
                                         <div className='product-card' onMouseEnter={() => displayColors(each.productId, 'enter')} onMouseLeave={() => displayColors(each.productId, 'leave')} >
                                             <picture >
@@ -216,6 +217,8 @@ const [seed,setSeed] = useState(0)
                                                 <i className='fa-regular fa-heart' />
                                             </div>
                                         </div>
+                                        </Link>
+
                                     )
                                     
                                 })}

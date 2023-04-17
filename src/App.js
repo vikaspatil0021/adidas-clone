@@ -11,6 +11,7 @@ import Account from './Components/My-Account/account/account';
 import MyAccount from './Components/My-Account/myAccount';
 import Orders from './Components/My-Account/orders/orders';
 import Stock from './Components/Stock/stock';
+import ProductPage from './Components/productPage/productPage';
 
 function App() {
   const [re, setRe] = useState(0)
@@ -30,27 +31,17 @@ function App() {
             <Route path="/" exact element={<Main />} />
             <Route path="/account-login" exact element={<AccountLogin changeRe={changeRe} />} />
             <Route path="/account-register" exact element={<AccountRegister changeRe={changeRe} />} />
-            <Route path="/men" exact element={<Stock />} >
+            <Route path="/:gender/:category/:productId" exact element={<ProductPage />} />
+
+            <Route path="/:gender" exact element={<Stock />} >
               <Route path='All' element={<Stock />} />
               <Route path='Footwear' element={<Stock />} />
               <Route path='Clothing' element={<Stock />} />
               <Route path='Accessories' element={<Stock />} />
 
             </Route>
-            <Route path="/women" exact element={<Stock />} >
-              <Route path='All' element={<Stock />} />
-              <Route path='Footwear' element={<Stock />} />
-              <Route path='Clothing' element={<Stock />} />
-              <Route path='Accessories' element={<Stock />} />
 
-            </Route>
-            <Route path="/kids" exact element={<Stock />} >
-              <Route path='All' element={<Stock />} />
-              <Route path='Footwear' element={<Stock />} />
-              <Route path='Clothing' element={<Stock />} />
-              <Route path='Accessories' element={<Stock />} />
-
-            </Route>
+            
             <Route path="/my-account" exact element={<MyAccount />}>
               <Route path='order-history' element={<Orders />} />
               <Route path='profile' element={<Account changeRe={changeRe} />} />
