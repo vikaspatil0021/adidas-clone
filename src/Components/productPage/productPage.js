@@ -5,7 +5,7 @@ import { addButtonClass } from '../Repeaters/addButtonClass'
 const ProductPage = () => {
 
     useEffect(() => {
-
+        window.scrollTo(0,0)
         document.getElementById('top-width').style.marginTop = 0;
         document.getElementById("sticky-top-header").classList.replace('fixed-top', 'position-sticky')
 
