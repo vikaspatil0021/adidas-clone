@@ -37,6 +37,13 @@ function App() {
               <Route path='Accessories' element={<Stock />} />
 
             </Route>
+            <Route path="/women" exact element={<Stock />} >
+              <Route path='All' element={<Stock />} />
+              <Route path='Footwear' element={<Stock />} />
+              <Route path='Clothing' element={<Stock />} />
+              <Route path='Accessories' element={<Stock />} />
+
+            </Route>
             <Route path="/my-account" exact element={<MyAccount />}>
               <Route path='order-history' element={<Orders />} />
               <Route path='profile' element={<Account changeRe={changeRe} />} />

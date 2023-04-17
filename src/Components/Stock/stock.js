@@ -5,15 +5,17 @@ import axios from 'axios';
 import FilterProducts from './filter/filterProducts';
 
 const Stock = () => {
+    const url = window.location.pathname;
+
 const [seed,setSeed] = useState(0)
 
     const [productData, setProductData] = useState([]);
     const [requestedData, setrequestedData] = useState([]);
 
-    const [categoryUrl, setUrl] = useState(window.location.pathname.substring(5));
-
+    const [categoryUrl, setUrl] = useState((url.includes('/men'))?url.substring(5):url.substring(7));
+    const gender = (url.includes('/men'))?"/men/":"/women/";
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/men/' + categoryUrl)
+        axios.get(process.env.REACT_APP_SERVER_URL + gender + categoryUrl)
             .then((res) => {
                 setProductData(res.data);
                 setrequestedData(res.data);
@@ -43,8 +45,14 @@ const [seed,setSeed] = useState(0)
     }
 
     useEffect(() => {
+        if(url.includes('/men')){
+            var st = url.substring(5);
+        }else if(url.includes('/women')){
+             st = url.substring(7);
 
-        activeCategoryOption(window.location.pathname.substring(5));
+        }
+
+        activeCategoryOption(st);
 
     }, [])
         
@@ -86,8 +94,11 @@ const [seed,setSeed] = useState(0)
         document.querySelector('#opacityBackColor').classList.toggle('d-none');
         document.querySelector('.filter-modal').classList.toggle('width-filterModal')
     }
-    if (window.location.pathname == '/men' || window.location.pathname == '/men/') {
+    if (url == '/men' || url == '/men/') {
         window.location.pathname = '/men/All';
+    }else if(url == '/women' || url ==='/women/'){
+        window.location.pathname = '/women/All';
+
     } else {
 
 
@@ -99,7 +110,7 @@ const [seed,setSeed] = useState(0)
                     <div className='d-flex justify-content-between align-items-center'>
 
                         <h1 className='my-3'>
-                            <em>MEN [{productData.length}]</em>
+                            <em>{(url.includes('/men'))?"MEN":"WOMEN"} [{productData.length}]</em>
                         </h1>
                         <div>
                             {(x.matches) ?

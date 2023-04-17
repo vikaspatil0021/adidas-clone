@@ -19,8 +19,8 @@ const FilterProducts = (props) => {
         }
     }
 
-    
-    
+
+
     useEffect(() => {
         const rangeMin = document.querySelector('.range-min');
         const rangeMax = document.querySelector('.range-max');
@@ -28,20 +28,20 @@ const FilterProducts = (props) => {
 
 
         rangeMin.value = 600;
-        rangeMax.value = 70000;
+        rangeMax.value = 72000;
         progress.style.left = (600 / rangeMin.max) * 100 + '%';
-        progress.style.right = 100 - (70000 / rangeMax.max) * 100 + '%'
+        progress.style.right = 100 - (72000 / rangeMax.max) * 100 + '%'
 
     }, [])
 
-    const sortPriceActive = (id)=>{
+    const sortPriceActive = (id) => {
         const activeEle = document.querySelector('.active-sort-price');
-        if(activeEle) activeEle.classList.remove('active-sort-price')
-        const ele = document.querySelector('#'+ id);
+        if (activeEle) activeEle.classList.remove('active-sort-price')
+        const ele = document.querySelector('#' + id);
         ele.classList.add('active-sort-price')
     }
 
-    const onChangeInput =(e)=>{
+    const onChangeInput = (e) => {
         const rangeMin = document.querySelector('.range-min');
         const rangeMax = document.querySelector('.range-max');
         const progress = document.querySelector('.slider .progress');
@@ -51,52 +51,52 @@ const FilterProducts = (props) => {
         let minVal = parseInt(rangeMin.value);
         let maxVal = parseInt(rangeMax.value);
         priceLabel.innerHTML = '₹' + minVal + '.00 - ₹' + maxVal + '.00';
-            if (maxVal - minVal < 10000) {
-                if (e.target.className === 'range-min') {
-                    rangeMin.value = maxVal - 10000;
-
-                } else {
-                    rangeMax.value = minVal + 10000;
-
-                }
-
-                if (minVal > 70000) {
-                    rangeMin.value = 70000;
-                } else if (maxVal < 11000) {
-                    rangeMax.value = 11000
-
-                }
+        if (maxVal - minVal < 10000) {
+            if (e.target.className === 'range-min') {
+                rangeMin.value = maxVal - 10000;
 
             } else {
+                rangeMax.value = minVal + 10000;
 
-
-                progress.style.left = (minVal / rangeMin.max) * 100 + '%';
-                progress.style.right = 100 - (maxVal / rangeMax.max) * 100 + '%'
             }
+
+            if (minVal > 72000) {
+                rangeMin.value = 72000;
+            } else if (maxVal < 11000) {
+                rangeMax.value = 11000
+
+            }
+
+        } else {
+
+
+            progress.style.left = (minVal / rangeMin.max) * 100 + '%';
+            progress.style.right = 100 - (maxVal / rangeMax.max) * 100 + '%'
         }
+    }
 
 
 
 
     const applyFilterArray = () => {
         const activeEle = document.querySelector('.active-sort-price');
-        if(activeEle){
-                var sortedArr = props.requestedData.sort((a,b)=>{
-                    let aprice = parseInt(a.priceTag.replace(' ', ''));
-                    let bprice = parseInt(b.priceTag.replace(' ', ''));
-                    if(activeEle.id==='sort01'){
+        if (activeEle) {
+            var sortedArr = props.requestedData.sort((a, b) => {
+                let aprice = parseInt(a.priceTag.replace(' ', ''));
+                let bprice = parseInt(b.priceTag.replace(' ', ''));
+                if (activeEle.id === 'sort01') {
 
                     return aprice - bprice;
-                    }else{
-                        return  bprice - aprice;
+                } else {
+                    return bprice - aprice;
 
-                    }
-                })
-            
-        } 
+                }
+            })
+
+        }
 
 
-// filter stocks based on price 
+        // filter stocks based on price 
         const filterOnPrice = (sortedArr || props.requestedData).filter(each => {
             const rangeMin = document.querySelector('.range-min');
             const rangeMax = document.querySelector('.range-max');
@@ -105,7 +105,7 @@ const FilterProducts = (props) => {
             if (rangeMin.value < priceTag && priceTag < rangeMax.value) {
                 return each;
             }
-        }); 
+        });
         // filter stocks based on collection after priceFilter
         const checkedArr = []
         const checkBoxs = document.querySelectorAll('.option-Content input[type="checkbox"]');
@@ -115,18 +115,18 @@ const FilterProducts = (props) => {
             }
         })
         let filterOnCollection = filterOnPrice.filter(each => {
-            if(checkedArr.includes(each.tag)){
+            if (checkedArr.includes(each.tag)) {
                 return each;
             }
-            
+
         })
 
-    
-        if(checkedArr.length!==0){
+
+        if (checkedArr.length !== 0) {
 
             var finalArr = filterOnCollection
-        }else{
-            var finalArr = filterOnPrice
+        } else {
+            finalArr = filterOnPrice
         }
         props.setProductData(finalArr);
         props.filterModalToggle()
@@ -155,17 +155,17 @@ const FilterProducts = (props) => {
                     </div>
                 </div>
                 <div className='filter-options'>
-                <div className='border-bottom'>
+                    <div className='border-bottom'>
 
                         <div id='option-sort' className='option' onClick={() => containerToggle('sort')}>
                             SORT BY
                             <i id='i-sort' className='fa-solid fa-angle-down fs-4' />
                         </div>
                         <div id='option-content-sort' className='option-Content d-none'>
-                            <div id='sort01' className='sort-price my-3' onClick={()=>sortPriceActive('sort01')}>
+                            <div id='sort01' className='sort-price my-3' onClick={() => sortPriceActive('sort01')}>
                                 PRICE (LOW - HIGH)
                             </div>
-                            <div id='sort02' className='sort-price mb-3' onClick={()=>sortPriceActive('sort02')}>
+                            <div id='sort02' className='sort-price mb-3' onClick={() => sortPriceActive('sort02')}>
                                 PRICE (HIGH - LOW)
                             </div>
                         </div>
@@ -180,15 +180,15 @@ const FilterProducts = (props) => {
                             <div className='d-flex justify-content-center'>
 
                                 <div className='priceLabel'>
-                                    ₹600.00 - ₹70 000.00
+                                    ₹600.00 - ₹72 000.00
                                 </div>
                             </div>
                             <div className='slider'>
                                 <div className='progress'></div>
                             </div>
 
-                            <input type='range' min='400' max='80000' className='inputSlider range-min' onInput={(e)=>onChangeInput(e)} />
-                            <input type='range' min='400' max='80000' className='inputSlider range-max' onInput={(e)=>onChangeInput(e)} />
+                            <input type='range' min='400' max='80000' className='inputSlider range-min' onInput={(e) => onChangeInput(e)} />
+                            <input type='range' min='400' max='80000' className='inputSlider range-max' onInput={(e) => onChangeInput(e)} />
 
                         </div>
                     </div>
@@ -264,3 +264,5 @@ const FilterProducts = (props) => {
 }
 
 export default FilterProducts;
+
+
