@@ -196,7 +196,7 @@ const [seed,setSeed] = useState(0)
 
                                             <div className='pb-4 p-2 fs'>
 
-                                                <div className='fw-light '>
+                                                <div className='fw-light fw-bold'>
                                                     {each.name}
                                                 </div>
                                                 <span className='fw-light text-muted'>
