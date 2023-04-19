@@ -120,7 +120,11 @@ const ProductPage = () => {
         var viewportOffset01 = colorsEle01.getBoundingClientRect();
         var prevTOP = viewportOffset01.top;
     }
+
+    var x = window.matchMedia("(max-width: 1100px)");
+
     window.onscroll = ()=>{
+        if(!x.matches){
         var currentScrollPos = window.pageYOffset;
         var colorsEle = document.querySelector("#colorsPosition");
         const colorsPos = document.querySelector('.option-colors');
@@ -132,6 +136,7 @@ const ProductPage = () => {
             colorsEle.classList.remove('colors-Position')
 
         }
+    }
     }
     if (info === '') {
         return <div className='d-flex justify-content-center'><div class="pre-loader"></div></div>;
@@ -166,9 +171,9 @@ const ProductPage = () => {
 
                         </div>
                         <div className='option-colors'>
-                            <div id='colorsPosition' className='bg-white colors-Position p-2'>
+                            <div id='colorsPosition' className={ (x.matches)?'bg-white':"colors-Position bg-white p-2"}>
 
-                                <div className='fw-bold justify-content-center pt-2 d-flex'>
+                                <div className='colors-no pt-2'>
                                     {info.colors.length} colors available
                                 </div>
                                 <div className='d-flex'>
@@ -184,6 +189,35 @@ const ProductPage = () => {
                                 </div>
                             </div>
 
+                        </div>
+                        <div className='mob-sizes'>
+
+                        <div className='fw-bold mt-lg-5'>Sizes</div>
+                        <div className='product-sizes'>
+                            <div id='sizes-mob01' onClick={() => addActiveClass('mob01')}>
+                                10
+                            </div>
+
+                            <div id='sizes-mob02' onClick={() => addActiveClass('mob02')}>
+                                11
+                            </div>
+                        </div>
+                        </div>
+                        <div className='mob-bag-btn'>
+
+                            <button id='mobaddToCartBtn' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
+                                addButtonClass("mobaddToCartBtn");
+
+                            }}>
+                                ADD TO BAG
+                                <div className='border-button'></div>
+                                <i id='addToCartBtnIcon' class="bi bi-arrow-right fs-4 "></i>
+
+
+                            </button>
+                            <div>
+                                <i class="fa-regular fa-heart fs-5"></i>
+                            </div>
                         </div>
                     </div>
                     <div className='b02'>

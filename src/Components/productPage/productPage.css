@@ -49,7 +49,18 @@
     position: fixed; 
     bottom: 50px;
 }
+.colors-no{
+font-weight: bold;
+display: flex;
+justify-content: center;
+}
 
+.mob-sizes{
+    display: none;
+}
+.mob-bag-btn{
+    display: none;
+}
 
 .b02 {
     position: sticky;
@@ -125,9 +136,43 @@
         display: block;
         padding: 20px;
     }
+
+    .mob-bag-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 20px 0;
+        padding: 25px;
+    }
+    .mob-bag-btn button {
+        margin: 0;
+        margin-right: 18px;
+    }
+    
+    .mob-bag-btn div {
+        border: #000 1px solid;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
     .b01{
         width: 100%;
     }
+    .option-colors{
+        display: flex;
+        justify-content: start;
+        padding: 20px;
+    }
+    .colors-no{
+        font-weight: bold;
+        display: flex;
+        justify-content: start;
+        margin: 0 5px;
+        }
+        .mob-sizes{
+            display: block;
+            padding: 0 25px;
+        }
     .b02{
         display: none;
     }
