@@ -7,6 +7,7 @@
 }
 .b01 {
     width: 70%;
+    border-right: #d8d7d7 1px solid;
 }
 
 .img-container {
@@ -30,6 +31,24 @@
     transition: transform .5s;
 }
 
+.option-colors{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.option-colors img{
+    width: 70px;
+    margin: 10px 5px;
+}
+.active-colors {
+    border-bottom: 4px solid #000;
+}
+.colors-Position{
+    position: fixed; 
+    bottom: 50px;
+}
 
 
 .b02 {
