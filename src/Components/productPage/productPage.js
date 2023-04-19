@@ -25,7 +25,7 @@ const ProductPage = () => {
 
 
     const url = window.location.pathname;
-    const gender = (url.includes('men')) ? "Men" : (url.includes('women') ? "Women" : "Kids")
+    const gender = (url.includes('/men')) ? "Men" : (url.includes('/women') ? "Women" : "Kids")
     useEffect(() => {
         axios.get(process.env.REACT_APP_SERVER_URL + url)
             .then((res) => {
