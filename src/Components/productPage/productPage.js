@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+
 import './productPage.css'
 import { addButtonClass } from '../Repeaters/addButtonClass'
 const ProductPage = () => {
@@ -14,27 +16,41 @@ const ProductPage = () => {
     }, [])
 
     const [info, setInfo] = useState('');
-    const [arrImg,setArrImg] = useState([])
-    useEffect(()=>{
+    const [similarInfo, setSimilarInfo] = useState('')
+    const [arrImg, setArrImg] = useState([])
+    
+    const url = window.location.pathname;
+    const gender = (url.includes('/men')) ? "Men" : (url.includes('/women') ? "Women" : "Kids");
+    const genderurl = (url.includes('/men')) ? "men" : (url.includes('/women') ? "women" : "kids")
+    useEffect(() => {
 
         if (info !== '') {
             const imges = info.colors[0];
             setArrImg([imges.img1, imges.img2, imges.img3, imges.img4])
+
+            axios.get(process.env.REACT_APP_SERVER_URL +'/'+genderurl +'/' + info.category)
+            .then((res) => {
+                console.log(res.data);
+                
+                
+                setSimilarInfo(res.data)
+            }).catch((err) => {
+                console.log(err);
+            })
         }
-    },[info])
+    }, [info])
+  
 
-
-    const url = window.location.pathname;
-    const gender = (url.includes('/men')) ? "Men" : (url.includes('/women') ? "Women" : "Kids")
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + url)
+         axios.get(process.env.REACT_APP_SERVER_URL + url)
             .then((res) => {
                 console.log(res.data);
                 setInfo(res.data[0])
             }).catch((err) => {
                 console.log(err);
             })
-    }, [])
+        },[])
+   
 
     const addActiveClass = (id) => {
         const activeEle = document.querySelector(".activeProductSize");
@@ -54,15 +70,31 @@ const ProductPage = () => {
 
         const imges = info.colors[id];
         setArrImg([imges.img1, imges.img2, imges.img3, imges.img4])
-    
 
+        window.scrollTo(0, 0)
 
     }
-    if(!document.querySelector(".active-colors")){
+    if (!document.querySelector(".active-colors")) {
         const ele = document.querySelector("#colors-0")
-        if(ele){
-            
+        if (ele) {
+
             ele.classList.add('active-colors')
+        }
+    }
+
+
+    // description toggle
+    const containerToggle = (id) => {
+        const eleI = document.querySelector('#i-' + id);
+        const eleContent = document.querySelector('#desc-content');
+        if (eleI.classList.contains('fa-angle-down')) {
+
+            eleI.classList.replace('fa-angle-down', 'fa-angle-up');
+            eleContent.classList.remove('d-none')
+        } else {
+            eleI.classList.replace('fa-angle-up', 'fa-angle-down');
+            eleContent.classList.add('d-none')
+
         }
     }
     // image click magnifying effect
@@ -115,7 +147,7 @@ const ProductPage = () => {
 
 
     var colorsEle01 = document.querySelector("#colorsPosition");
-    if(colorsEle01){
+    if (colorsEle01) {
 
         var viewportOffset01 = colorsEle01.getBoundingClientRect();
         var prevTOP = viewportOffset01.top;
@@ -123,20 +155,20 @@ const ProductPage = () => {
 
     var x = window.matchMedia("(max-width: 1100px)");
 
-    window.onscroll = ()=>{
-        if(!x.matches){
-        var currentScrollPos = window.pageYOffset;
-        var colorsEle = document.querySelector("#colorsPosition");
-        const colorsPos = document.querySelector('.option-colors');
-        
+    window.onscroll = () => {
+        if (!x.matches) {
+            var currentScrollPos = window.pageYOffset;
+            var colorsEle = document.querySelector("#colorsPosition");
+            const colorsPos = document.querySelector('.option-colors');
 
-        if(currentScrollPos < colorsPos.offsetTop + 30 - prevTOP){
-            colorsEle.classList.add('colors-Position')
-        }else{
-            colorsEle.classList.remove('colors-Position')
 
+            if (currentScrollPos < colorsPos.offsetTop + 30 - prevTOP) {
+                colorsEle.classList.add('colors-Position')
+            } else {
+                colorsEle.classList.remove('colors-Position')
+
+            }
         }
-    }
     }
     if (info === '') {
         return <div className='d-flex justify-content-center'><div class="pre-loader"></div></div>;
@@ -171,7 +203,7 @@ const ProductPage = () => {
 
                         </div>
                         <div className='option-colors'>
-                            <div id='colorsPosition' className={ (x.matches)?'bg-white':"colors-Position bg-white p-2"}>
+                            <div id='colorsPosition' className={(x.matches) ? 'bg-white' : "colors-Position bg-white p-2"}>
 
                                 <div className='colors-no pt-2'>
                                     {info.colors.length} colors available
@@ -179,10 +211,10 @@ const ProductPage = () => {
                                 <div className='d-flex'>
 
 
-                                    {info.colors.map((each,index) => {
+                                    {info.colors.map((each, index) => {
                                         return (
                                             <div >
-                                                <img id={'colors-'+index}  src={each.img1} onClick={()=>addActiveClassColors(index)} role='button' />
+                                                <img id={'colors-' + index} src={each.img1} onClick={() => addActiveClassColors(index)} role='button' />
                                             </div>
                                         )
                                     })}
@@ -192,16 +224,16 @@ const ProductPage = () => {
                         </div>
                         <div className='mob-sizes'>
 
-                        <div className='fw-bold mt-lg-5'>Sizes</div>
-                        <div className='product-sizes'>
-                            <div id='sizes-mob01' onClick={() => addActiveClass('mob01')}>
-                                10
-                            </div>
+                            <div className='fw-bold mt-lg-5'>Sizes</div>
+                            <div className='product-sizes'>
+                                <div id='sizes-mob01' onClick={() => addActiveClass('mob01')}>
+                                    10
+                                </div>
 
-                            <div id='sizes-mob02' onClick={() => addActiveClass('mob02')}>
-                                11
+                                <div id='sizes-mob02' onClick={() => addActiveClass('mob02')}>
+                                    11
+                                </div>
                             </div>
-                        </div>
                         </div>
                         <div className='mob-bag-btn'>
 
@@ -218,6 +250,59 @@ const ProductPage = () => {
                             <div>
                                 <i class="fa-regular fa-heart fs-5"></i>
                             </div>
+                        </div>
+                        <div className='description'>
+                            <div id='desc' className='desc-accor' onClick={() => containerToggle('desc')}>
+                                Description
+                                <i id='i-desc' className='fa-solid fa-angle-down fs-4' />
+                            </div>
+                            <div id='desc-content' className='desc-content d-none'>
+                                {info.description}
+                            </div>
+
+                        </div>
+                        <div className='similarProducts-name'>
+                        YOU MAY ALSO LIKE
+                        </div>
+                        <div className='similarProducts-overflow'>
+                            
+                            {(similarInfo!='')?
+
+                            similarInfo.filter((item)=>{
+                                if(info.productId!==item.productId){
+                                    return item;
+                                }
+                            }).map((each)=>{
+                                return(
+                                <a href={'/' + genderurl + '/' + each.category +'/'+each.productId}>
+                            <div className='simPro-card'  >
+                                <picture >
+                                    
+                                    <div className='position-relative' >
+
+                                        <img id={each.productId} src={each.colors[0].img1} decoding="async" loading="lazy" />
+                                        <div className='product-priceTag'>
+                                            ₹{each.priceTag}
+
+                                        </div>
+                                    </div>
+                                </picture>
+
+                                <div className='pb-4 p-2 fs'>
+
+                                    <div className='fw-light fw-bold'>
+                                        {each.name}
+                                    </div>
+                                    
+                                </div>
+                                <div className='card06-heart'>
+                                    <i className='fa-regular fa-heart' />
+                                </div>
+                            </div>
+                                </a>
+                                )
+                            }):null}
+
                         </div>
                     </div>
                     <div className='b02'>
