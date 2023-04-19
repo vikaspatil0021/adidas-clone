@@ -112,6 +112,9 @@ justify-content: center;
     border: #fff 1px solid;
     cursor: pointer;
 }
+.simPro-card:hover{
+    border: 1px solid #000;
+}
 .simPro-card img{
     width: 100%;
 }
@@ -125,6 +128,9 @@ justify-content: center;
     }
     .similarProducts-name{
         font-size: 25px;
+    }
+    .simPro-card:hover{
+        border: 1px solid #fff;
     }
 }
 .b02 {

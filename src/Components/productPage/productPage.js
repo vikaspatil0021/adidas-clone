@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 import './productPage.css'
@@ -69,9 +69,9 @@ const ProductPage = () => {
         ele.classList.add('active-colors');
 
         const imges = info.colors[id];
+        window.scrollTo(0, 0)
         setArrImg([imges.img1, imges.img2, imges.img3, imges.img4])
 
-        window.scrollTo(0, 0)
 
     }
     if (!document.querySelector(".active-colors")) {
@@ -147,11 +147,15 @@ const ProductPage = () => {
 
 
     var colorsEle01 = document.querySelector("#colorsPosition");
-    if (colorsEle01) {
+    var prevTOP = useRef(0);
+    useEffect(()=>{
 
-        var viewportOffset01 = colorsEle01.getBoundingClientRect();
-        var prevTOP = viewportOffset01.top;
-    }
+        if (colorsEle01) {
+            
+            var viewportOffset01 = colorsEle01.getBoundingClientRect();
+            prevTOP.current = viewportOffset01.top;
+        }
+    },[])
 
     var x = window.matchMedia("(max-width: 1100px)");
 
@@ -160,9 +164,9 @@ const ProductPage = () => {
             var currentScrollPos = window.pageYOffset;
             var colorsEle = document.querySelector("#colorsPosition");
             const colorsPos = document.querySelector('.option-colors');
+            console.log(prevTOP);
 
-
-            if (currentScrollPos < colorsPos.offsetTop + 30 - prevTOP) {
+            if (currentScrollPos < colorsPos.offsetTop + 30 - prevTOP.current) {
                 colorsEle.classList.add('colors-Position')
             } else {
                 colorsEle.classList.remove('colors-Position')
