@@ -114,12 +114,19 @@ const ProductPage = () => {
 
 
 
+    var colorsEle01 = document.querySelector("#colorsPosition");
+    if(colorsEle01){
+
+        var viewportOffset01 = colorsEle01.getBoundingClientRect();
+        var prevTOP = viewportOffset01.top;
+    }
     window.onscroll = ()=>{
         var currentScrollPos = window.pageYOffset;
         var colorsEle = document.querySelector("#colorsPosition");
         const colorsPos = document.querySelector('.option-colors');
-        console.log(colorsPos.offsetTop-580,currentScrollPos);
-        if(currentScrollPos < colorsPos.offsetTop-580){
+        
+
+        if(currentScrollPos < colorsPos.offsetTop + 30 - prevTOP){
             colorsEle.classList.add('colors-Position')
         }else{
             colorsEle.classList.remove('colors-Position')
