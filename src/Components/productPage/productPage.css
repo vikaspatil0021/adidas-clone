@@ -87,6 +87,7 @@ justify-content: center;
 }
 .similarProducts-overflow{
     padding: 30px;
+    padding-bottom: 0;
     display: flex;
     width: 100%;
     overflow: auto;
