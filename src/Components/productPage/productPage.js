@@ -155,7 +155,7 @@ const ProductPage = () => {
             var viewportOffset01 = colorsEle01.getBoundingClientRect();
             prevTOP.current = viewportOffset01.top;
         }
-    },[])
+    },[colorsEle01])
 
     var x = window.matchMedia("(max-width: 1100px)");
 
