@@ -8,11 +8,14 @@ import DropdownKids from "./dropdownContent/kids";
 import HamburgerContent from './mobileHamburger/hamburgerContent';
 
 import LoginModal from '../AuthPages/loginModal/loginModal';
+import { useSelector } from 'react-redux';
 
 
 const Header = (props) => {
 
   var token01 = localStorage.getItem("Token01");
+  const cartData = useSelector((state) => state.cartreducer.cart);
+
   const [auth, setAuth] = useState(false);
   useEffect(() => {
 
@@ -292,14 +295,10 @@ const Header = (props) => {
                 <i class="fa-regular fa-heart fs-4"></i>
               </div>
 
-              <div className='dropdown p-0 me-3 ms-2 mb-1'>
+              <div className='header-cart p-0 me-3 ms-2 mb-1' role='button'>
                 <i class="bi bi-cart2 fs-4"></i>
-                <div className='dropdown-content-cart mx-xl-5 mx-2'>
-                  <h4 className='d-block py-3 px-5 fw-bold'>
+                <span id='loginBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{cartData.length}</span>
 
-                    YOUR CART IS EMPTY
-                  </h4>
-                </div>
               </div>
             </div>
 

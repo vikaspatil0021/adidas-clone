@@ -2,9 +2,11 @@
     display: flex;
     /* height: 100%; */
 }
-.mob-box{
+
+.mob-box {
     display: none;
 }
+
 .b01 {
     width: 70%;
     border-right: #d8d7d7 1px solid;
@@ -26,47 +28,53 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
-    position: relative;   
-    cursor:zoom-in; 
+    position: relative;
+    cursor: zoom-in;
     transition: transform .5s;
 }
 
-.option-colors{
+.option-colors {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 30px;
 }
 
-.option-colors img{
+.option-colors img {
     width: 70px;
     margin: 10px 5px;
 }
+
 .active-colors {
     border-bottom: 4px solid #000;
 }
-.colors-Position{
-    position: fixed; 
+
+.colors-Position {
+    position: fixed;
     bottom: 50px;
 }
-.colors-no{
-font-weight: bold;
-display: flex;
-justify-content: center;
+
+.colors-no {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 
-.mob-sizes{
+.mob-sizes {
     display: none;
 }
-.mob-bag-btn{
+
+.mob-bag-btn {
     display: none;
 }
-.description{
+
+.description {
     border-top: 1px solid #d7d7d7;
     border-bottom: 1px solid #d7d7d7;
 
 }
-.desc-accor{
+
+.desc-accor {
     display: flex;
     justify-content: space-between;
     font-size: 17px;
@@ -75,17 +83,20 @@ justify-content: center;
     cursor: pointer;
 
 }
-.desc-content{
-    padding:  25px;
+
+.desc-content {
+    padding: 25px;
     position: relative;
 }
-.similarProducts-name{
+
+.similarProducts-name {
     padding: 25px;
     padding-bottom: 10px;
     font-weight: 700;
     font-size: 35px;
 }
-.similarProducts-overflow{
+
+.similarProducts-overflow {
     padding: 30px;
     padding-bottom: 0;
     display: flex;
@@ -93,17 +104,20 @@ justify-content: center;
     overflow: auto;
     margin-bottom: 10px;
 }
-.similarProducts-overflow::-webkit-scrollbar{
-    height: 5px ;
- }
-.similarProducts-overflow::-webkit-scrollbar-thumb{
-   background-color: #000;
+
+.similarProducts-overflow::-webkit-scrollbar {
+    height: 5px;
 }
+
+.similarProducts-overflow::-webkit-scrollbar-thumb {
+    background-color: #000;
+}
+
 .similarProducts-overflow::-webkit-scrollbar-track {
     background-color: #eeebeb;
 }
 
-.simPro-card{
+.simPro-card {
     position: relative;
     margin-right: 10px;
     min-width: 250px;
@@ -112,27 +126,34 @@ justify-content: center;
     border: #fff 1px solid;
     cursor: pointer;
 }
-.simPro-card:hover{
+
+.simPro-card:hover {
     border: 1px solid #000;
 }
-.simPro-card img{
+
+.simPro-card img {
     width: 100%;
 }
-.simPro-card:hover .product-priceTag{
+
+.simPro-card:hover .product-priceTag {
     bottom: 8px;
 }
+
 @media (max-width:965px) {
-    .simPro-card{
+    .simPro-card {
         width: 160px;
         min-width: 160px;
     }
-    .similarProducts-name{
+
+    .similarProducts-name {
         font-size: 25px;
     }
-    .simPro-card:hover{
+
+    .simPro-card:hover {
         border: 1px solid #fff;
     }
 }
+
 .b02 {
     position: sticky;
     top: 0;
@@ -180,8 +201,16 @@ justify-content: center;
 
 .product-sizes {
     display: flex;
+    flex-wrap: wrap;
     padding-top: 10px;
 }
+.product-sizes-warning{
+    color: rgb(243, 50, 50);
+    padding-top: 15px;
+    display: none;
+}
+
+
 
 .product-sizes div {
     padding: 7px 30px;
@@ -199,16 +228,17 @@ justify-content: center;
     color: #fff;
 }
 
-@media(max-width:1100px){
-    .img-container{
+@media(max-width:1100px) {
+    .img-container {
         grid-template-columns: 1fr;
     }
-    .mob-box{
+
+    .mob-box {
         display: block;
         padding: 20px;
     }
 
-    .mob-bag-btn{
+    .mob-bag-btn {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -216,38 +246,45 @@ justify-content: center;
         margin: 20px 0;
         padding: 25px;
     }
+
     .mob-bag-btn button {
         margin: 0;
         margin-right: 18px;
     }
-    
+
     .mob-bag-btn div {
         border: #000 1px solid;
         padding: 10px 15px;
         cursor: pointer;
     }
-    .b01{
+
+    .b01 {
         width: 100%;
     }
-    .option-colors{
+
+    .option-colors {
         display: flex;
         justify-content: start;
         padding: 20px;
     }
-    .colors-no{
+
+    .colors-no {
         font-weight: bold;
         display: flex;
         justify-content: start;
         margin: 0 5px;
-        }
-        .mob-sizes{
-            display: block;
-            padding: 0 25px;
-        }
-    .b02{
+    }
+
+    .mob-sizes {
+        display: grid;
+        padding: 0 25px;
+    }
+
+    .b02 {
         display: none;
     }
-    .pPage-box01{
+
+    .pPage-box01 {
         display: block;
     }
 }

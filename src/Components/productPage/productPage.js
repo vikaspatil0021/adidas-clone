@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
-
 import './productPage.css'
 import { addButtonClass } from '../Repeaters/addButtonClass'
+import { useSelector, useDispatch } from 'react-redux';
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../../redux/actions/action';
 const ProductPage = () => {
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const ProductPage = () => {
     const [info, setInfo] = useState('');
     const [similarInfo, setSimilarInfo] = useState('')
     const [arrImg, setArrImg] = useState([])
-    
+
     const url = window.location.pathname;
     const gender = (url.includes('/men')) ? "Men" : (url.includes('/women') ? "Women" : "Kids");
     const genderurl = (url.includes('/men')) ? "men" : (url.includes('/women') ? "women" : "kids")
@@ -28,29 +29,29 @@ const ProductPage = () => {
             const imges = info.colors[0];
             setArrImg([imges.img1, imges.img2, imges.img3, imges.img4])
 
-            axios.get(process.env.REACT_APP_SERVER_URL +'/'+genderurl +'/' + info.category)
-            .then((res) => {
-                console.log(res.data);
-                
-                
-                setSimilarInfo(res.data)
-            }).catch((err) => {
-                console.log(err);
-            })
+            axios.get(process.env.REACT_APP_SERVER_URL + '/' + genderurl + '/' + info.category)
+                .then((res) => {
+                    console.log(res.data);
+
+
+                    setSimilarInfo(res.data)
+                }).catch((err) => {
+                    console.log(err);
+                })
         }
     }, [info])
-  
+
 
     useEffect(() => {
-         axios.get(process.env.REACT_APP_SERVER_URL + url)
+        axios.get(process.env.REACT_APP_SERVER_URL + url)
             .then((res) => {
                 console.log(res.data);
                 setInfo(res.data[0])
             }).catch((err) => {
                 console.log(err);
             })
-        },[])
-   
+    }, [])
+
 
     const addActiveClass = (id) => {
         const activeEle = document.querySelector(".activeProductSize");
@@ -148,14 +149,14 @@ const ProductPage = () => {
 
     var colorsEle01 = document.querySelector("#colorsPosition");
     var prevTOP = useRef(0);
-    useEffect(()=>{
+    useEffect(() => {
 
         if (colorsEle01) {
-            
+
             var viewportOffset01 = colorsEle01.getBoundingClientRect();
             prevTOP.current = viewportOffset01.top;
         }
-    },[colorsEle01])
+    }, [colorsEle01])
 
     var x = window.matchMedia("(max-width: 1100px)");
 
@@ -164,7 +165,6 @@ const ProductPage = () => {
             var currentScrollPos = window.pageYOffset;
             var colorsEle = document.querySelector("#colorsPosition");
             const colorsPos = document.querySelector('.option-colors');
-            console.log(prevTOP);
 
             if (currentScrollPos < colorsPos.offsetTop + 30 - prevTOP.current) {
                 colorsEle.classList.add('colors-Position')
@@ -174,11 +174,56 @@ const ProductPage = () => {
             }
         }
     }
+// redux store handling
+    const storeData = useSelector((state) => state.cartreducer.cart)
+
+    const dispatch = useDispatch();
+
+
+    const AddToCart = (sizeId) => {
+        const colorEle = document.querySelector('.active-colors');
+        const sizeEle = document.querySelector('.activeProductSize');
+        const sizeEleWarn = document.querySelector('#size-warning-'+sizeId);
+
+        
+        if(sizeEle){
+            sizeEleWarn.style.display = 'none';
+
+            var pId = info.productId +'_'+ colorEle.id.slice(7) +'_'+sizeEle.innerHTML
+            var filArr = storeData.filter((item)=>{
+                if(pId===item.productId){
+
+                    return item 
+                }
+            })
+            if(filArr.length!=0){
+                dispatch(REMOVE_FROM_CART(filArr[0]))
+
+                var dispathData = {
+                    ...filArr[0],
+                    quantity:filArr[0].quantity+1
+                }
+            }else{
+
+                dispathData = {
+                    productId: pId,
+                    img1: info.colors[colorEle.id.slice(7)].img1,
+                    size:sizeEle.innerHTML,
+                    quantity:1,
+                    name:info.name,
+                    priceTag:info.priceTag
+                }
+            }
+
+            dispatch(ADD_TO_CART(dispathData))
+        }else{
+            sizeEleWarn.style.display = 'block'
+        }
+
+    }
     if (info === '') {
         return <div className='d-flex justify-content-center'><div class="pre-loader"></div></div>;
     } else {
-
-
         return (
             <div className=''>
                 <div className='pPage-box01'>
@@ -230,20 +275,37 @@ const ProductPage = () => {
 
                             <div className='fw-bold mt-lg-5'>Sizes</div>
                             <div className='product-sizes'>
-                                <div id='sizes-mob01' onClick={() => addActiveClass('mob01')}>
-                                    10
-                                </div>
+                            <div id='sizes-mob-01' onClick={() => addActiveClass('mob-01')}>
+                                06
+                            </div>
 
-                                <div id='sizes-mob02' onClick={() => addActiveClass('mob02')}>
-                                    11
-                                </div>
+                            <div id='sizes-mob-02' onClick={() => addActiveClass('mob-02')}>
+                                07
+                            </div>
+                            <div id='sizes-mob-03' onClick={() => addActiveClass('mob-03')}>
+                                08
+                            </div>
+
+                            <div id='sizes-mob-04' onClick={() => addActiveClass('mob-04')}>
+                                09
+                            </div>
+                            <div id='sizes-mob-05' onClick={() => addActiveClass('mob-05')}>
+                                10
+                            </div>
+
+                            <div id='sizes-mob-06' onClick={() => addActiveClass('mob-06')}>
+                                11
+                            </div>
+                            </div>
+                            <div id='size-warning-01' className='product-sizes-warning'>
+                                    Please select your size
                             </div>
                         </div>
                         <div className='mob-bag-btn'>
 
                             <button id='mobaddToCartBtn' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
                                 addButtonClass("mobaddToCartBtn");
-
+                                AddToCart('01')
                             }}>
                                 ADD TO BAG
                                 <div className='border-button'></div>
@@ -266,46 +328,46 @@ const ProductPage = () => {
 
                         </div>
                         <div className='similarProducts-name'>
-                        YOU MAY ALSO LIKE
+                            YOU MAY ALSO LIKE
                         </div>
                         <div className='similarProducts-overflow'>
-                            
-                            {(similarInfo!='')?
 
-                            similarInfo.filter((item)=>{
-                                if(info.productId!==item.productId){
-                                    return item;
-                                }
-                            }).map((each)=>{
-                                return(
-                                <a href={'/' + genderurl + '/' + each.category +'/'+each.productId}>
-                            <div className='simPro-card'  >
-                                <picture >
-                                    
-                                    <div className='position-relative' >
+                            {(similarInfo != '') ?
 
-                                        <img id={each.productId} src={each.colors[0].img1} decoding="async" loading="lazy" />
-                                        <div className='product-priceTag'>
-                                            ₹{each.priceTag}
+                                similarInfo.filter((item) => {
+                                    if (info.productId !== item.productId) {
+                                        return item;
+                                    }
+                                }).map((each) => {
+                                    return (
+                                        <a href={'/' + genderurl + '/' + each.category + '/' + each.productId}>
+                                            <div className='simPro-card'  >
+                                                <picture >
 
-                                        </div>
-                                    </div>
-                                </picture>
+                                                    <div className='position-relative' >
 
-                                <div className='pb-4 p-2 fs'>
+                                                        <img id={each.productId} src={each.colors[0].img1} decoding="async" loading="lazy" />
+                                                        <div className='product-priceTag'>
+                                                            ₹{each.priceTag}
 
-                                    <div className='fw-light fw-bold'>
-                                        {each.name}
-                                    </div>
-                                    
-                                </div>
-                                <div className='card06-heart'>
-                                    <i className='fa-regular fa-heart' />
-                                </div>
-                            </div>
-                                </a>
-                                )
-                            }):null}
+                                                        </div>
+                                                    </div>
+                                                </picture>
+
+                                                <div className='pb-4 p-2 fs'>
+
+                                                    <div className='fw-light fw-bold'>
+                                                        {each.name}
+                                                    </div>
+
+                                                </div>
+                                                <div className='card06-heart'>
+                                                    <i className='fa-regular fa-heart' />
+                                                </div>
+                                            </div>
+                                        </a>
+                                    )
+                                }) : null}
 
                         </div>
                     </div>
@@ -324,18 +386,35 @@ const ProductPage = () => {
                         <div className='fw-bold mt-5'>Sizes</div>
                         <div className='product-sizes'>
                             <div id='sizes-01' onClick={() => addActiveClass('01')}>
-                                10
+                                06
                             </div>
 
                             <div id='sizes-02' onClick={() => addActiveClass('02')}>
+                                07
+                            </div>
+                            <div id='sizes-03' onClick={() => addActiveClass('03')}>
+                                08
+                            </div>
+
+                            <div id='sizes-04' onClick={() => addActiveClass('04')}>
+                                09
+                            </div>
+                            <div id='sizes-05' onClick={() => addActiveClass('05')}>
+                                10
+                            </div>
+
+                            <div id='sizes-06' onClick={() => addActiveClass('06')}>
                                 11
                             </div>
                         </div>
+                        <div id='size-warning-02' className='product-sizes-warning'>
+                                    Please select your size
+                            </div>
                         <div className='bag-btn'>
 
                             <button id='addToCartBtn' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
                                 addButtonClass("addToCartBtn");
-
+                                AddToCart('02')
                             }}>
                                 ADD TO BAG
                                 <div className='border-button'></div>

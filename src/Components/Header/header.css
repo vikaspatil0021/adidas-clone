@@ -189,7 +189,10 @@
     display: flex;
     align-items: center;
 }
-
+.header-cart{
+    display: block;
+    position: relative;
+}
 /* MENU DROPDOWN============> */
 .dropdown {
     position: static;
