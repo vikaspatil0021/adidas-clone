@@ -4,10 +4,7 @@ import "./header.css";
 import DropdownMen from "./dropdownContent/men";
 import DropdownWomen from "./dropdownContent/women";
 import DropdownKids from "./dropdownContent/kids";
-import DropdownOutlet from "./dropdownContent/outlet";
-import DropdownSports from "./dropdownContent/sports";
-import DropdownBrands from "./dropdownContent/brands";
-import DropdownCollections from "./dropdownContent/collections"
+
 import HamburgerContent from './mobileHamburger/hamburgerContent';
 
 import LoginModal from '../AuthPages/loginModal/loginModal';
@@ -252,35 +249,7 @@ const Header = (props) => {
 
                 </li>
 
-
-                <li className='dropdown'><a href='' className=''>SPORTS                </a>
-
-                  <DropdownSports />
-                </li>
-
-
-                <li className='dropdown'><a href='' >BRANDS                </a>
-
-                  <DropdownBrands />
-                </li>
-
-
-                <li className='dropdown'><a href='' className=''>COLLECTIONS                </a>
-
-                  <DropdownCollections />
-
-                </li>
-
-
-                <li className='dropdown' style={{ borderColor: "#dc3545" }}><a href='' className='text-danger fw-bold '>OUTLET                </a>
-
-                  <DropdownOutlet />
-                </li>
-
-
               </ul>
-
-
 
 
 
@@ -323,7 +292,7 @@ const Header = (props) => {
                 <i class="fa-regular fa-heart fs-4"></i>
               </div>
 
-              <div className='dropdown me-3 ms-2 mb-1'>
+              <div className='dropdown p-0 me-3 ms-2 mb-1'>
                 <i class="bi bi-cart2 fs-4"></i>
                 <div className='dropdown-content-cart mx-xl-5 mx-2'>
                   <h4 className='d-block py-3 px-5 fw-bold'>

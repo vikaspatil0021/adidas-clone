@@ -194,6 +194,10 @@
 .dropdown {
     position: static;
 }
+.dropdown a{
+
+    padding: 20px;
+}
 
 .dropdown-content {
     background-color: #ffffff;

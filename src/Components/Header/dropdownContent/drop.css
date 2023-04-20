@@ -1,0 +1,9 @@
+.aLink{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.aLink:hover{
+    background-color:#000;
+    color:#fff;
+}

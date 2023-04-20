@@ -1,5 +1,6 @@
 import React from 'react';
 import { menu1 } from '../../Header/mobileHamburger/menuArray';
+import { Link } from 'react-router-dom';
 const Section04 = () => {
 
     
@@ -99,9 +100,12 @@ const Section04 = () => {
                         <div id={'accor' + each.main + (subEach.main).substring(0, 3)} className='d-none'>
                           {subEach.supersub.map((superSubEach) => {
                             return (
+                              <Link to={'/' + each.main.toLowerCase()+'/'+subEach.main} >
+                                
                               <div role='button' className='accordianButton01 text-dark border-top fs-6 ms-2'>
                                 {superSubEach}
                               </div>
+                              </Link>
                             )
                           })}
                         </div>
@@ -114,77 +118,9 @@ const Section04 = () => {
               </div>
             )
           })}
-          {menu1.c2.map((each) => {
-            return (
-              <div id={'div' + each.main}>
-                <div role='button' className='accordianButton01 fs-4' onClick={() => { accorordianTrigger01(each.main) }}>
-                  {each.main}
-                  <i className='fa-solid fa-angle-down me-3 fs-4'></i>
-                </div>
-                <div id={"accor" + each.main} className='d-none'>
-                  {each.sub.map((subEach) => {
-                    return (
-
-                      <div id={'div' + each.main + (subEach.main).substring(0, 3)}>
-
-                        <div role='button' className='accordianButton01 border-top fs-5 ms-1' onClick={() => { accorordianTrigger02(each.main + (subEach.main).substring(0, 3)) }}>
-                          {subEach.main}
-                          <i className='fa-solid fa-angle-down me-3 fs-4'></i>
-                        </div>
-                        <div id={'accor' + each.main + (subEach.main).substring(0, 3)} className='d-none'>
-                          {subEach.supersub.map((superSubEach) => {
-                            return (
-                              <div role='button' className='accordianButton01 text-dark border-top fs-6 ms-2'>
-                                {superSubEach}
-                              </div>
-                            )
-                          })}
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            )
-
-          })}
-          <div role='button' className='accordianButton01 fs-4'>
-            TERREX
-          </div>
-          <div role='button' className='accordianButton01 fs-4'>
-            ADIDAS SPORTSWEAR
-          </div>
-          <div id={'div' + menu1.c4.main}>
-
-            <div role='button' className='accordianButton01 text-danger fs-4 fw-bold' onClick={() => { accorordianTrigger01(menu1.c4.main) }}>
-              {menu1.c4.main}
-              <i className='fa-solid fa-angle-down me-3 fs-4'></i>
-            </div>
-            <div id={"accor" + menu1.c4.main} className='d-none '>
-
-              {menu1.c4.sub.map((subEach) => {
-                return (
-
-                  <div id={'div' + menu1.c4.main + (subEach.main).substring(0, 3)}>
-
-                    <div role='button' className='accordianButton01 border-top fs-5 ms-1' onClick={() => { accorordianTrigger02(menu1.c4.main + (subEach.main).substring(0, 3)) }}>
-                      {subEach.main}
-                      <i className='fa-solid fa-angle-down me-3 fs-4'></i>
-                    </div>
-                    <div id={'accor' + menu1.c4.main + (subEach.main).substring(0, 3)} className='d-none'>
-                      {subEach.supersub.map((superSubEach) => {
-                        return (
-                          <div role='button' className='accordianButton01 text-dark border-top fs-6 ms-2'>
-                            {superSubEach}
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+          
+          
+         
         </div>
 
   )
