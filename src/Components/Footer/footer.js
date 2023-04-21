@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RegisterModal from '../AuthPages/registerModal/registerModal';
 import { addButtonClass } from '../Repeaters/addButtonClass';
 import "./footer.css";
+import { useSelector } from 'react-redux';
 
 
 const arr = [
@@ -71,23 +72,24 @@ const arr = [
 ]
 const Footer = (props) => {
     var token01 = localStorage.getItem("Token01");
+    const cartData = useSelector((state) => state.cartreducer.cart);
 
-    const [seed,setSeed]=useState('');
-    const [auth,setAuth] = useState(false);
-    useEffect(()=>{
+    const [seed, setSeed] = useState('');
+    const [auth, setAuth] = useState(false);
+    useEffect(() => {
 
-        (token01)?setAuth(true):setAuth(false);
+        (token01) ? setAuth(true) : setAuth(false);
         console.log(auth);
 
     }
-    ,[token01])
+        , [token01])
     console.log(auth);
 
-    const toggleRegisterModal = ()=>{
+    const toggleRegisterModal = () => {
         setTimeout(() => {
-            
+
             document.querySelector('#registerModal').classList.toggle("d-none");
-                setSeed(Math.random());
+            setSeed(Math.random());
 
         }, 500);
     }
@@ -100,41 +102,50 @@ const Footer = (props) => {
             </div>
             <div className='py-3 mobile-options' >
                 <div >
-                    {(auth)?<span role='button'>
-                    MY ACCOUNT
+                    {(auth) ? <a href='/my-account/profile' style={{color:'white'}}>
 
-                    </span>:
-                    <span role='button'>
-                    LOGIN
+                        <span role='button'>
+                            MY ACCOUNT
 
-                    </span>}
+                        </span>
+                    </a> :
+                      <a href='/account-login' style={{color:'white'}}>
+
+                        <span role='button'>
+                            LOGIN
+
+                        </span>
+                      </a>}
                 </div>
                 <div >
-                    <span role='button'>
+                    <a href='/cart' style={{color:'white'}}>
 
-                        YOUR BAG(0)
-                    </span>
+                        <span role='button'>
+
+                            YOUR BAG ( {cartData.length} )
+                        </span>
+                    </a>
                 </div>
 
             </div>
 
-            {(auth)?null:
-            <div className='d-flex flex-wrap justify-content-center pt-5 pb-4 align-items-center' style={{ backgroundColor: "#ede734" }}>
-                <div className='fs-2 mb-4 mx-5 fw-bolder text-center'>
-                    JOIN OUR ADICLUB & GET 15% OFF
-                </div>
-                <button id='footerBtn01' role='button' className=' main-btn mb-4 m-0' onClick={() => {addButtonClass("footerBtn01"); toggleRegisterModal()}}>
-                    SIGN UP FOR FREE
-                    <i class="bi bi-arrow-right fs-4 ms-3"></i>
-                    <div className='border-button'>
-
+            {(auth) ? null :
+                <div className='d-flex flex-wrap justify-content-center pt-5 pb-4 align-items-center' style={{ backgroundColor: "#ede734" }}>
+                    <div className='fs-2 mb-4 mx-5 fw-bolder text-center'>
+                        JOIN OUR ADICLUB & GET 15% OFF
                     </div>
-                </button>
+                    <button id='footerBtn01' role='button' className=' main-btn mb-4 m-0' onClick={() => { addButtonClass("footerBtn01"); toggleRegisterModal() }}>
+                        SIGN UP FOR FREE
+                        <i class="bi bi-arrow-right fs-4 ms-3"></i>
+                        <div className='border-button'>
+
+                        </div>
+                    </button>
                     <div id='registerModal' className='d-none'>
 
-                    <RegisterModal key={seed} changeRe={props.changeRe} toggleRegisterModal={toggleRegisterModal} />
+                        <RegisterModal key={seed} changeRe={props.changeRe} toggleRegisterModal={toggleRegisterModal} />
                     </div>
-            </div>}
+                </div>}
             <div className='d-flex justify-content-center'>
                 <div className='footer-quicklinks'>
                     {arr.map((each) => {

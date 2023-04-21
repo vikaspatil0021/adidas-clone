@@ -294,12 +294,14 @@ const Header = (props) => {
               <div className='me-3 ms-2 desktop-heart-icon'>
                 <i class="fa-regular fa-heart fs-4"></i>
               </div>
+                  <a href='/cart'>
 
               <div className='header-cart p-0 me-3 ms-2 mb-1' role='button'>
                 <i class="bi bi-cart2 fs-4"></i>
                 <span id='loginBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{cartData.length}</span>
 
               </div>
+                  </a>
             </div>
 
 

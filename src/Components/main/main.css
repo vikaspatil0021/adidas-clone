@@ -58,11 +58,14 @@
 
 
 }
-.main-btn:hover{
-    color: #888787;
-
+@media (min-width:965px) {
+    
+    .main-btn:hover{
+        color: #888787;
+        
+    }
 }
-.main-btn-onClick{
+    .main-btn-onClick{
     transform: translate(2px,3px);
 }
 .border-button{

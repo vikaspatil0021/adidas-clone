@@ -193,11 +193,7 @@
     margin-right: 18px;
 }
 
-.bag-btn div {
-    border: #000 1px solid;
-    padding: 10px 15px;
-    cursor: pointer;
-}
+
 
 .product-sizes {
     display: flex;
@@ -228,6 +224,12 @@
     color: #fff;
 }
 
+.regular-heart {
+    border: #000 1px solid;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
 @media(max-width:1100px) {
     .img-container {
         grid-template-columns: 1fr;
@@ -252,11 +254,7 @@
         margin-right: 18px;
     }
 
-    .mob-bag-btn div {
-        border: #000 1px solid;
-        padding: 10px 15px;
-        cursor: pointer;
-    }
+    
 
     .b01 {
         width: 100%;

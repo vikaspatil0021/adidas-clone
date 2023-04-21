@@ -31,7 +31,7 @@ const ProductPage = () => {
 
             axios.get(process.env.REACT_APP_SERVER_URL + '/' + genderurl + '/' + info.category)
                 .then((res) => {
-                    console.log(res.data);
+                    // console.log(res.data);
 
 
                     setSimilarInfo(res.data)
@@ -45,7 +45,7 @@ const ProductPage = () => {
     useEffect(() => {
         axios.get(process.env.REACT_APP_SERVER_URL + url)
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 setInfo(res.data[0])
             }).catch((err) => {
                 console.log(err);
@@ -174,49 +174,80 @@ const ProductPage = () => {
             }
         }
     }
-// redux store handling
+    // redux store handling
     const storeData = useSelector((state) => state.cartreducer.cart)
-
+    console.log(storeData);
     const dispatch = useDispatch();
 
+    const midProcess = useRef(false)
 
-    const AddToCart = (sizeId) => {
+    const AddToCart = (sizeId, btnId) => {
         const colorEle = document.querySelector('.active-colors');
         const sizeEle = document.querySelector('.activeProductSize');
-        const sizeEleWarn = document.querySelector('#size-warning-'+sizeId);
+        const sizeEleWarn = document.querySelector('#size-warning-' + sizeId);
 
-        
-        if(sizeEle){
+
+        const btn = document.querySelector('#' + btnId);
+        const arrowIcon = document.querySelector('#' + btnId + ' i');
+        const loader = document.querySelector('#' + btnId + '-Loader');
+        const btnContent = document.querySelector('#' + btnId + ' span')
+        console.log(btnContent);
+        if (sizeEle) {
+            midProcess.current = true;
             sizeEleWarn.style.display = 'none';
 
-            var pId = info.productId +'_'+ colorEle.id.slice(7) +'_'+sizeEle.innerHTML
-            var filArr = storeData.filter((item)=>{
-                if(pId===item.productId){
+            // btn animation
+            btn.style.opacity = .6;
+            btn.style.cursor = 'not-allowed';
+            btnContent.innerHTML = "ADDING ..."
+            arrowIcon.classList.add('d-none');
+            loader.classList.remove('d-none');
 
-                    return item 
+            var pId = info.productId + '_' + colorEle.id.slice(7) + '_' + sizeEle.innerHTML
+            var filArr = storeData.filter((item) => {
+                if (pId === item.productId) {
+
+                    return item
                 }
             })
-            if(filArr.length!=0){
+            if (filArr.length != 0) {
                 dispatch(REMOVE_FROM_CART(filArr[0]))
 
                 var dispathData = {
                     ...filArr[0],
-                    quantity:filArr[0].quantity+1
+                    quantity: filArr[0].quantity + 1
                 }
-            }else{
+            } else {
 
                 dispathData = {
                     productId: pId,
                     img1: info.colors[colorEle.id.slice(7)].img1,
-                    size:sizeEle.innerHTML,
-                    quantity:1,
-                    name:info.name,
-                    priceTag:info.priceTag
+                    size: sizeEle.innerHTML,
+                    quantity: 1,
+                    name: info.name,
+                    priceTag: info.priceTag
                 }
             }
 
-            dispatch(ADD_TO_CART(dispathData))
-        }else{
+            setTimeout(() => {
+                arrowIcon.classList.remove('d-none')
+                arrowIcon.classList.replace("bi-arrow-right", "bi-check2")
+                loader.classList.add('d-none');
+                btnContent.innerHTML = "ADDED"
+                
+                dispatch(ADD_TO_CART(dispathData));
+
+                setTimeout(() => {
+                    btn.style.opacity = 1;
+                    btn.style.cursor = 'pointer';
+                    btnContent.innerHTML = "ADD TO BAG"
+                    arrowIcon.classList.replace("bi-check2", "bi-arrow-right")
+
+                    midProcess.current = false;
+                }, 1000)
+            }, 2000)
+
+        } else {
             sizeEleWarn.style.display = 'block'
         }
 
@@ -275,45 +306,50 @@ const ProductPage = () => {
 
                             <div className='fw-bold mt-lg-5'>Sizes</div>
                             <div className='product-sizes'>
-                            <div id='sizes-mob-01' onClick={() => addActiveClass('mob-01')}>
-                                06
-                            </div>
+                                <div id='sizes-mob-01' onClick={() => addActiveClass('mob-01')}>
+                                    06
+                                </div>
 
-                            <div id='sizes-mob-02' onClick={() => addActiveClass('mob-02')}>
-                                07
-                            </div>
-                            <div id='sizes-mob-03' onClick={() => addActiveClass('mob-03')}>
-                                08
-                            </div>
+                                <div id='sizes-mob-02' onClick={() => addActiveClass('mob-02')}>
+                                    07
+                                </div>
+                                <div id='sizes-mob-03' onClick={() => addActiveClass('mob-03')}>
+                                    08
+                                </div>
 
-                            <div id='sizes-mob-04' onClick={() => addActiveClass('mob-04')}>
-                                09
-                            </div>
-                            <div id='sizes-mob-05' onClick={() => addActiveClass('mob-05')}>
-                                10
-                            </div>
+                                <div id='sizes-mob-04' onClick={() => addActiveClass('mob-04')}>
+                                    09
+                                </div>
+                                <div id='sizes-mob-05' onClick={() => addActiveClass('mob-05')}>
+                                    10
+                                </div>
 
-                            <div id='sizes-mob-06' onClick={() => addActiveClass('mob-06')}>
-                                11
-                            </div>
+                                <div id='sizes-mob-06' onClick={() => addActiveClass('mob-06')}>
+                                    11
+                                </div>
                             </div>
                             <div id='size-warning-01' className='product-sizes-warning'>
-                                    Please select your size
+                                Please select your size
                             </div>
                         </div>
                         <div className='mob-bag-btn'>
 
                             <button id='mobaddToCartBtn' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
-                                addButtonClass("mobaddToCartBtn");
-                                AddToCart('01')
-                            }}>
-                                ADD TO BAG
+                                if (midProcess.current == false) {
+
+                                    addButtonClass("mobaddToCartBtn");
+                                    AddToCart('01', 'mobaddToCartBtn');
+                                }
+                            }} >
+                                <span>ADD TO BAG</span>
                                 <div className='border-button'></div>
-                                <i id='addToCartBtnIcon' class="bi bi-arrow-right fs-4 "></i>
+
+                                <i class="bi bi-arrow-right fs-4 ms-3"></i>
+                                <div id='mobaddToCartBtn-Loader' class="loader ms-3 d-none"></div>
 
 
                             </button>
-                            <div>
+                            <div className='regular-heart'>
                                 <i class="fa-regular fa-heart fs-5"></i>
                             </div>
                         </div>
@@ -408,21 +444,24 @@ const ProductPage = () => {
                             </div>
                         </div>
                         <div id='size-warning-02' className='product-sizes-warning'>
-                                    Please select your size
-                            </div>
+                            Please select your size
+                        </div>
                         <div className='bag-btn'>
 
                             <button id='addToCartBtn' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
-                                addButtonClass("addToCartBtn");
-                                AddToCart('02')
-                            }}>
-                                ADD TO BAG
-                                <div className='border-button'></div>
-                                <i id='addToCartBtnIcon' class="bi bi-arrow-right fs-4 "></i>
+                                if (midProcess.current == false) {
 
+                                    addButtonClass("addToCartBtn");
+                                    AddToCart('02', 'addToCartBtn');
+                                }
+                            }}>
+                                <span>ADD TO BAG</span>
+                                <div className='border-button'></div>
+                                <i class="bi bi-arrow-right fs-4 "></i>
+                                <div id='addToCartBtn-Loader' class="loader ms-3 d-none"></div>
 
                             </button>
-                            <div>
+                            <div className='regular-heart'>
                                 <i class="fa-regular fa-heart fs-5"></i>
                             </div>
                         </div>
