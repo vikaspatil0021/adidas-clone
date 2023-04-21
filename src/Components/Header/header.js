@@ -298,7 +298,9 @@ const Header = (props) => {
 
               <div className='header-cart p-0 me-3 ms-2 mb-1' role='button'>
                 <i class="bi bi-cart2 fs-4"></i>
+                {(cartData.length==0)?null:
                 <span id='loginBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{cartData.length}</span>
+                }
 
               </div>
                   </a>

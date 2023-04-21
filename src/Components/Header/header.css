@@ -216,19 +216,9 @@
     display: block;
 }
 
-.dropdown-content-cart {
-    background-color: #ffffff;
-    z-index: 1;
-    display: none;
-    position: absolute;
-    right: 0px;
-    top: 127px;
-    box-shadow: 10px 10px 38px -5px rgba(0,0,0,0.26);
-}
 
-.dropdown:hover .dropdown-content-cart {
-    display: inline;
-}
+
+
 
 /* MENU DROPDOWN CONTENT ===============>*/
 .drop-a {
