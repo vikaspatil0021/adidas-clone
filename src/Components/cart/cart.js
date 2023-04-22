@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import "./cart.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART } from '../../redux/actions/action';
@@ -35,7 +35,33 @@ const Cart = () => {
     dispatch(UPDATE_CART(dispathData))
 
   }
+  var prevTOP = useRef(0);
+  useEffect(() => {
+    var btnEle = document.querySelector('#checkOutBtn02');
 
+    if(btnEle){
+
+      var viewportOffset01 = btnEle.getBoundingClientRect();
+      prevTOP.current = viewportOffset01.top;
+    }
+    
+  }, [])
+  
+  window.onscroll =() =>{
+    var currentScrollPos = window.pageYOffset;
+    const btnPosChange = document.querySelector('.mob-checkOutBtn-div');
+    const forBtnPosition = document.querySelector('#forBtnPosition')
+
+    console.log(currentScrollPos + prevTOP.current);
+    console.log(forBtnPosition.offsetTop + forBtnPosition.offsetHeight);
+    const nonFixedPos = forBtnPosition.offsetTop + forBtnPosition.offsetHeight
+    if((currentScrollPos + prevTOP.current) < nonFixedPos ){
+      btnPosChange.classList.add('checkoutBtn-position')
+    }else{
+      btnPosChange.classList.remove('checkoutBtn-position')
+
+    }
+  }
   return (
     <div className='d-flex justify-content-center p-3'>
       <div className='cart-conatiner'>
@@ -111,7 +137,7 @@ const Cart = () => {
 
           </div>
         </div>
-        <div className='px-lg-3'>
+        <div id='forBtnPosition' className='px-lg-3'>
           <div className='checkOutBtn-div'>
 
             <button id='checkOutBtn01' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
@@ -154,7 +180,7 @@ const Cart = () => {
             <div>₹{totalPrice-500}</div>
           </div>
           <hr />
-          <div className='mob-checkOutBtn-div'>
+          <div className='mob-checkOutBtn-div checkoutBtn-position'>
 
             <button id='checkOutBtn02' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
 

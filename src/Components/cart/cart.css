@@ -87,6 +87,8 @@ select,select::after{
 .mob-checkOutBtn-div{
     display: none;
 }
+
+
 @media (max-width:750px) {
     .cart-card{
         border: 0px solid #000;
@@ -133,7 +135,7 @@ select,select::after{
         border:none;
         outline: none;
     }
-
+ 
     
 }
 @media(max-width:1100px){
@@ -155,5 +157,14 @@ select,select::after{
     }
      
 
-
+    .checkoutBtn-position{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 15px 20px;
+        padding-bottom:0 ;
+        background-color: #fff;
+        z-index: 1065;
+        border-top: 1px solid #c7c5c5;
+    }
 }
