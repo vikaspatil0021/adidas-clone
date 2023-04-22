@@ -7,7 +7,14 @@ import { addButtonClass } from '../Repeaters/addButtonClass';
 const Cart = () => {
   const dispatch = useDispatch();
   const storeData = useSelector((state) => state.cartreducer.cart);
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    document.getElementById('top-width').style.marginTop = 0;
+    document.getElementById("sticky-top-header").classList.replace('fixed-top', 'position-sticky')
 
+    document.getElementById("sticky-top-header").style.top = "auto !important";
+
+}, [])
 
   let totalQTY = 0;
   let totalPrice = 0;
@@ -52,10 +59,9 @@ const Cart = () => {
     const btnPosChange = document.querySelector('.mob-checkOutBtn-div');
     const forBtnPosition = document.querySelector('#forBtnPosition')
 
-    console.log(currentScrollPos + prevTOP.current);
-    console.log(forBtnPosition.offsetTop + forBtnPosition.offsetHeight);
+
     const nonFixedPos = forBtnPosition.offsetTop + forBtnPosition.offsetHeight
-    if((currentScrollPos + prevTOP.current) < nonFixedPos ){
+    if((currentScrollPos + prevTOP.current ) < nonFixedPos ){
       btnPosChange.classList.add('checkoutBtn-position')
     }else{
       btnPosChange.classList.remove('checkoutBtn-position')
@@ -180,6 +186,8 @@ const Cart = () => {
             <div>₹{totalPrice-500}</div>
           </div>
           <hr />
+          <div style={{height:'50px'}}>
+
           <div className='mob-checkOutBtn-div checkoutBtn-position'>
 
             <button id='checkOutBtn02' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
@@ -194,6 +202,7 @@ const Cart = () => {
 
 
             </button>
+          </div>
           </div>
 
         </div>

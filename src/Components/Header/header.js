@@ -65,7 +65,7 @@ const Header = (props) => {
   }
 
   const path = window.location.pathname;
-  const result = path.includes('/men') || path.includes('/my-account') || path.includes('/women') ||path.includes('/kids')
+  const result = path.includes('/men') || path.includes('/my-account') || path.includes('/women') ||path.includes('/kids') ||path.includes('/cart')
   // header animation 
   if (!result) {
 

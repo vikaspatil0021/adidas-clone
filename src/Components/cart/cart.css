@@ -151,7 +151,6 @@ select,select::after{
         display: none;
     }
     .mob-checkOutBtn-div{
-        margin-top: 25px;
     display: flex;
     width: 100%;
     }
@@ -164,7 +163,7 @@ select,select::after{
         padding: 15px 20px;
         padding-bottom:0 ;
         background-color: #fff;
-        z-index: 1065;
+        z-index: 1045;
         border-top: 1px solid #c7c5c5;
     }
 }
