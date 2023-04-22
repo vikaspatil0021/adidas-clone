@@ -22,6 +22,14 @@ function App() {
     console.log('ok');
   }
 
+  useEffect(() => {    
+    window.onpageshow = (event) => {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+ }, []);
+
   return (
     <div className="App">
       <Header changeRe={changeRe} />

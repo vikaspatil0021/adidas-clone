@@ -15,6 +15,7 @@ const ProductPage = () => {
         document.getElementById("sticky-top-header").style.top = "auto !important";
 
     }, [])
+   
 
     const [info, setInfo] = useState('');
     const [similarInfo, setSimilarInfo] = useState('')
