@@ -163,7 +163,7 @@ select,select::after{
         padding: 15px 20px;
         padding-bottom:0 ;
         background-color: #fff;
-        z-index: 1045;
+        z-index: 1030;
         border-top: 1px solid #c7c5c5;
     }
 }

@@ -143,6 +143,7 @@ const Cart = () => {
 
           </div>
         </div>
+        {(totalPrice!==0)?
         <div id='forBtnPosition' className='px-lg-3'>
           <div className='checkOutBtn-div'>
 
@@ -205,7 +206,7 @@ const Cart = () => {
           </div>
           </div>
 
-        </div>
+        </div>:null}
       </div>
     </div>
   )
