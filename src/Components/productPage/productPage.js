@@ -166,8 +166,8 @@ const ProductPage = () => {
             var currentScrollPos = window.pageYOffset;
             var colorsEle = document.querySelector("#colorsPosition");
             const colorsPos = document.querySelector('.option-colors');
-
-            if (currentScrollPos < colorsPos.offsetTop + 30 - prevTOP.current) {
+            console.log(colorsPos.offsetTop);
+            if (currentScrollPos + prevTOP.current < colorsPos.offsetTop +30 ) {
                 colorsEle.classList.add('colors-Position')
             } else {
                 colorsEle.classList.remove('colors-Position')
