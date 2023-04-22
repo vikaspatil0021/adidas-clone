@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { inject } from '@vercel/analytics';
 
-inject();
 import './App.css';
 import AccountLogin from './Components/AuthPages/Account-Login/account-Login';
 import AccountRegister from './Components/AuthPages/Account-register/account-register';
@@ -15,6 +14,9 @@ import Orders from './Components/My-Account/orders/orders';
 import Stock from './Components/Stock/stock';
 import ProductPage from './Components/productPage/productPage';
 import Cart from './Components/cart/cart';
+
+inject();
+
 
 function App() {
   const [re, setRe] = useState(0)
