@@ -61,7 +61,7 @@ const Cart = () => {
 
 
     const nonFixedPos = forBtnPosition.offsetTop + forBtnPosition.offsetHeight
-    if((currentScrollPos + prevTOP.current ) < nonFixedPos ){
+    if((currentScrollPos + prevTOP.current + 50 ) < nonFixedPos ){
       btnPosChange.classList.add('checkoutBtn-position')
     }else{
       btnPosChange.classList.remove('checkoutBtn-position')
