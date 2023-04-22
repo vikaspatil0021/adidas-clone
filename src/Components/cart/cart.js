@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import "./cart.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { REMOVE_FROM_CART } from '../../redux/actions/action';
+import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART } from '../../redux/actions/action';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -11,18 +11,29 @@ const Cart = () => {
   let totalQTY = 0;
   let totalPrice = 0;
   storeData.forEach((item) => {
-    totalQTY += item.quantity;
-    totalPrice += item.quantity * (parseInt(item.priceTag.replace(' ', '')));
+    totalQTY += parseInt(item.quantity);
+    totalPrice += parseInt(item.quantity) * (parseInt(item.priceTag.replace(' ', '')));
   })
 
   var x = window.matchMedia("(max-width: 750px)");
-// setting initing value of all selects
-  useEffect(()=>{
-    storeData.forEach((each,index)=>{
-      let selectEle= document.querySelector('#select-Qty-' + index);
+  // setting initing value of all selects
+  useEffect(() => {
+    storeData.forEach((each, index) => {
+      let selectEle = document.querySelector('#select-Qty-' + index);
       selectEle.value = each.quantity;
     })
-  },[])
+  }, [])
+
+  // change the cart based on Qty changed
+  const changeOTY = (eachItem, qtyVAl) => {
+
+    var dispathData = {
+      productId:eachItem.productId,
+      quantity: qtyVAl
+    }
+    dispatch(UPDATE_CART(dispathData))
+
+  }
 
   return (
     <div className='d-flex justify-content-center p-3'>
@@ -39,8 +50,8 @@ const Cart = () => {
 
           </div>
           <div className='mt-4'>
-            {storeData.map((each,index) => {
-               
+            {storeData.map((each, index) => {
+
               return (
 
                 <div className='cart-card'>
@@ -69,20 +80,20 @@ const Cart = () => {
                           <span>{(x.matches) ? "Qty: " : ''}</span>
                           <div className='select-div'>
 
-                          <select name="Oty" id={"select-Qty-" + index}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
+                            <select name="Oty" id={"select-Qty-" + index} onChange={(e) => { changeOTY(each, e.target.value) }}>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
 
-                          </select>
-                          <i  class='fa-solid fa-angle-down cart-Oty-i' />
+                            </select>
+                            <i class='fa-solid fa-angle-down cart-Oty-i' />
                           </div>
                         </div>
                       </div>

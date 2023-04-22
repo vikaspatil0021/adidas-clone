@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './productPage.css'
 import { addButtonClass } from '../Repeaters/addButtonClass'
 import { useSelector, useDispatch } from 'react-redux';
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../../redux/actions/action';
+import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART } from '../../redux/actions/action';
 const ProductPage = () => {
 
     useEffect(() => {
@@ -212,15 +212,19 @@ const ProductPage = () => {
                 }
             })
             if (filArr.length != 0) {
-                dispatch(REMOVE_FROM_CART(filArr[0]))
 
-                var dispathData = {
-                    ...filArr[0],
+                // var dispathData = {
+                //     ...filArr[0],
+                //     quantity: filArr[0].quantity + 1
+                // }
+                var dispathData01 = {
+                    productId:filArr[0].productId,
                     quantity: filArr[0].quantity + 1
-                }
+                  }
+                  dispatch(UPDATE_CART(dispathData01))
             } else {
 
-                dispathData = {
+                var dispathData02 = {
                     productId: pId,
                     img1: info.colors[colorEle.id.slice(7)].img1,
                     size: sizeEle.innerHTML,
@@ -235,9 +239,10 @@ const ProductPage = () => {
                 arrowIcon.classList.replace("bi-arrow-right", "bi-check2")
                 loader.classList.add('d-none');
                 btnContent.innerHTML = "ADDED"
-                
-                dispatch(ADD_TO_CART(dispathData));
+                if (filArr.length == 0) {
 
+                dispatch(ADD_TO_CART(dispathData02));
+                }
                 setTimeout(() => {
                     btn.style.opacity = 1;
                     btn.style.cursor = 'pointer';

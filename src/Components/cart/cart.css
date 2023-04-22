@@ -65,10 +65,9 @@ select,select::after{
     appearance: none;
     /* border:none; */
     outline: none;
+    cursor: pointer;
 }
-option{
-    padding: 10px 20px;
-}
+
 .select-div{
     position: relative;
     display: flex;
