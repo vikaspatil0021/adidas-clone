@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import "./cart.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART } from '../../redux/actions/action';
+import { addButtonClass } from '../Repeaters/addButtonClass';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -22,13 +23,13 @@ const Cart = () => {
       let selectEle = document.querySelector('#select-Qty-' + index);
       selectEle.value = each.quantity;
     })
-  }, [])
+  }, [storeData])
 
   // change the cart based on Qty changed
   const changeOTY = (eachItem, qtyVAl) => {
 
     var dispathData = {
-      productId:eachItem.productId,
+      productId: eachItem.productId,
       quantity: qtyVAl
     }
     dispatch(UPDATE_CART(dispathData))
@@ -38,7 +39,7 @@ const Cart = () => {
   return (
     <div className='d-flex justify-content-center p-3'>
       <div className='cart-conatiner'>
-        <div>
+        <div className='pe-lg-4'>
           <div className='cart-header'>
             YOUR BAG
           </div>
@@ -66,7 +67,6 @@ const Cart = () => {
                       </div>
                       <div className='padding-10'>
                         SIZE : {each.size}
-
                       </div>
                     </div>
                     <div className='info-footer'>
@@ -111,8 +111,65 @@ const Cart = () => {
 
           </div>
         </div>
-        <div>
-          c
+        <div className='px-lg-3'>
+          <div className='checkOutBtn-div'>
+
+            <button id='checkOutBtn01' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
+
+              addButtonClass("checkOutBtn01");
+
+            }} >
+              <span>CHECKOUT</span>
+              <div className='border-button'></div>
+
+              <i class="bi bi-arrow-right fs-4 ms-3"></i>
+
+
+            </button>
+          </div>
+          <div className='mt-5 mb-4 fw-bold fs-5'>
+            ORDER SUMMARY
+          </div>
+          <div className='d-flex justify-content-between'>
+            <div>{totalQTY} items</div>
+            <div>{"  ₹" + totalPrice}</div>
+          </div>
+          <div className='d-flex justify-content-between mt-2'>
+            <div>Delivery</div>
+            <div>FREE</div>
+          </div>
+          <div className='d-flex justify-content-between mt-2'>
+            <div>Discount</div>
+            <div>-  ₹500</div>
+          </div>
+          <hr />
+          <div className='d-flex justify-content-between mt-2 fw-bold'>
+            <div>
+            Total
+            <div className='fw-normal'>
+
+            ( Inclusive of all taxes )
+            </div>
+            </div>
+            <div>₹{totalPrice-500}</div>
+          </div>
+          <hr />
+          <div className='mob-checkOutBtn-div'>
+
+            <button id='checkOutBtn02' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
+
+              addButtonClass("checkOutBtn02");
+
+            }} >
+              <span>CHECKOUT</span>
+              <div className='border-button'></div>
+
+              <i class="bi bi-arrow-right fs-4 ms-3"></i>
+
+
+            </button>
+          </div>
+
         </div>
       </div>
     </div>

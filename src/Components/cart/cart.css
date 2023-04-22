@@ -78,6 +78,15 @@ select,select::after{
     right: 10px;
     pointer-events: none;
 }
+
+.checkOutBtn-div{
+    margin-top: 25px;
+    display: flex;
+    width: 100%;
+}
+.mob-checkOutBtn-div{
+    display: none;
+}
 @media (max-width:750px) {
     .cart-card{
         border: 0px solid #000;
@@ -125,7 +134,7 @@ select,select::after{
         outline: none;
     }
 
-   
+    
 }
 @media(max-width:1100px){
     .cart-conatiner{
@@ -135,6 +144,14 @@ select,select::after{
     .cart-header{
         padding-top: 15px;
 
+    }
+    .checkOutBtn-div{
+        display: none;
+    }
+    .mob-checkOutBtn-div{
+        margin-top: 25px;
+    display: flex;
+    width: 100%;
     }
      
 
