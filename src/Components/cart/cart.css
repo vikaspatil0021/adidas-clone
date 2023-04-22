@@ -33,16 +33,13 @@
 }
 .cart-qty{
     margin-top: 30px;
-    padding: 15px 20px;
-    border: 1px solid #000;
+
     display: inline-flex;
     align-items: center;
     cursor: pointer;
     
 }
-.cart-qty span{
-    padding-right: 30px;
-}
+
 .cardProduct-info{
     padding: 20px 30px;
     position: relative;
@@ -60,6 +57,28 @@
     font-size: 25px;
     cursor: pointer;
 }
+
+select,select::after{
+    padding: 10px 20px ;
+    padding-right: 35px;
+    font-weight: bold;
+    appearance: none;
+    /* border:none; */
+    outline: none;
+}
+option{
+    padding: 10px 20px;
+}
+.select-div{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.cart-Oty-i{
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+}
 @media (max-width:750px) {
     .cart-card{
         border: 0px solid #000;
@@ -72,19 +91,17 @@
         border: none;
 
     }
-    .cart-qty span{
-        padding-right: 10px;
-    }
+    
     .rmItemBtn{
         font-size: 20px;  
-        padding:3px 10px 0 5px;
+        padding:3px 9px 0 5px;
   
     }
     .c01{
         width: 40%;
     }
     .cardProduct-info{
-        padding: 5px 20px 5px 15px;
+        padding: 5px 25px 5px 15px;
         width: 60%;
         display: flex;
         flex-direction: column;
@@ -97,10 +114,19 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
         margin-top: auto;
         font-weight: bold;
 
     }
+    select,select::after{
+        padding: 5px ;
+        padding-right: 25px;
+        border:none;
+        outline: none;
+    }
+
+   
 }
 @media(max-width:1100px){
     .cart-conatiner{
