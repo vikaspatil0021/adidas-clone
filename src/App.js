@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { Analytics }  from '@vercel/analytics/react';
 import './App.css';
 import AccountLogin from './Components/AuthPages/Account-Login/account-Login';
 import AccountRegister from './Components/AuthPages/Account-register/account-register';
