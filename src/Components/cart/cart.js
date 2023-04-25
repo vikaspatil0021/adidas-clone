@@ -6,7 +6,7 @@ import { addButtonClass } from '../Repeaters/addButtonClass';
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const storeData = useSelector((state) => state.cartreducer.cart);
+  const cartData = useSelector((state) => state.cart);
   useEffect(() => {
     window.scrollTo(0, 0)
     document.getElementById('top-width').style.marginTop = 0;
@@ -14,11 +14,11 @@ const Cart = () => {
 
     document.getElementById("sticky-top-header").style.top = "auto !important";
 
-}, [])
+  }, [])
 
   let totalQTY = 0;
   let totalPrice = 0;
-  storeData.forEach((item) => {
+  cartData.forEach((item) => {
     totalQTY += parseInt(item.quantity);
     totalPrice += parseInt(item.quantity) * (parseInt(item.priceTag.replace(' ', '')));
   })
@@ -26,11 +26,11 @@ const Cart = () => {
   var x = window.matchMedia("(max-width: 750px)");
   // setting initing value of all selects
   useEffect(() => {
-    storeData.forEach((each, index) => {
+    cartData.forEach((each, index) => {
       let selectEle = document.querySelector('#select-Qty-' + index);
       selectEle.value = each.quantity;
     })
-  }, [storeData])
+  }, [cartData])
 
   // change the cart based on Qty changed
   const changeOTY = (eachItem, qtyVAl) => {
@@ -46,24 +46,24 @@ const Cart = () => {
   useEffect(() => {
     var btnEle = document.querySelector('#checkOutBtn02');
 
-    if(btnEle){
+    if (btnEle) {
 
       var viewportOffset01 = btnEle.getBoundingClientRect();
       prevTOP.current = viewportOffset01.top;
     }
-    
+
   }, [])
-  
-  window.onscroll =() =>{
+
+  window.onscroll = () => {
     var currentScrollPos = window.pageYOffset;
     const btnPosChange = document.querySelector('.mob-checkOutBtn-div');
     const forBtnPosition = document.querySelector('#forBtnPosition')
 
 
     const nonFixedPos = forBtnPosition.offsetTop + forBtnPosition.offsetHeight
-    if((currentScrollPos + prevTOP.current + 70 ) < nonFixedPos ){
+    if ((currentScrollPos + prevTOP.current + 70) < nonFixedPos) {
       btnPosChange.classList.add('checkoutBtn-position')
-    }else{
+    } else {
       btnPosChange.classList.remove('checkoutBtn-position')
 
     }
@@ -83,7 +83,7 @@ const Cart = () => {
 
           </div>
           <div className='mt-4'>
-            {storeData.map((each, index) => {
+            {cartData.map((each, index) => {
 
               return (
 
@@ -143,70 +143,70 @@ const Cart = () => {
 
           </div>
         </div>
-        {(totalPrice!==0)?
-        <div id='forBtnPosition' className='px-lg-3'>
-          <div className='checkOutBtn-div'>
+        {(totalPrice !== 0) ?
+          <div id='forBtnPosition' className='px-lg-3'>
+            <div className='checkOutBtn-div'>
 
-            <button id='checkOutBtn01' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
+              <button id='checkOutBtn01' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
 
-              addButtonClass("checkOutBtn01");
+                addButtonClass("checkOutBtn01");
 
-            }} >
-              <span>CHECKOUT</span>
-              <div className='border-button'></div>
+              }} >
+                <span>CHECKOUT</span>
+                <div className='border-button'></div>
 
-              <i class="bi bi-arrow-right fs-4 ms-3"></i>
+                <i class="bi bi-arrow-right fs-4 ms-3"></i>
 
 
-            </button>
-          </div>
-          <div className='mt-5 mb-4 fw-bold fs-5'>
-            ORDER SUMMARY
-          </div>
-          <div className='d-flex justify-content-between'>
-            <div>{totalQTY} items</div>
-            <div>{"  ₹" + totalPrice}</div>
-          </div>
-          <div className='d-flex justify-content-between mt-2'>
-            <div>Delivery</div>
-            <div>FREE</div>
-          </div>
-          <div className='d-flex justify-content-between mt-2'>
-            <div>Discount</div>
-            <div>-  ₹500</div>
-          </div>
-          <hr />
-          <div className='d-flex justify-content-between mt-2 fw-bold'>
-            <div>
-            Total
-            <div className='fw-normal'>
-
-            ( Inclusive of all taxes )
+              </button>
             </div>
+            <div className='mt-5 mb-4 fw-bold fs-5'>
+              ORDER SUMMARY
             </div>
-            <div>₹{totalPrice-500}</div>
-          </div>
-          <hr />
-          <div style={{height:'50px'}}>
+            <div className='d-flex justify-content-between'>
+              <div>{totalQTY} items</div>
+              <div>{"  ₹" + totalPrice}</div>
+            </div>
+            <div className='d-flex justify-content-between mt-2'>
+              <div>Delivery</div>
+              <div>FREE</div>
+            </div>
+            <div className='d-flex justify-content-between mt-2'>
+              <div>Discount</div>
+              <div>-  ₹500</div>
+            </div>
+            <hr />
+            <div className='d-flex justify-content-between mt-2 fw-bold'>
+              <div>
+                Total
+                <div className='fw-normal'>
 
-          <div className='mob-checkOutBtn-div checkoutBtn-position'>
+                  ( Inclusive of all taxes )
+                </div>
+              </div>
+              <div>₹{totalPrice - 500}</div>
+            </div>
+            <hr />
+            <div style={{ height: '50px' }}>
 
-            <button id='checkOutBtn02' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
+              <div className='mob-checkOutBtn-div checkoutBtn-position'>
 
-              addButtonClass("checkOutBtn02");
+                <button id='checkOutBtn02' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
 
-            }} >
-              <span>CHECKOUT</span>
-              <div className='border-button'></div>
+                  addButtonClass("checkOutBtn02");
 
-              <i class="bi bi-arrow-right fs-4 ms-3"></i>
+                }} >
+                  <span>CHECKOUT</span>
+                  <div className='border-button'></div>
+
+                  <i class="bi bi-arrow-right fs-4 ms-3"></i>
 
 
-            </button>
-          </div>
-          </div>
+                </button>
+              </div>
+            </div>
 
-        </div>:null}
+          </div> : null}
       </div>
     </div>
   )

@@ -1,187 +1,78 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { scrollEffect } from '../../Repeaters/scrollEffect';
-
-const afterClickArray = {
-    men: [
-        {
-            categoryTitle: "ALL FOOTWEAR",
-            arr: [
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/f49bc6d367c94ceb95fbaf510159dc99_9366/js-bones-campus-80-shoes.jpg",
-                    title: "ORIGINAL SHOES"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/023ce8be333449efa7f3af9000d9101f_9366/ultraboost-light-shoes.jpg",
-                    title: "RUNNING SHOES"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/a717c5a2b2c64164be4caf7900e04330_9366/predator-accuracy-paul-pogba.1-low-firm-ground-boots.jpg",
-                    title: "FOOTBALL BOOTS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/0fbed4646c1d46e0aae0af6901301ff4_9366/ultraboost-light-shoes.jpg",
-                    title: "ULTRABOOST"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/b00a682997bd40d3bdfaaed70181d5b6_9366/vulc-raid3r-lifestyle-skateboarding-slip-on-canvas-shoes.jpg",
-                    title: "SALE SHOES"
-                }
-            ]
-        },
-        {
-            categoryTitle: "CLOTHING",
-            arr: [
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/7090f137ede740539616ae76013315df_9366/adicolor-neuclassics-track-jacket.jpg",
-                    title: "TRACKSUITS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/01991a8a07da4c4599eaae8e00fa03f5_9366/disney-graphic-tee.jpg",
-                    title: "T-SHIRTS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/28a4f95f15d943d2a859adf500624e69_9366/ultimate365-tapered-pants.jpg",
-                    title: "JOGGERS & TRACKSUIT BOTTOMS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/fbf60ee451b843dbb924af8100bc8c36_9366/adidas-by-stella-mccartney-sportswear-sweatshirt-gender-neutral.jpg",
-                    title: "HOODIES & SWEATSHIRTS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/cf4b0ce40ed44ece9546ace100a72832_9366/arsenal-21-22-home-jersey.jpg",
-                    title: "SALE CLOTHING"
-                }
-            ]
-        },
-        {
-            categoryTitle: "ALL ACCESSORIES",
-            arr: [
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/71a35aac6e3f4ccaae44af4f00a3398c_9366/performance-cushioned-crew-socks-3-pairs.jpg",
-                    title: "SOCKS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/d534111ceefb43c6ab14af2c00d50007_9366/y-3-holdall.jpg",
-                    title: "BAGS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/6189f6bf98b74d98bcf8af2c00d31c48_9366/y-3-classic-bucket-hat.jpg",
-                    title: "HEADWEAR"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/a0543e5f0bb34bff93d8ae680086dba1_9366/al-rihla-competition-ball.jpg",
-                    title: "SALE ACCESSORIES"
-                }
-            ]
-        }
-    ],
-    women: [
-        {
-            categoryTitle: "ALL SHOES",
-            arr: [
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/4f804358759448f99e17af61016c7d68_9366/stan-smith-bonega-shoes.jpg",
-                    title: "ORIGINAL SHOES"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/023ce8be333449efa7f3af9000d9101f_9366/ultraboost-light-shoes.jpg",
-                    title: "RUNNING SHOES"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/0fbed4646c1d46e0aae0af6901301ff4_9366/ultraboost-light-shoes.jpg",
-                    title: "ULTRABOOST"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/b00a682997bd40d3bdfaaed70181d5b6_9366/vulc-raid3r-lifestyle-skateboarding-slip-on-canvas-shoes.jpg",
-                    title: "SALE SHOES"
-                }
-            ]
-        },
-        {
-            categoryTitle: "ALL CLOTHING",
-            arr: [
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/c64348879ddd41beaaf0af3100f52ab4_9366/dailyrun-3-stripes-five-inch-short-leggings.jpg",
-                    title: "TIGHTS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/25462e5f56a14ecb9ce2af9b0139c164_faec/lightweight-puffer-coat-all-gender.jpg",
-                    title: "JACKETS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/ea63b64d8a27437197e6aec300dddb0f_9366/loose-loungewear-tee.jpg",
-                    title: "T-SHIRTS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/f004a3d9aaf143c08128aeca00ec6da7_9366/velvet-straight-pants.jpg",
-                    title: "JOGGERS & TRACKSUIT BOTTOMS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/5bcaada69aa6447cbb13af5500c1ee88_9366/tch-slk-zip-hd.jpg",
-                    title: "HOODIES"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/fe194bc661f4419d889daf4d00b746d3_9366/coreflow-medium-support-bra.jpg",
-                    title: "BRAS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/28accc6bf9cd432aa82faea700f01715_9366/yoga-studio-light-support-bra.jpg",
-                    title: "SALE CLOTHING"
-                }
-            ]
-        },
-        {
-            categoryTitle: "ALL ACCESSORIES",
-            arr: [
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/b6064d1a011f49f39a4fafab010d387f_9366/collective-power-mid-cut-crew-length-socks-3-pairs.jpg",
-                    title: "SOCKS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/d534111ceefb43c6ab14af2c00d50007_9366/y-3-holdall.jpg",
-                    title: "BAGS"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/9f176a1f4ddf49709edbaf1e010f6b2c_9366/y-3-utility-tote.jpg",
-                    title: "SALE ACCESSORIES"
-                }
-            ]
-        }
-    ],
-    kids: [
-        {
-            categoryTitle: "ALL KIDS",
-            arr: [
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/fe9b33ac8f9541939ec3ac3701601bb1_9366/samba-og-shoes.jpg",
-                    title: "KIDS SHOES"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/b7a707c8e9a04ae0a513aefc00b475a3_9366/arkd3-cargo-pants.jpg",
-                    title: "KIDS CLOTHING"
-                },
-                {
-                    link: "https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/33c61a20d7134071a590af8000c4a41d_9366/adidas-x-lego-play-bucket-hat.jpg",
-                    title: "KIDS ACCESSORIES"
-                },
-                {
-                    link:"https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/52201b7d85164f449c5dad6601064c2b_9366/tensaur-run-shoes.jpg",
-                    title:'KIDS SALE'
-                }
-            ]
-        }
-
-    ]
-}
-
-
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 
 const Section05 = () => {
 
 
-    const [selectedTab,setSelectedTab] = useState([]);
+    const [selectedTab, setSelectedTab] = useState([]);
+    const [currentGenData, setCurrentData] = useState([])
+    const [gender, setGender] = useState('');
+
+    console.log(selectedTab);
+    console.log(currentGenData);
+
+    useEffect(() => {
+        if (gender != '') {
+
+            axios.get(process.env.REACT_APP_SERVER_URL + '/' + gender + '/All')
+                .then((res) => {
+                    console.log(res.data);
+                    setCurrentData(res.data)
+                }).catch((err) => {
+                    console.log(err);
+                })
+        }
+    }, [gender])
+
+
+    useEffect(() => {
+        if (currentGenData.length != 0) {
+            setSelectedTab(() => [
+                {
+                    categoryTitle: "ALL FOOTWEAR",
+                    arr: currentGenData.map((each) => {
+                        if (each.category === 'Footwear') {
+                            return {
+                                img1: each.colors[0].img1,
+                                tag: each.tag,
+                                path: '/' + gender + '/All/' + each.productId
+                            }
+                        }
+                    }).filter((each) => each != undefined)
+                },
+                {
+                    categoryTitle: "ALL CLOTHING",
+                    arr: currentGenData.map((each) => {
+                        if (each.category === 'Clothing') {
+                            return {
+                                img1: each.colors[0].img1,
+                                tag: each.tag,
+                                path: '/' + gender + '/All/' + each.productId
+                            }
+                        }
+                    }).filter((each) => each != undefined)
+                },
+                {
+                    categoryTitle: "ALL ACCESSORIES",
+                    arr: currentGenData.map((each) => {
+                        if (each.category === 'Accessories') {
+                            return {
+                                img1: each.colors[0].img1,
+                                tag: each.tag,
+                                path: '/' + gender + '/All/' + each.productId
+                            }
+                        }
+                    }).filter((each) => each != undefined)
+
+                }
+            ])
+
+        }
+    }, [currentGenData])
 
 
     const ToggleDNONE = () => {
@@ -210,14 +101,14 @@ const Section05 = () => {
 
 
 
-        
+
         if (clickedId == "men") {
-            setSelectedTab(afterClickArray.men);
-            
+            setGender('men');
         } else if (clickedId == "women") {
-            setSelectedTab(afterClickArray.women);
+            setGender('women');
+
         } else {
-            setSelectedTab(afterClickArray.kids);
+            setGender('kids')
         }
 
 
@@ -227,7 +118,7 @@ const Section05 = () => {
         if (x.matches) {
             var section05scrollBar = document.querySelectorAll('.mobileScroller');
 
-            section05scrollBar.forEach((each)=>{
+            section05scrollBar.forEach((each) => {
                 each.scrollLeft = 0;
             })
 
@@ -256,7 +147,9 @@ const Section05 = () => {
     }
 
 
-    
+
+
+
     return (
         <div className='d-flex flex-wrap justify-content-center'>
             <div id='beforeClick' className='section05'>
@@ -322,10 +215,10 @@ const Section05 = () => {
                     </div>
                     <div className='arrowScroller'>
 
-                        <button className='arrowBtn05' onClick={()=>scrollEffect("left","scrollBar")}>
+                        <button className='arrowBtn05' onClick={() => scrollEffect("left", "scrollBar")}>
                             <i class='fa fa-solid fa-angle-left' />
                         </button>
-                        <button className='arrowBtn05' onClick={()=>scrollEffect("right",'scrollBar')}>
+                        <button className='arrowBtn05' onClick={() => scrollEffect("right", 'scrollBar')}>
                             <i class='fa fa-solid fa-angle-right' />
 
                         </button>
@@ -335,41 +228,49 @@ const Section05 = () => {
                 <div className=''>
 
                     <div className='afterClick-Content scrollBar paddingLeft'>
-                    {selectedTab.map((each)=>{
-                        return(
-                            <div className='d-flex mobileScroller'>
+                        {(selectedTab.length === 0) ?
+                            <div className='d-flex justify-content-center w-100'><div class="pre-loader"></div></div>
 
-                            <div className='card05-category'>
-                                <div className='category-title'>
-                                    {each.categoryTitle}
-                                </div>
-                                <div role="button" className='category-button'>
-                                    DISCOVER
-                                    <i class='bi bi-arrow-right float-end fs-4' />
+                            : selectedTab.map((each) => {
+                                return (
+                                    <div className='d-flex mobileScroller'>
 
-                                </div>
-                            </div>
-                            {each.arr.map((subEach)=>{
-                                return(
+                                        <div className='card05-category'>
+                                            <div className='category-title'>
+                                                {each.categoryTitle}
+                                            </div>
+                                            <div role="button" className='category-button'>
+                                                DISCOVER
+                                                <i class='bi bi-arrow-right float-end fs-4' />
 
-                            <div className='card05' role='button'>
-                                <picture>
-                                    <img src={subEach.link} decoding="async" loading="lazy" />
-                                </picture>
-                                <div className='card-title05'>
-                                    {subEach.title}
-                                </div>
-                            </div>
+                                            </div>
+                                        </div>
+                                        {each.arr.map((subEach,index) => {
+                                            if(index<6){
+
+                                            return (
+                                                <Link to={subEach.path}>
+
+                                                    <div className='card05' role='button'>
+                                                        <picture>
+                                                            <img src={subEach.img1} decoding="async" loading="lazy" />
+                                                        </picture>
+                                                        <div className='card-title05'>
+                                                            {subEach.tag}
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            )
+                                            }
+                                        })}
+
+
+                                    </div>
+
                                 )
                             })}
-                            
-
-                        </div>
-
-                        )
-                    })}
-                        
                     </div>
+
 
                 </div>
 
@@ -378,5 +279,6 @@ const Section05 = () => {
         </div>
     )
 }
+
 
 export default Section05;

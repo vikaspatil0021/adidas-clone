@@ -1,32 +1,45 @@
-export const cartreducer = (state = { cart: [] }, action) => {
+// recently viewed item ===rvItem
+const iniState = {
+    cart: [],
+    rvItem:[]
+}
+
+export const cartreducer = (state = iniState.cart, action) => {
     switch (action.type) {
         case 'ADD_CART':
-            return {
-                ...state,
-                cart: [...state.cart, action.payload]
-            }
+            return [...state, action.payload]
+            
         case "UPDATE_CART":
-            return {
-                ...state,
-                cart: state.cart.map((each)=>{
-                    if(each.productId===action.payload.productId){
+            return state.map((each) => {
+                    if (each.productId === action.payload.productId) {
                         return {
                             ...each,
-                            quantity:action.payload.quantity
+                            quantity: action.payload.quantity
                         }
-                    }else{
+                    } else {
                         return each;
                     }
                 })
-            }
+            
         case 'REMOVE_CART':
-            return {
-                ...state,
-                cart: state.cart.filter(each=>each.productId!=action.payload.productId)
-            }
+            return state.filter(each => each.productId != action.payload.productId)
             
+        default:
+            return state;
+    }
+}
+
+export const rvitemreducer = (state = iniState.rvItem, action) => {
+    switch (action.type) {
+        case "ADD_ITEM":
+            return [...state.filter((each)=>{
+                    if (each.productId !== action.payload.productId) {
+                        return each;
+                    }
+                }),action.payload]
             
-            default:
-                return state;
-            }
+    
+        default:
+            return state;
+    }
 }

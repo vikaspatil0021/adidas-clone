@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './productPage.css'
 import { addButtonClass } from '../Repeaters/addButtonClass'
 import { useSelector, useDispatch } from 'react-redux';
-import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART } from '../../redux/actions/action';
+import { ADD_ITEM, ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART } from '../../redux/actions/action';
 const ProductPage = () => {
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const ProductPage = () => {
         document.getElementById("sticky-top-header").style.top = "auto !important";
 
     }, [])
-   
+
 
     const [info, setInfo] = useState('');
     const [similarInfo, setSimilarInfo] = useState('')
@@ -167,7 +167,7 @@ const ProductPage = () => {
             var colorsEle = document.querySelector("#colorsPosition");
             const colorsPos = document.querySelector('.option-colors');
             console.log(colorsPos.offsetTop);
-            if (currentScrollPos + prevTOP.current < colorsPos.offsetTop +30 ) {
+            if (currentScrollPos + prevTOP.current < colorsPos.offsetTop + 30) {
                 colorsEle.classList.add('colors-Position')
             } else {
                 colorsEle.classList.remove('colors-Position')
@@ -176,9 +176,22 @@ const ProductPage = () => {
         }
     }
     // redux store handling
-    const storeData = useSelector((state) => state.cartreducer.cart)
-    console.log(storeData);
     const dispatch = useDispatch();
+
+    const cartData = useSelector((state) => state.cart);
+    const rvItemsData = useSelector((state) => state.recentViewedItems).filter((item) => {
+        if (info.productId !== item.productId) {
+            return item;
+        }
+    }).reverse();
+    useEffect(() => {
+        // recently viewed items trigger
+        if (info != '') {
+
+            dispatch(ADD_ITEM({...info,path:window.location.pathname}))
+        }
+    }, [info])
+
 
     const midProcess = useRef(false)
 
@@ -192,7 +205,7 @@ const ProductPage = () => {
         const arrowIcon = document.querySelector('#' + btnId + ' i');
         const loader = document.querySelector('#' + btnId + '-Loader');
         const btnContent = document.querySelector('#' + btnId + ' span')
-        console.log(btnContent);
+        // console.log(btnContent);
         if (sizeEle) {
             midProcess.current = true;
             sizeEleWarn.style.display = 'none';
@@ -205,7 +218,7 @@ const ProductPage = () => {
             loader.classList.remove('d-none');
 
             var pId = info.productId + '_' + colorEle.id.slice(7) + '_' + sizeEle.innerHTML
-            var filArr = storeData.filter((item) => {
+            var filArr = cartData.filter((item) => {
                 if (pId === item.productId) {
 
                     return item
@@ -218,10 +231,10 @@ const ProductPage = () => {
                 //     quantity: filArr[0].quantity + 1
                 // }
                 var dispathData01 = {
-                    productId:filArr[0].productId,
+                    productId: filArr[0].productId,
                     quantity: filArr[0].quantity + 1
-                  }
-                  dispatch(UPDATE_CART(dispathData01))
+                }
+                dispatch(UPDATE_CART(dispathData01))
             } else {
 
                 var dispathData02 = {
@@ -241,7 +254,7 @@ const ProductPage = () => {
                 btnContent.innerHTML = "ADDED"
                 if (filArr.length == 0) {
 
-                dispatch(ADD_TO_CART(dispathData02));
+                    dispatch(ADD_TO_CART(dispathData02));
                 }
                 setTimeout(() => {
                     btn.style.opacity = 1;
@@ -412,6 +425,46 @@ const ProductPage = () => {
                                 }) : null}
 
                         </div>
+                        {(rvItemsData.length!==0)?<div>
+
+                            <div className='similarProducts-name'>
+                                RECENTLY VIEWED ITEMS
+                            </div>
+                            <div className='similarProducts-overflow'>
+
+                                {rvItemsData.map((each) => {
+                                        return (
+                                            <a href={each.path}>
+                                                <div className='simPro-card'  >
+                                                    <picture >
+
+                                                        <div className='position-relative' >
+
+                                                            <img id={each.productId} src={each.colors[0].img1} decoding="async" loading="lazy" />
+                                                            <div className='product-priceTag'>
+                                                                ₹{each.priceTag}
+
+                                                            </div>
+                                                        </div>
+                                                    </picture>
+
+                                                    <div className='pb-4 p-2 fs'>
+
+                                                        <div className='fw-light fw-bold'>
+                                                            {each.name}
+                                                        </div>
+
+                                                    </div>
+                                                    <div className='card06-heart'>
+                                                        <i className='fa-regular fa-heart' />
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        )
+                                    }) }
+
+                            </div>
+                        </div>: null}
                     </div>
                     <div className='b02'>
                         <div>

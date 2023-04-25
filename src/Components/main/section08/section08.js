@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { scrollEffect } from '../../Repeaters/scrollEffect';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const arr = [
     {
@@ -19,7 +21,7 @@ const arr = [
         priceTag: '₹2 999.50',
         t1: 'adidas Own The Run Astro Pants',
         t2: 'Performance'
-        
+
     },
     {
         link: "https://assets.adidas.com/images/w_276,h_276,f_auto,q_auto,fl_lossy,c_fill,g_auto/fe27764fa46e41aaade8af5d010e80da_9366/HT7122_21_model.jpg",
@@ -68,38 +70,54 @@ const arr = [
 
 const Section08 = () => {
 
-
+    const [currentData, setCurrentData] = useState([])
+    console.log(currentData);
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_SERVER_URL + '/women/All')
+            .then((res) => {
+                var data = res.data.filter((each, index) => {
+                    if ((each.category === 'Footwear' || each.category === 'Clothing') && index < 20) {
+                        return each;
+                    }
+                }).reverse()
+                setCurrentData(data)
+            }).catch((err) => {
+                console.log(err);
+            })
+    }, [])
     // css in this section is same same as section06 
     return (
         <div className='d-flex flex-wrap justify-content-center'>
             <div className='section08'>
                 <div className='d-flex justify-content-between'>
 
-                <div className="title08 paddingLeft">
-                    BESTSELLERS
-                </div>
-                <div className='arrowScroller'>
+                    <div className="title08 paddingLeft">
+                        BESTSELLERS
+                    </div>
+                    <div className='arrowScroller'>
 
-                    <button className='arrowBtn05' onClick={() => scrollEffect("left","section08-overflow")}>
-                        <i class='fa fa-solid fa-angle-left' />
-                    </button>
-                    <button className='arrowBtn05' onClick={() => scrollEffect("right","section08-overflow")}>
-                        <i class='fa fa-solid fa-angle-right' />
+                        <button className='arrowBtn05' onClick={() => scrollEffect("left", "section08-overflow")}>
+                            <i class='fa fa-solid fa-angle-left' />
+                        </button>
+                        <button className='arrowBtn05' onClick={() => scrollEffect("right", "section08-overflow")}>
+                            <i class='fa fa-solid fa-angle-right' />
 
-                    </button>
-                </div>
+                        </button>
+                    </div>
                 </div>
 
 
                 <div className='paddingLeft section08-overflow'>
-                    {arr.map((each) => {
+                    {currentData.map((each) => {
                         return (
+                            <Link to={'/women/All/' + each.productId}>
+
                             <div className='card06' role='button'>
-{/* card css is same same as card in section06 */}
+                                {/* card css is same same as card in section06 */}
                                 <picture >
                                     <div className='position-relative'>
 
-                                        <img src={each.link} decoding="async" loading="lazy" />
+                                        <img src={each.colors[0].img1} decoding="async" loading="lazy" />
                                         <div className='price-tag'>
                                             {each.priceTag}
                                         </div>
@@ -108,17 +126,18 @@ const Section08 = () => {
                                 <div className='pb-4 p-2'>
 
                                     <div className='fw-light '>
-                                        {each.t1}
+                                        {each.name}
                                     </div>
                                     <span className='fw-light text-muted'>
-                                        {each.t2}
+                                        {each.tag}
                                     </span>
-                                    {(each.new) ? (<div>{each.new}</div>) : null}
                                 </div>
                                 <div className='card06-heart'>
                                     <i className='fa-regular fa-heart' />
                                 </div>
                             </div>
+                            </Link>
+
                         )
                     })}
 

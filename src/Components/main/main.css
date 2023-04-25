@@ -234,7 +234,9 @@ font-size: 20px;
 width: 100%;
 overflow: auto;
 display: flex;
+/* justify-content: center; */
 scroll-behavior: smooth;
+position: relative;
 
 }
 

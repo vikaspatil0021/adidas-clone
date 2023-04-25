@@ -72,7 +72,7 @@ const arr = [
 ]
 const Footer = (props) => {
     var token01 = localStorage.getItem("Token01");
-    const cartData = useSelector((state) => state.cartreducer.cart);
+    const cartData = useSelector((state) => state.cart);
 
     const [seed, setSeed] = useState('');
     const [auth, setAuth] = useState(false);

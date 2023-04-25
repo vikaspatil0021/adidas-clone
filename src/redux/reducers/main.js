@@ -1,9 +1,10 @@
 import {combineReducers} from "redux";
 
-import { cartreducer } from "./reducer";
+import { cartreducer, rvitemreducer } from "./reducer";
 
 const rootReducer = combineReducers({
-    cartreducer
+    cart:cartreducer,
+    recentViewedItems:rvitemreducer
 })
 
 export default rootReducer

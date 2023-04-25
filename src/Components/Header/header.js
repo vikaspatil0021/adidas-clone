@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 const Header = (props) => {
 
   var token01 = localStorage.getItem("Token01");
-  const cartData = useSelector((state) => state.cartreducer.cart);
+  const cartData = useSelector((state) => state.cart);
 
   const [auth, setAuth] = useState(false);
   useEffect(() => {
