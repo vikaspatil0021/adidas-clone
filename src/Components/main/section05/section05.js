@@ -145,9 +145,9 @@ const Section05 = () => {
             } else {
                 val = "280";
             }
+            setSelectedTab([])
         }
 
-        // setSelectedTab([])
 
         document.querySelector('#section05-movingArrow').style.transform = "translateX(" + val + "px)";
     }
