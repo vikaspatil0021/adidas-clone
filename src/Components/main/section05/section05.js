@@ -125,7 +125,6 @@ const Section05 = () => {
 
             section05scrollBar.forEach((each) => {
                 each.scrollLeft = 0;
-                console.log('0');
             })
 
             if (clickedId == "men") {
@@ -148,7 +147,7 @@ const Section05 = () => {
             }
         }
 
-        setSelectedTab([])
+        // setSelectedTab([])
 
         document.querySelector('#section05-movingArrow').style.transform = "translateX(" + val + "px)";
     }
