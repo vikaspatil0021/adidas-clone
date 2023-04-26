@@ -103,11 +103,16 @@ const Section05 = () => {
 
 
         if (clickedId == "men") {
+            setSelectedTab([])
             setGender('men');
         } else if (clickedId == "women") {
+            setSelectedTab([])
+
             setGender('women');
 
         } else {
+            setSelectedTab([])
+
             setGender('kids')
         }
 
