@@ -125,6 +125,7 @@ const Section05 = () => {
 
             section05scrollBar.forEach((each) => {
                 each.scrollLeft = 0;
+                console.log('0');
             })
 
             if (clickedId == "men") {
@@ -240,7 +241,7 @@ const Section05 = () => {
                             : selectedTab.map((each) => {
                                 return (
                                     <div className='d-flex mobileScroller'>
-
+                                                
                                         <div className='card05-category'>
                                             <div className='category-title'>
                                                 {each.categoryTitle}
