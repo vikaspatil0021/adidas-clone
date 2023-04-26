@@ -101,7 +101,6 @@ const Section05 = () => {
 
 
 
-        setSelectedTab([])
 
         if (clickedId == "men") {
             // setSelectedTab([])
@@ -148,6 +147,7 @@ const Section05 = () => {
             }
         }
 
+        setSelectedTab([])
 
         document.querySelector('#section05-movingArrow').style.transform = "translateX(" + val + "px)";
     }
