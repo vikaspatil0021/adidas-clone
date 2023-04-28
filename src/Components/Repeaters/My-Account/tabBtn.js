@@ -29,5 +29,6 @@ export const tabBtn = (tabId,className)=>{
         clickedTabContent.classList.remove('d-none')
     }
 
+    window.scrollTo(0,0)
 
 }

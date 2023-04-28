@@ -34,6 +34,7 @@ const MyAccount = () => {
 
         if (window.location.pathname === '/my-account/profile') {
             tabBtn('myAcc-account', 'active-tab')
+
         } else if (window.location.pathname === '/my-account/order-history') {
             tabBtn('myAcc-orders', 'active-tab')
 

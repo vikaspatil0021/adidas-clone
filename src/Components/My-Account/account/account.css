@@ -98,6 +98,9 @@ font-weight: bold;
         padding-top: 0;
 
     }
+    .Acc-card:hover{
+        border: #fff solid 1px;
+    }
 
     .Acc-address{
         grid-template-columns: 1fr;
