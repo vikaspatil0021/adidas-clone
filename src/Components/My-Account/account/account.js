@@ -14,7 +14,9 @@ const Account = (props) => {
 
   const [address, setAddress] = useState([])
   useEffect(() => {
-    axios.get(process.env.REACT_APP_SERVER_URL + '/address/' + email01)
+    axios.get(process.env.REACT_APP_SERVER_URL + '/address/' + email01,{headers:{
+      "Authorization":"Bearer " + localStorage.getItem('Token01')
+    }})
       .then((res) => {
         console.log(res.data);
         setAddress(res.data)
@@ -81,7 +83,9 @@ const Account = (props) => {
 
   const deleteAccount = async () => {
 
-    await axios.post(process.env.REACT_APP_SERVER_URL + '/deleteAccount', { email: email01 })
+    await axios.post(process.env.REACT_APP_SERVER_URL + '/deleteAccount', { email: email01 },{headers:{
+      "Authorization":"Bearer " + localStorage.getItem('Token01')
+    }})
       .then((res) => {
         console.log(res.data);
       }).catch((err) => {
@@ -101,7 +105,9 @@ const Account = (props) => {
 
 
   const removeAddress = async (index) => {
-    await axios.post(process.env.REACT_APP_SERVER_URL + '/address/crud/remove', { email: email01, index:index})
+    await axios.post(process.env.REACT_APP_SERVER_URL + '/address/crud/remove', { email: email01, index:index},{headers:{
+      "Authorization":"Bearer " + localStorage.getItem('Token01')
+    }})
       .then((res) => {
         console.log(res.data);
         setSeed(Math.random())

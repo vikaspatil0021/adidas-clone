@@ -42,7 +42,7 @@ const Address = (props) => {
 
 
     }
-    console.log(props.address.length);
+
     const saveAddress = async () => {
 
         const sendData = {
@@ -55,7 +55,9 @@ const Address = (props) => {
             state: data.state
         }
         if (verifyData() === 8 && props.address.length<5) {
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/address/crud/add', { email: email01, address: sendData })
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/address/crud/add', { email: email01, address: sendData },{headers:{
+      "Authorization":"Bearer " + localStorage.getItem('Token01')
+    }})
             .then((res)=>{
                 console.log(res.data);
                 props.modalTrigger('Acc-addressModal')
@@ -174,7 +176,7 @@ const Address = (props) => {
                         Please enter your Land Mark
                     </div>
 
-                    <div className='d-flex'>
+                    <div className='d-flex mt-2'>
                         <div className='inputGroup col-6 pe-1'>
                             <input id='addressCity' type='text' value={data.city} onChange={(e) => setData({
                                 city: e.target.value,
@@ -213,7 +215,7 @@ const Address = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div class='d-flex'>
+                    <div class='d-flex '>
                         <div className='col-6'>
 
                             <div id='addressCity-warning' className=' text-muted fw-light d-none'>
@@ -228,7 +230,7 @@ const Address = (props) => {
                         </div>
                     </div>
 
-                    <div className='d-flex'>
+                    <div className='d-flex mt-2'>
                         <div className='inputGroup col-6 pe-1'>
                             <input id='addressState' type='text' value={data.state} onChange={(e) => setData({
                                 state: e.target.value,

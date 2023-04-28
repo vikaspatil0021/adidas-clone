@@ -82,7 +82,11 @@ const AccPasswordModal = (props) => {
         }
         console.log(arr);
         if (arr.length === 2) {
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/matchPassword', { email: props.email01, password: data.Password })
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/matchPassword', { email: props.email01, password: data.Password }, {
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('Token01')
+                }
+            })
                 .then((res) => {
                     if (res.data == 'good') {
 
@@ -102,12 +106,16 @@ const AccPasswordModal = (props) => {
 
             if (arr.length === 3) {
                 console.log(arr);
-                await axios.post(process.env.REACT_APP_SERVER_URL + '/changePassword', { email: props.email01, password: data.newPassword })
-                .then((res)=>{
-                    if(res.data=='good'){
-                        props.modalTrigger('Acc-passwordModal');
+                await axios.post(process.env.REACT_APP_SERVER_URL + '/changePassword', { email: props.email01, password: data.newPassword }, {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem('Token01')
                     }
                 })
+                    .then((res) => {
+                        if (res.data == 'good') {
+                            props.modalTrigger('Acc-passwordModal');
+                        }
+                    })
 
             }
 
