@@ -178,14 +178,15 @@ const AccountLogin = (props) => {
         const emailInputWarn = document.querySelector('#loginEmailAcc-warning');
         const arr = [];
         if (data.Email == '' || !(data.Email).includes('@gmail.com') || (data.Email).includes(' ')) {
-            document.querySelector('#loginPasswordAcc').style.borderBottom = "3px solid red";
+            document.querySelector('#loginEmailAcc').style.borderBottom = "3px solid red";
+            
             emailInputWarn.classList.remove('d-none');
             arr.push('bad');
 
         }
         if (data.Password == '') {
             passwordInputWarn.classList.remove('d-none');
-            document.querySelector('#loginPasswordAcc').style.borderBottom = "3px solid red";
+            document.querySelector('#loginEmailAcc').style.borderBottom = "3px solid red";
             passwordInputWarn.classList.replace("text-muted", 'text-danger');
             passwordCheckIcon.classList.remove('d-none')
             arr.push('bad');

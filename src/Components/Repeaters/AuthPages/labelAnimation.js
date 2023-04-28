@@ -105,6 +105,25 @@ export const labelAnimation = (inputId, state, type, data) => {
                 }
             }
 
+        }else{
+            checkIcon.classList.remove('d-none')
+
+            if (data == '') {
+                inputWarn.classList.remove('d-none')
+                input.style.borderBottom = "3px solid red";
+                inputWarn.classList.replace("text-muted", 'text-danger')
+                checkIcon.classList.replace('fa-check', 'fa-xmark');
+        checkIcon.classList.remove('text-success');
+
+                ele.classList.remove("inputLabelAni");
+            } else {
+                input.style.borderBottom = "3px solid green";
+                inputWarn.classList.replace("text-danger", 'text-muted')
+                checkIcon.classList.replace('fa-xmark', 'fa-check');
+        checkIcon.classList.add('text-success');
+
+            }
+
         }
     }
 }

@@ -15,7 +15,7 @@ const [seed,setSeed] = useState(0)
     const [categoryUrl, setUrl] = useState((url.includes('/men'))?url.substring(5):(url.includes('/kids'))?url.substring(6):url.substring(7));
     const gender = (url.includes('/men'))?"/men/":(url.includes('/kids'))?"/kids/":"/women/";
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + gender + categoryUrl)
+        axios.get(process.env.REACT_APP_SERVER_URL+'/stock' + gender + categoryUrl)
             .then((res) => {
                 setProductData(res.data);
                 setrequestedData(res.data);

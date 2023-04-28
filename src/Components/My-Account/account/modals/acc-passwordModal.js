@@ -105,7 +105,7 @@ const AccPasswordModal = (props) => {
                 await axios.post(process.env.REACT_APP_SERVER_URL + '/changePassword', { email: props.email01, password: data.newPassword })
                 .then((res)=>{
                     if(res.data=='good'){
-                        props.modalEditPassword();
+                        props.modalTrigger('Acc-passwordModal');
                     }
                 })
 
@@ -168,7 +168,7 @@ const AccPasswordModal = (props) => {
                         </button>
                     </div>
                 </div>
-                <div role='button' className='EditPassword-modal' onClick={() => { props.modalEditPassword(); }}>
+                <div role='button' className='EditPassword-modal' onClick={() => { props.modalTrigger('Acc-passwordModal'); }}>
                     <i class="fa-solid fa-xmark fs-2"></i>
 
                 </div>

@@ -8,7 +8,7 @@ const Section06 = () => {
     const [currentData,setCurrentData] = useState([])
 console.log(currentData);
     useEffect(()=>{
-        axios.get(process.env.REACT_APP_SERVER_URL + '/men/All')
+        axios.get(process.env.REACT_APP_SERVER_URL + '/stock/men/All')
                 .then((res) => {
                     var data = res.data.reverse().filter((each,index)=>{
                         if((each.category==='Footwear' || each.category==='Clothing')&&index<20){

@@ -30,7 +30,7 @@ const ProductPage = () => {
             const imges = info.colors[0];
             setArrImg([imges.img1, imges.img2, imges.img3, imges.img4])
 
-            axios.get(process.env.REACT_APP_SERVER_URL + '/' + genderurl + '/' + info.category)
+            axios.get(process.env.REACT_APP_SERVER_URL + '/stock/' + genderurl + '/' + info.category)
                 .then((res) => {
                     // console.log(res.data);
 
@@ -44,7 +44,7 @@ const ProductPage = () => {
 
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + url)
+        axios.get(process.env.REACT_APP_SERVER_URL + '/product'+ url)
             .then((res) => {
                 // console.log(res.data);
                 setInfo(res.data[0])

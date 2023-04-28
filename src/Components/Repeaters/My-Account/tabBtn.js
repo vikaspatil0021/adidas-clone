@@ -15,8 +15,10 @@ export const tabBtn = (tabId,className)=>{
 
 
     const clickedTab  = document.querySelector('#'+ tabId);
-    
-    clickedTab.classList.add(className);
+    if(clickedTab){
+
+        clickedTab.classList.add(className);
+    }
 
 
 
