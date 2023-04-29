@@ -4,7 +4,7 @@ import { addButtonClass } from '../../Repeaters/addButtonClass';
 import { checkMark } from '../../Repeaters/AuthPages/checkMark';
 
 const FilterProducts = (props) => {
-
+    
     const containerToggle = (id) => {
         const eleI = document.querySelector('#i-' + id);
         const eleContent = document.querySelector('#option-content-' + id);

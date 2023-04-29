@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './stock.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -7,15 +7,15 @@ import FilterProducts from './filter/filterProducts';
 const Stock = () => {
     const url = window.location.pathname;
 
-const [seed,setSeed] = useState(0)
+    const [seed, setSeed] = useState(0)
 
     const [productData, setProductData] = useState([]);
     const [requestedData, setrequestedData] = useState([]);
 
-    const [categoryUrl, setUrl] = useState((url.includes('/men'))?url.substring(5):(url.includes('/kids'))?url.substring(6):url.substring(7));
-    const gender = (url.includes('/men'))?"/men/":(url.includes('/kids'))?"/kids/":"/women/";
+    const [categoryUrl, setUrl] = useState((url.includes('/men')) ? url.substring(5) : (url.includes('/kids')) ? url.substring(6) : url.substring(7));
+    const gender = (url.includes('/men')) ? "/men/" : (url.includes('/kids')) ? "/kids/" : "/women/";
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL+'/stock' + gender + categoryUrl)
+        axios.get(process.env.REACT_APP_SERVER_URL + '/stock' + gender + categoryUrl)
             .then((res) => {
                 setProductData(res.data);
                 setrequestedData(res.data);
@@ -40,17 +40,17 @@ const [seed,setSeed] = useState(0)
         document.querySelector('#category-' + id).classList.add('categoryOption-active');
         setSeed(Math.random())
         setUrl(id);
-        
+
         window.scrollTo(0, 0)
     }
 
     useEffect(() => {
-        if(url.includes('/men')){
+        if (url.includes('/men')) {
             var st = url.substring(5);
-        }else if(url.includes('/women')){
-             st = url.substring(7);
+        } else if (url.includes('/women')) {
+            st = url.substring(7);
 
-        }else{
+        } else {
             st = url.substring(6);
 
         }
@@ -58,9 +58,9 @@ const [seed,setSeed] = useState(0)
         activeCategoryOption(st);
 
     }, [])
-        
-        var x = window.matchMedia("(max-width: 965px)");
-        
+
+    var x = window.matchMedia("(max-width: 965px)");
+
 
     const changeImgOnHover = (productId, action) => {
         const filterArr = productData.filter((each) => {
@@ -97,12 +97,41 @@ const [seed,setSeed] = useState(0)
         document.querySelector('#opacityBackColor').classList.toggle('d-none');
         document.querySelector('.filter-modal').classList.toggle('width-filterModal')
     }
+
+    const [selectVal,setSelectVal]  = useState(1);
+    const [pos,setPos] = useState({firstElement:0,lastElement:12})
+    const noOfOptions = Math.ceil(productData.length / 12)
+
+   
+
+    console.log(pos,selectVal);
+
+    useEffect(()=>{
+        setPos({firstElement:selectVal*12 - 12,lastElement:selectVal*12})
+
+
+    },[selectVal])
+
+    useEffect(()=>{
+
+        var selectDiv = document.querySelector('.select-div-stock select');
+        if(selectDiv){
+            selectDiv.value  = 1
+        }
+        setSelectVal(1)
+        setPos({firstElement:0,lastElement:12})
+
+    },[productData])
+
+
+
+
     if (url == '/men' || url == '/men/') {
         window.location.pathname = '/men/All';
-    }else if(url == '/women' || url ==='/women/'){
+    } else if (url == '/women' || url === '/women/') {
         window.location.pathname = '/women/All';
 
-    }else if(url == '/kids' || url ==='/kids/'){
+    } else if (url == '/kids' || url === '/kids/') {
         window.location.pathname = '/kids/All';
 
     } else {
@@ -116,7 +145,7 @@ const [seed,setSeed] = useState(0)
                     <div className='d-flex justify-content-between align-items-center'>
 
                         <h1 className='my-3'>
-                            <em>{(url.includes('/men'))?"MEN":(url.includes('/kids'))?"KIDS":"WOMEN"} [{productData.length}]</em>
+                            <em>{(url.includes('/men')) ? "MEN" : (url.includes('/kids')) ? "KIDS" : "WOMEN"} [{productData.length}]</em>
                         </h1>
                         <div>
                             {(x.matches) ?
@@ -165,16 +194,16 @@ const [seed,setSeed] = useState(0)
                     </div>
                     <div key={seed}>
 
-                    <FilterProducts setProductData={setProductData} requestedData={requestedData} filterModalToggle={filterModalToggle} setSeed={setSeed} />
+                        <FilterProducts setProductData={setProductData} requestedData={requestedData} filterModalToggle={filterModalToggle} setSeed={setSeed} />
                     </div>
-                                {(productData.length === 0)?<div className='d-flex justify-content-center'><div className='fs-3 p-5'>No products available</div></div>:null}
+                    {(productData.length === 0) ? <div className='d-flex justify-content-center'><div className='fs-3 p-5'>No products available</div></div> : null}
                     {(requestedData.length === 0) ? <div className='d-flex justify-content-center'><div class="pre-loader"></div></div> :
                         <div className='products-grid'>
-                            {productData.map((each) => {
-                                
+                            {productData.slice(pos.firstElement,pos.lastElement).map((each) => {
 
-                                    return (
-                                        <Link to={url + '/' +each.productId}>
+
+                                return (
+                                    <Link to={url + '/' + each.productId}>
 
                                         <div className='product-card' onMouseEnter={() => displayColors(each.productId, 'enter')} onMouseLeave={() => displayColors(each.productId, 'leave')} >
                                             <picture >
@@ -217,12 +246,33 @@ const [seed,setSeed] = useState(0)
                                                 <i className='fa-regular fa-heart' />
                                             </div>
                                         </div>
-                                        </Link>
+                                    </Link>
 
-                                    )
-                                    
-                                })}
+                                )
+
+                            })}
                         </div>}
+                    <div className='d-flex justify-content-center'>
+
+                    <div className='select-div-stock'>
+                        <select onChange={(e) => { 
+                            setSelectVal( parseInt(e.target.value));
+                            window.scrollTo(0,0)
+                              }}>
+                            
+                            {
+                                [...Array(noOfOptions).keys()].map((each)=>{
+                                    return <option>{each+1}</option>
+
+                                })
+                            }
+                        </select>
+                        <i class='fa-solid fa-angle-down cart-Oty-i' />
+                    </div>
+
+                    </div>
+
+
 
                 </div>
             </div>

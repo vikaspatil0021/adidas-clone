@@ -121,6 +121,19 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     padding-top: 2px;
 }
+.select-div-stock{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+}
+@media (max-width:965px) {
+    .select-div-stock select{
+    border: #000 1px solid;
+    padding: 10px 40px 10px 20px;
+    }
+    
+}
 
 
 .colors-optionImg{

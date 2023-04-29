@@ -29,9 +29,9 @@ const Header = (props) => {
   const [seed, setSeed] = useState('');
   const dHeaderContent = ["SIGNUP & GET 15% OFF", "FREE DELIVERY", "UPI & NET BANKING AVAILABLE"]
 
-  setInterval(() => {
-    document.getElementById("dis-header").style.opacity = 0;
-  }, 4920)
+  // setInterval(() => {
+  //   document.getElementById("dis-header").style.opacity = 0;
+  // }, 4920)
   let count = 1;
   setInterval(() => {
     document.getElementById("dis-header").style.opacity = 1;
