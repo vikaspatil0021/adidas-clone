@@ -188,6 +188,7 @@
 .desktop-heart-icon {
     display: flex;
     align-items: center;
+    position: relative;
 }
 .header-cart{
     display: block;

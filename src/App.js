@@ -14,6 +14,7 @@ import Orders from './Components/My-Account/orders/orders';
 import Stock from './Components/Stock/stock';
 import ProductPage from './Components/productPage/productPage';
 import Cart from './Components/cart/cart';
+import WishList from './Components/wishList/WishList';
 
 inject();
 
@@ -45,6 +46,7 @@ function App() {
             <Route path="/account-login" exact element={<AccountLogin changeRe={changeRe} />} />
             <Route path="/account-register" exact element={<AccountRegister changeRe={changeRe} />} />
             <Route path="/cart" exact element={<Cart />} />
+            <Route path="/wishlist" exact element={<WishList />} />
 
             <Route path="/:gender/:category/:productId" exact element={<ProductPage />} />
 

@@ -3,8 +3,11 @@ import './stock.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import FilterProducts from './filter/filterProducts';
+import wishlistTrigger from '../Repeaters/WishList/WishListTrigger';
 
 const Stock = () => {
+    const email01 = localStorage.getItem('Email') || null;
+
     const url = window.location.pathname;
 
     const [seed, setSeed] = useState(0)
@@ -98,30 +101,48 @@ const Stock = () => {
         document.querySelector('.filter-modal').classList.toggle('width-filterModal')
     }
 
-    const [selectVal,setSelectVal]  = useState(1);
-    const [pos,setPos] = useState({firstElement:0,lastElement:12})
+    const [selectVal, setSelectVal] = useState(1);
+    const [pos, setPos] = useState({ firstElement: 0, lastElement: 12 })
     const noOfOptions = Math.ceil(productData.length / 12)
 
-   
-
-    console.log(pos,selectVal);
-
-    useEffect(()=>{
-        setPos({firstElement:selectVal*12 - 12,lastElement:selectVal*12})
 
 
-    },[selectVal])
+    console.log(pos, selectVal);
 
-    useEffect(()=>{
+    useEffect(() => {
+        setPos({ firstElement: selectVal * 12 - 12, lastElement: selectVal * 12 })
+
+
+    }, [selectVal])
+
+    useEffect(() => {
 
         var selectDiv = document.querySelector('.select-div-stock select');
-        if(selectDiv){
-            selectDiv.value  = 1
+        if (selectDiv) {
+            selectDiv.value = 1
         }
         setSelectVal(1)
-        setPos({firstElement:0,lastElement:12})
+        setPos({ firstElement: 0, lastElement: 12 })
 
-    },[productData])
+    }, [productData]);
+
+// wishlist icon check
+    const [wlData, setWLData] = useState([])
+
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + email01, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token01')
+            }
+        })
+            .then((res) => {
+                console.log(res.data);
+                setWLData(res.data)
+            }).catch((err) => {
+                console.log(err);
+            })
+    }, [])
+
 
 
 
@@ -199,54 +220,65 @@ const Stock = () => {
                     {(productData.length === 0) ? <div className='d-flex justify-content-center'><div className='fs-3 p-5'>No products available</div></div> : null}
                     {(requestedData.length === 0) ? <div className='d-flex justify-content-center'><div class="pre-loader"></div></div> :
                         <div className='products-grid'>
-                            {productData.slice(pos.firstElement,pos.lastElement).map((each) => {
+                            {productData.slice(pos.firstElement, pos.lastElement).map((each) => {
 
 
                                 return (
-                                    <Link to={url + '/' + each.productId}>
+                                    <div className='position-relative'>
+                                        <Link to={url + '/' + each.productId}>
 
-                                        <div className='product-card' onMouseEnter={() => displayColors(each.productId, 'enter')} onMouseLeave={() => displayColors(each.productId, 'leave')} >
-                                            <picture >
-                                                <div className='position-relative' >
+                                            <div className='product-card' onMouseEnter={() => displayColors(each.productId, 'enter')} onMouseLeave={() => displayColors(each.productId, 'leave')} >
+                                                <picture >
+                                                    <div className='position-relative' >
 
-                                                    <img id={each.productId} src={each.colors[0].img1} decoding="async" loading="lazy" onMouseEnter={() => changeImgOnHover(each.productId, 'enter')} onMouseLeave={() => changeImgOnHover(each.productId, 'leave')} />
-                                                    <div className='product-priceTag'>
-                                                        ₹{each.priceTag}
-
-                                                    </div>
-                                                </div>
-                                            </picture>
-
-                                            <div id={'hoverImg' + each.productId} className='hoverImg-grid d-none'>
-                                                {each.colors.map((subEach) => {
-                                                    return (
-
-                                                        <div>
-                                                            <img id={"hoverImg" + each.productId} src={subEach.img1} className='colors-optionImg' decoding="async" loading="lazy" onMouseEnter={() => changeImgOnHover(each.productId, subEach.img1)} onMouseLeave={() => changeImgOnHover(each.productId, 'leave')} />
+                                                        <img id={each.productId} src={each.colors[0].img1} decoding="async" loading="lazy" onMouseEnter={() => changeImgOnHover(each.productId, 'enter')} onMouseLeave={() => changeImgOnHover(each.productId, 'leave')} />
+                                                        <div className='product-priceTag'>
+                                                            ₹{each.priceTag}
 
                                                         </div>
-                                                    )
-                                                })
-                                                }
-                                            </div>
+                                                    </div>
+                                                </picture>
 
-                                            <div className='pb-4 p-2 fs'>
+                                                <div id={'hoverImg' + each.productId} className='hoverImg-grid d-none'>
+                                                    {each.colors.map((subEach) => {
+                                                        return (
 
-                                                <div className='fw-light fw-bold'>
-                                                    {each.name}
+                                                            <div>
+                                                                <img id={"hoverImg" + each.productId} src={subEach.img1} className='colors-optionImg' decoding="async" loading="lazy" onMouseEnter={() => changeImgOnHover(each.productId, subEach.img1)} onMouseLeave={() => changeImgOnHover(each.productId, 'leave')} />
+
+                                                            </div>
+                                                        )
+                                                    })
+                                                    }
                                                 </div>
-                                                <span className='fw-light text-muted'>
-                                                    {each.tag}
-                                                </span>
-                                                <div className='fw-light text-muted'>
-                                                    {each.colors.length + " colors"}
+
+                                                <div className='pb-4 p-2 fs'>
+
+                                                    <div className='fw-light fw-bold'>
+                                                        {each.name}
+                                                    </div>
+                                                    <span className='fw-light text-muted'>
+                                                        {each.tag}
+                                                    </span>
+                                                    <div className='fw-light text-muted'>
+                                                        {each.colors.length + " colors"}
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className='card06-heart'>
-                                                <i className='fa-regular fa-heart' />
-                                            </div>
+                                        </Link>
+                                        <div id={'heart' + each.productId} className='stock-heartIcon' onClick={() => wishlistTrigger({
+                                            productId: each.productId,
+                                            name: each.name,
+                                            img1: each.colors[0].img1,
+                                            priceTag: each.priceTag,
+                                            url: url + '/' + each.productId
+                                        })}>
+
+                                            {(each.wishlist)?<i className='fa-solid fa-heart' />:<i id={'i'+ each.productId} className='fa-regular fa-heart' />
+                                                
+                                              }
                                         </div>
-                                    </Link>
+                                    </div>
 
                                 )
 
@@ -254,21 +286,21 @@ const Stock = () => {
                         </div>}
                     <div className='d-flex justify-content-center'>
 
-                    <div className='select-div-stock'>
-                        <select onChange={(e) => { 
-                            setSelectVal( parseInt(e.target.value));
-                            window.scrollTo(0,0)
-                              }}>
-                            
-                            {
-                                [...Array(noOfOptions).keys()].map((each)=>{
-                                    return <option>{each+1}</option>
+                        <div className='select-div-stock'>
+                            <select onChange={(e) => {
+                                setSelectVal(parseInt(e.target.value));
+                                window.scrollTo(0, 0)
+                            }}>
 
-                                })
-                            }
-                        </select>
-                        <i class='fa-solid fa-angle-down cart-Oty-i' />
-                    </div>
+                                {
+                                    [...Array(noOfOptions).keys()].map((each) => {
+                                        return <option>{each + 1}</option>
+
+                                    })
+                                }
+                            </select>
+                            <i class='fa-solid fa-angle-down cart-Oty-i' />
+                        </div>
 
                     </div>
 

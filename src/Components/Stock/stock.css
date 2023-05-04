@@ -3,6 +3,14 @@
     width: 100%;
 }
 
+.stock-heartIcon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    margin: 10px;
+    cursor: auto;
+}
 .quickLink{
     margin: 0 10px;
     text-decoration: underline;

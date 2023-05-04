@@ -6,6 +6,7 @@ import { AfterCheckUserLogin, AfterCheckUserRegister } from './afterCheckUser';
 import "./loginModal.css"
 
 const LoginModal = (props) => {
+    
     const [data, setData] = useState({
         Email: ''
     });

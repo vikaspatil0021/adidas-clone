@@ -99,8 +99,8 @@ const AfterCheckUserLogin = (props) => {
             localStorage.setItem("Token01", res.data.token);
             localStorage.setItem("Email", data.Email);
 
-            props.toggleLoginModal()
             props.changeRe();
+            props.toggleLoginModal()
 
           }
 
@@ -310,8 +310,8 @@ const AfterCheckUserRegister = (props) => {
             localStorage.setItem("Token01", res.data.token);
             localStorage.setItem("Email", data.Email);
 
+            props.changeRe();
             props.toggleLoginModal();
-            props.changeRe()
 
           }
         }).catch((err) => {

@@ -9,6 +9,7 @@ import HamburgerContent from './mobileHamburger/hamburgerContent';
 
 import LoginModal from '../AuthPages/loginModal/loginModal';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 const Header = (props) => {
@@ -28,14 +29,13 @@ const Header = (props) => {
   // Fading effectr in the discount header==============>
   const [seed, setSeed] = useState('');
   const dHeaderContent = ["SIGNUP & GET 15% OFF", "FREE DELIVERY", "UPI & NET BANKING AVAILABLE"]
-
-  // setInterval(() => {
-  //   document.getElementById("dis-header").style.opacity = 0;
-  // }, 4920)
+  const dHead = useRef("SIGNUP & GET 15% OFF")
+ 
   let count = 1;
   setInterval(() => {
     document.getElementById("dis-header").style.opacity = 1;
-    document.getElementById("dis-headerContent").innerHTML = dHeaderContent[count];
+    // document.getElementById("dis-headerContent").innerHTML = dHeaderContent[count];
+    dHead.current = dHeaderContent[count]
     count++;
     if (count >= dHeaderContent.length) {
       count = 0;
@@ -65,7 +65,7 @@ const Header = (props) => {
   }
 
   const path = window.location.pathname;
-  const result = path.includes('/men') || path.includes('/my-account') || path.includes('/women') ||path.includes('/kids') ||path.includes('/cart')
+  const result = path.includes('/men') || path.includes('/my-account') || path.includes('/women') || path.includes('/kids') || path.includes('/cart')
   // header animation 
   if (!result) {
 
@@ -97,13 +97,31 @@ const Header = (props) => {
     }, 500);
   }
 
+  const [wlData, setWLData] = useState([]);
+
+
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + localStorage.getItem('Email'), {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token01')
+            }
+        })
+            .then((res) => {
+                console.log(res.data);
+                setWLData(res.data)
+            }).catch((err) => {
+                console.log(err);
+            })
+    }, [])
+
   return (
     <header id='sticky-top-header' className="fixed-top bg-white border-bottom">
       <div>
         <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center  discount-header'>
           <div id='dis-header' className='my-2 d-flex align-items-center'>
             <div id='dis-headerContent'>
-              SIGNUP & GET 15% OFF
+              {dHead.current}
+
             </div>
             <i class="fa-solid fa-angle-down mx-3 dis-arrowDown fs-6"></i>
           </div>
@@ -290,20 +308,26 @@ const Header = (props) => {
                   <input placeholder='Search' className='search-mobile-input' />
                 </div>
               </div>
+              <a href='/wishlist' className='d-flex align-items-center'>
 
-              <div className='me-3 ms-2 desktop-heart-icon'>
-                <i class="fa-regular fa-heart fs-4"></i>
-              </div>
-                  <a href='/cart'>
+                <div className='me-3 ps-2 py-2 desktop-heart-icon' role='button'>
+                  <i class="fa-regular fa-heart fs-4"></i>
+                  {(wlData.length == 0) ? null :
 
-              <div className='header-cart p-0 me-3 ms-2 mb-1' role='button'>
-                <i class="bi bi-cart2 fs-4"></i>
-                {(cartData.length==0)?null:
-                <span id='loginBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{cartData.length}</span>
-                }
+                  <span id='wishlistBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{wlData.length}</span>
+                  }
+                </div>
+              </a>
+              <a href='/cart'>
 
-              </div>
-                  </a>
+                <div className='header-cart p-0 me-3 ms-2 mb-1' role='button'>
+                  <i class="bi bi-cart2 fs-4"></i>
+                  {(cartData.length == 0) ? null :
+                    <span id='loginBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{cartData.length}</span>
+                  }
+
+                </div>
+              </a>
             </div>
 
 
