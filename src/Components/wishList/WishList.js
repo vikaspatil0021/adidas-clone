@@ -35,7 +35,7 @@ const WishList = () => {
                     {wlData.length} items
                 </div>
 
-                <div className='products-grid'>
+                <div key={wlcountData} className='products-grid'>
                     {wlData.map((each) => {
                         return (
 
