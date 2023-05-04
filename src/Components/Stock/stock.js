@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import FilterProducts from './filter/filterProducts';
 import wishlistTrigger from '../Repeaters/WishList/WishListTrigger';
+import { useDispatch } from 'react-redux';
 
 const Stock = () => {
     const email01 = localStorage.getItem('Email') || null;
+    const dispatch = useDispatch();
 
     const url = window.location.pathname;
 
@@ -126,7 +128,7 @@ const Stock = () => {
 
     }, [productData]);
 
-// wishlist icon check
+    // wishlist icon check
     const [wlData, setWLData] = useState([])
 
     useEffect(() => {
@@ -141,7 +143,7 @@ const Stock = () => {
             }).catch((err) => {
                 console.log(err);
             })
-    }, [])
+    }, [selectVal])
 
 
 
@@ -219,7 +221,7 @@ const Stock = () => {
                     </div>
                     {(productData.length === 0) ? <div className='d-flex justify-content-center'><div className='fs-3 p-5'>No products available</div></div> : null}
                     {(requestedData.length === 0) ? <div className='d-flex justify-content-center'><div class="pre-loader"></div></div> :
-                        <div className='products-grid'>
+                        <div key={selectVal} className='products-grid'>
                             {productData.slice(pos.firstElement, pos.lastElement).map((each) => {
 
 
@@ -266,17 +268,26 @@ const Stock = () => {
                                                 </div>
                                             </div>
                                         </Link>
-                                        <div id={'heart' + each.productId} className='stock-heartIcon' onClick={() => wishlistTrigger({
-                                            productId: each.productId,
-                                            name: each.name,
-                                            img1: each.colors[0].img1,
-                                            priceTag: each.priceTag,
-                                            url: url + '/' + each.productId
-                                        })}>
+                                        <div id={'heart' + each.productId} className='stock-heartIcon' onClick={() => {
+                                            wishlistTrigger({
+                                                productId: each.productId,
+                                                name: each.name,
+                                                img1: each.colors[0].img1,
+                                                priceTag: each.priceTag,
+                                                url: url + '/' + each.productId
+                                            });
+                                            setTimeout(() => {
 
-                                            {(each.wishlist)?<i className='fa-solid fa-heart' />:<i id={'i'+ each.productId} className='fa-regular fa-heart' />
-                                                
-                                              }
+                                                dispatch({ type: "CHANGE" });
+                                            }, 800)
+                                        }}>
+
+                                            {(wlData.map((wlEach) => {
+                                                return wlEach.productId
+
+                                            }).includes(each.productId)) ? <i id={'i' + each.productId} className='fa-solid fa-heart' /> : <i id={'i' + each.productId} className='fa-regular fa-heart' />
+
+                                            }
                                         </div>
                                     </div>
 

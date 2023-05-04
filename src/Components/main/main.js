@@ -133,9 +133,7 @@ const Main = () => {
                           </div>
 
                         </div>
-                        <div className='card06-heart'>
-                          <i className='fa-regular fa-heart' />
-                        </div>
+                        
                       </div>
                     </a>
                   )

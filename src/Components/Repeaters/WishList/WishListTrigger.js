@@ -1,8 +1,17 @@
 import axios from "axios";
 
-const wishlistTrigger = (productInfo) => {
+
+const wishlistTrigger = (productInfo,btn) => {
+
     const email01 = localStorage.getItem('Email') || null
-    const Ele = document.querySelector('#heart' + productInfo.productId + ' i');
+    if(btn==='btn'){
+        var Ele = document.querySelector('#btn' + productInfo.productId + ' i');
+
+    }else{
+
+        Ele = document.querySelector('#heart' + productInfo.productId + ' i');
+    }
+ console.log(Ele);
 
     if (email01) {
         if (Ele.classList.contains('fa-regular')) {

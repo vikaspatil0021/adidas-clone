@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ADD_ITEM, ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART } from '../../redux/actions/action';
 import wishlistTrigger from '../Repeaters/WishList/WishListTrigger';
 const ProductPage = () => {
+    const email01 = localStorage.getItem('Email') || null;
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -16,6 +17,23 @@ const ProductPage = () => {
         document.getElementById("sticky-top-header").style.top = "auto !important";
 
     }, [])
+    // wishlist icon check
+    const [wlData, setWLData] = useState([])
+
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + email01, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('Token01')
+            }
+        })
+            .then((res) => {
+                console.log(res.data);
+                setWLData(res.data)
+            }).catch((err) => {
+                console.log(err);
+            })
+    }, [])
+
 
 
     const [info, setInfo] = useState('');
@@ -369,8 +387,25 @@ const ProductPage = () => {
 
 
                             </button>
-                            <div className='regular-heart'>
-                                <i class="fa-regular fa-heart fs-5"></i>
+                            <div id={'btn' + info.productId} className='regular-heart' onClick={() => {
+                                wishlistTrigger({
+                                    productId: info.productId,
+                                    name: info.name,
+                                    img1: info.colors[0].img1,
+                                    priceTag: info.priceTag,
+                                    url: window.location.pathname
+                                },'btn');
+                                setTimeout(()=>{
+
+                                dispatch({ type: "CHANGE" });
+                                },800)
+                            }}>
+                                {(wlData.map((wlEach) => {
+                                    return wlEach.productId
+
+                                }).includes(info.productId)) ? <i id={'i' + info.productId} className='fa-solid fa-heart' /> : <i id={'i' + info.productId} className='fa-regular fa-heart' />
+
+                                }
                             </div>
                         </div>
                         <div className='description'>
@@ -396,30 +431,30 @@ const ProductPage = () => {
                                     }
                                 }).map((each) => {
                                     return (
-                                            <a href={'/' + genderurl + '/' + each.category + '/' + each.productId}>
-                                                <div className='simPro-card'  >
-                                                    <picture >
+                                        <a href={'/' + genderurl + '/' + each.category + '/' + each.productId}>
+                                            <div className='simPro-card'  >
+                                                <picture >
 
-                                                        <div className='position-relative' >
+                                                    <div className='position-relative' >
 
-                                                            <img id={each.productId} src={each.colors[0].img1} decoding="async" loading="lazy" />
-                                                            <div className='product-priceTag'>
-                                                                ₹{each.priceTag}
+                                                        <img id={each.productId} src={each.colors[0].img1} decoding="async" loading="lazy" />
+                                                        <div className='product-priceTag'>
+                                                            ₹{each.priceTag}
 
-                                                            </div>
                                                         </div>
-                                                    </picture>
-
-                                                    <div className='pb-4 p-2 fs'>
-
-                                                        <div className='fw-light fw-bold'>
-                                                            {each.name}
-                                                        </div>
-
                                                     </div>
+                                                </picture>
+
+                                                <div className='pb-4 p-2 fs'>
+
+                                                    <div className='fw-light fw-bold'>
+                                                        {each.name}
+                                                    </div>
+
                                                 </div>
-                                            </a>
-                                            
+                                            </div>
+                                        </a>
+
                                     )
                                 }) : null}
 
@@ -518,14 +553,25 @@ const ProductPage = () => {
                                 <div id='addToCartBtn-Loader' class="loader ms-3 d-none"></div>
 
                             </button>
-                            <div id={'heart' + info.productId} className='regular-heart' onClick={() => wishlistTrigger({
-                                productId: info.productId,
-                                name: info.name,
-                                img1: info.colors[0].img1,
-                                priceTag: info.priceTag,
-                                url: window.location.pathname
-                            })}>
-                                <i className={(info.wishlist) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'} />
+                            <div id={'heart' + info.productId} className='regular-heart' onClick={() => {
+                                wishlistTrigger({
+                                    productId: info.productId,
+                                    name: info.name,
+                                    img1: info.colors[0].img1,
+                                    priceTag: info.priceTag,
+                                    url: window.location.pathname
+                                });
+                                setTimeout(()=>{
+
+                                dispatch({ type: "CHANGE" });
+                                },800)
+                            }}>
+                                {(wlData.map((wlEach) => {
+                                    return wlEach.productId
+
+                                }).includes(info.productId)) ? <i id={'i1' + info.productId} className='fa-solid fa-heart' /> : <i id={'i1' + info.productId} className='fa-regular fa-heart' />
+
+                                }
                             </div>
                         </div>
                     </div>

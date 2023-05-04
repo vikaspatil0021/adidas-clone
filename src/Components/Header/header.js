@@ -8,8 +8,9 @@ import DropdownKids from "./dropdownContent/kids";
 import HamburgerContent from './mobileHamburger/hamburgerContent';
 
 import LoginModal from '../AuthPages/loginModal/loginModal';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 const Header = (props) => {
@@ -29,21 +30,21 @@ const Header = (props) => {
   // Fading effectr in the discount header==============>
   const [seed, setSeed] = useState('');
   const dHeaderContent = ["SIGNUP & GET 15% OFF", "FREE DELIVERY", "UPI & NET BANKING AVAILABLE"]
-  const dHead = useRef("SIGNUP & GET 15% OFF")
- 
-  let count = 1;
-  setInterval(() => {
-    document.getElementById("dis-header").style.opacity = 1;
-    // document.getElementById("dis-headerContent").innerHTML = dHeaderContent[count];
-    dHead.current = dHeaderContent[count]
-    count++;
-    if (count >= dHeaderContent.length) {
-      count = 0;
-    }
 
+  var count = 1;
 
+  useEffect(() => {
 
-  }, 5000)
+    const interval = setInterval(() => {
+
+      document.getElementById("dis-headerContent").innerHTML = dHeaderContent[count];
+      count++;
+      if (count >= dHeaderContent.length) {
+        count = 0;
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   // offCanvas toggle 
   const disHeaderOffcanvas = () => {
@@ -98,21 +99,27 @@ const Header = (props) => {
   }
 
   const [wlData, setWLData] = useState([]);
+  var wlcountData = useSelector((state) => state.wlcount);
 
+  useEffect(() => {
+    // setInterval(async()=>{
+    if (token01) {
 
-    useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + localStorage.getItem('Email'), {
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem('Token01')
-            }
+      axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + localStorage.getItem('Email'), {
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem('Token01')
+        }
+      })
+        .then((res) => {
+          console.log(res.data);
+          setWLData(res.data)
+        }).catch((err) => {
+          console.log(err);
         })
-            .then((res) => {
-                console.log(res.data);
-                setWLData(res.data)
-            }).catch((err) => {
-                console.log(err);
-            })
-    }, [])
+
+    }
+    // },15000)
+  }, [wlcountData])
 
   return (
     <header id='sticky-top-header' className="fixed-top bg-white border-bottom">
@@ -120,7 +127,7 @@ const Header = (props) => {
         <div onClick={disHeaderOffcanvas} className='d-flex justify-content-center  discount-header'>
           <div id='dis-header' className='my-2 d-flex align-items-center'>
             <div id='dis-headerContent'>
-              {dHead.current}
+              SIGNUP & GET 15% OFF
 
             </div>
             <i class="fa-solid fa-angle-down mx-3 dis-arrowDown fs-6"></i>
@@ -235,9 +242,16 @@ const Header = (props) => {
                   </h5>
                 </div>
               </div>
-              <div className='d-flex align-items-center me-3 ms-1'>
-                <i class="fa-regular fa-heart fs-4"></i>
-              </div>
+              <a href='/wishlist'>
+
+                <div role='button' className='d-flex align-items-center position-relative py-1 me-3 ms-1'>
+                  <i class="fa-regular fa-heart fs-4"></i>
+                  {(wlData.length == 0) ? null :
+
+                    <span id='wishlistBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{wlData.length}</span>
+                  }
+                </div>
+              </a>
             </div>
             <a href='/'>
               <div className='adidas-icon'>
@@ -314,7 +328,7 @@ const Header = (props) => {
                   <i class="fa-regular fa-heart fs-4"></i>
                   {(wlData.length == 0) ? null :
 
-                  <span id='wishlistBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{wlData.length}</span>
+                    <span id='wishlistBadge' className='badge text-bg-primary rounded-circle position-absolute translate-middle top-0 start-100'>{wlData.length}</span>
                   }
                 </div>
               </a>

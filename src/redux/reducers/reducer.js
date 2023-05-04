@@ -1,7 +1,8 @@
 // recently viewed item ===rvItem
 const iniState = {
     cart: [],
-    rvItem:[]
+    rvItem:[],
+    wlcount:0
 }
 
 export const cartreducer = (state = iniState.cart, action) => {
@@ -37,6 +38,17 @@ export const rvitemreducer = (state = iniState.rvItem, action) => {
                         return each;
                     }
                 }),action.payload]
+            
+    
+        default:
+            return state;
+    }
+}
+
+export const wlcountreducer = (state = iniState.wlcount, action) => {
+    switch (action.type) {
+        case "CHANGE":
+            return Math.random();
             
     
         default:
