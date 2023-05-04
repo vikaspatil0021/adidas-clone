@@ -96,7 +96,7 @@ const Section08 = () => {
                                         </div>
                                     </div>
                                 </Link>
-                                <div id={'heart' + each.productId} className='stock-heartIcon' onClick={() => {
+                                <div id={'heart' + each.productId} className='stock-heartIcon m-2 mt-1 pt-2' onClick={() => {
                                     wishlistTrigger({
                                         productId: each.productId,
                                         name: each.name,
