@@ -69,13 +69,13 @@ const Search = () => {
         <div className='d-flex justify-content-center p-3 pb-0'>
             <div className='container-stock'>
                 {(query) ?<><div className='mt-3 mb-2'>
-                    You Search result for :
+                    Your Search result for :
                 </div>
-                <h1 className='fw-bold mb-4'>
+                <h2 className='fw-bold mb-4'>
                     <em>
                         “ {query.toUpperCase()} ” [{searchResult.length}]
                     </em>
-                </h1></>:null}
+                </h2></>:null}
 
             {
                 (searchResult === '') ? <div className='d-flex flex-column align-items-center py-4'><div class="fs-4 fw-semibold ">NO RESULTS FOUND</div><div class="fs-5 ">Try again</div></div> :

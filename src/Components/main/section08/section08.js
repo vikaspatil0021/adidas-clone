@@ -87,7 +87,7 @@ const Section08 = () => {
                                         </picture>
                                         <div className='pb-4 p-2'>
 
-                                            <div className='fw-light '>
+                                            <div className='fw-bold '>
                                                 {each.name}
                                             </div>
                                             <span className='fw-light text-muted'>

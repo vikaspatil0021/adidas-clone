@@ -54,20 +54,27 @@ const Address = (props) => {
             mobile: data.mobile,
             state: data.state
         }
-        if (verifyData() === 8 && props.address.length<5) {
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/address/crud/add', { email: email01, address: sendData },{headers:{
-      "Authorization":"Bearer " + localStorage.getItem('Token01')
-    }})
-            .then((res)=>{
-                console.log(res.data);
-                props.modalTrigger('Acc-addressModal')
-            }).catch((err)=>{
-                console.log(err);
+        if (verifyData() === 8 && props.address.length < 5) {
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/address/crud/add', { email: email01, address: sendData }, {
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('Token01')
+                }
             })
-        }else{
-            props.modalTrigger('Acc-addressModal')
+                .then((res) => {
+                    console.log(res.data);
+                    props.modalTrigger('Acc-addressModal')
+                }).catch((err) => {
+                    console.log(err);
+                })
+        } else {
+            if(verifyData()!==8){
+                console.log("Fill all blanks");
+            }else{
 
-            window.alert('Only 5 address can be saved')
+                props.modalTrigger('Acc-addressModal')
+                
+                window.alert('Only 5 address can be saved')
+            }
         }
 
     }
@@ -257,7 +264,7 @@ const Address = (props) => {
                                 street: data.street,
                                 landmark: data.landmark,
                                 city: data.city,
-                                state:data.state
+                                state: data.state
 
                             })} onBlur={() => labelAnimation('addressMobile', 'off', 'address', data.mobile)} onFocus={() => labelAnimation('addressMobile', 'on', "address", data.mobile)} />
                             <label id='addressMobile-label' for='addressMobile'>Mobile *</label>

@@ -148,6 +148,7 @@
 .search-group {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .search {
@@ -160,7 +161,6 @@
     max-width: fit-content;
     width: 170px;
     position: relative;
-    left: 32px;
 }
 
 .search:focus {
@@ -171,7 +171,9 @@
 }
 
 .search-icon {
-    position: relative;
+    position: absolute;
+    right:0;
+    padding-right: 5px;
 }
 .search-mobile-input{
     width: 100%;

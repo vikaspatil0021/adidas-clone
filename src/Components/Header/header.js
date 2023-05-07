@@ -130,6 +130,20 @@ const Header = (props) => {
     window.location.pathname = '/search'
   }
 
+  useEffect(() => {
+    const ele = document.querySelector("#searchGroupdesktopIcon")
+    if(searchVal===''){
+      ele.classList.replace('fa-xmark','fa-magnifying-glass')
+      ele.classList.remove('px-1')
+    }else{
+      ele.classList.replace('fa-magnifying-glass','fa-xmark')
+      ele.classList.add('px-1')
+
+    }
+  }, [searchVal])
+
+
+
   return (
     <header id='sticky-top-header' className="fixed-top bg-white border-bottom">
       <div>
@@ -303,9 +317,9 @@ const Header = (props) => {
 
                 <div className='search-group'>
                   <input type="text" onChange={(e) => setSearch(e.target.value)} value={searchVal} className='search fw-semibold' placeholder='Search' />
-                  <div className='d-flex align-items-center search-icon'>
+                  <div className='d-flex align-items-center search-icon' onClick={()=>{setSearch('')}}>
 
-                    <i class="fa-solid fa-magnifying-glass fs-5 mx-2"></i>
+                    <i id='searchGroupdesktopIcon' type='button' class="fa-solid fa-magnifying-glass fs-5"  ></i>
                   </div>
                 </div>
               </form>
@@ -325,7 +339,7 @@ const Header = (props) => {
                 <i class="fa-solid fa-magnifying-glass fs-5 me-3 ms-2"></i>
               </div>
               <div className="mobile-search-offcanvas">
-                <div className='d-flex ' style={{ backgroundColor: "#eceff1",height:'7%' }}>
+                <div className='d-flex ' style={{ backgroundColor: "#eceff1", height: '8%' }}>
 
                   <div role='button' className='h-100 d-flex align-items-center' onClick={openCanvasMobileSearch}>
 
@@ -335,7 +349,7 @@ const Header = (props) => {
 
                     <input placeholder='Search' className='search-mobile-input' onChange={(e) => setSearch(e.target.value)} value={searchVal} />
                   </form>
-                  <div class='xmark-mob' type="button" onClick={()=>{setSearch('')}}>
+                  <div class='xmark-mob' type="button" onClick={() => { setSearch('') }}>
                     <i className='fa-solid fa-xmark fs-5' />
                   </div>
                 </div>
