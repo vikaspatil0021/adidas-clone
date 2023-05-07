@@ -15,6 +15,7 @@ import Stock from './Components/Stock/stock';
 import ProductPage from './Components/productPage/productPage';
 import Cart from './Components/cart/cart';
 import WishList from './Components/wishList/WishList';
+import Search from './Components/Search/Search';
 
 inject();
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="/account-register" exact element={<AccountRegister changeRe={changeRe} />} />
             <Route path="/cart" exact element={<Cart />} />
             <Route path="/wishlist" exact element={<WishList />} />
+            <Route path="/search" exact element={<Search />} />
 
             <Route path="/:gender/:category/:productId" exact element={<ProductPage />} />
 

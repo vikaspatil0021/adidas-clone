@@ -152,7 +152,7 @@
 
 .search {
     transition: border ease 1s;
-    padding: 0 10px 0 10px;
+    padding: 0 30px 0 10px;
     border: solid thin #e0e3e6;
     background-color: #e0e3e6;
     font-size: 14px;
@@ -167,6 +167,7 @@
 
     border: solid thin #636566;
     outline: 0;
+
 }
 
 .search-icon {
@@ -174,13 +175,22 @@
 }
 .search-mobile-input{
     width: 100%;
+    height: 100%;
     border: none;
     background-color: transparent;
+}
+.xmark-mob{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
 }
 .search-mobile-input:focus{
     outline: 0;
 }
-
+.search-mob-form{
+    width: 100%;
+}
 .mobile-search-icon {
     display: none;
 }

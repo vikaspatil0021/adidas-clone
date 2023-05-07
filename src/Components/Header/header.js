@@ -16,13 +16,13 @@ import { Link } from 'react-router-dom';
 const Header = (props) => {
 
   var token01 = localStorage.getItem("Token01");
+
   const cartData = useSelector((state) => state.cart);
 
   const [auth, setAuth] = useState(false);
   useEffect(() => {
 
     (token01) ? setAuth(true) : setAuth(false);
-    console.log(auth);
 
   }
     , [token01])
@@ -97,7 +97,7 @@ const Header = (props) => {
 
     }, 500);
   }
-
+  // wishlist
   const [wlData, setWLData] = useState([]);
   var wlcountData = useSelector((state) => state.wlcount);
 
@@ -111,7 +111,6 @@ const Header = (props) => {
         }
       })
         .then((res) => {
-          console.log(res.data);
           setWLData(res.data)
         }).catch((err) => {
           console.log(err);
@@ -120,6 +119,16 @@ const Header = (props) => {
     }
     // },15000)
   }, [wlcountData])
+
+
+  // search
+  const [searchVal, setSearch] = useState(localStorage.getItem("searchQuery") || '')
+  const searchQueryStore = (e) => {
+    e.preventDefault();
+    localStorage.setItem('searchQuery', searchVal)
+
+    window.location.pathname = '/search'
+  }
 
   return (
     <header id='sticky-top-header' className="fixed-top bg-white border-bottom">
@@ -290,13 +299,16 @@ const Header = (props) => {
 
             </div>
             <div className='d-flex mb-lg-1'>
-              <div className='search-group'>
-                <input type="text" className='search fw-semibold' placeholder='Search' />
-                <div className='d-flex align-items-center  search-icon'>
+              <form onSubmit={(e) => searchQueryStore(e)}>
 
-                  <i class="fa-solid fa-magnifying-glass fs-5 mx-2"></i>
+                <div className='search-group'>
+                  <input type="text" onChange={(e) => setSearch(e.target.value)} value={searchVal} className='search fw-semibold' placeholder='Search' />
+                  <div className='d-flex align-items-center search-icon'>
+
+                    <i class="fa-solid fa-magnifying-glass fs-5 mx-2"></i>
+                  </div>
                 </div>
-              </div>
+              </form>
 
               <div role='button' className='d-flex align-items-center mx-3 position-relative' onClick={(auth) ? () => { window.location.pathname = '/my-account/profile' } : toggleLoginModal}>
                 <i class="fa-regular fa-user fs-5"></i>
@@ -313,13 +325,19 @@ const Header = (props) => {
                 <i class="fa-solid fa-magnifying-glass fs-5 me-3 ms-2"></i>
               </div>
               <div className="mobile-search-offcanvas">
-                <div className='d-flex ' style={{ backgroundColor: "#eceff1" }}>
-                  <div role='button' onClick={openCanvasMobileSearch}>
+                <div className='d-flex ' style={{ backgroundColor: "#eceff1",height:'7%' }}>
+
+                  <div role='button' className='h-100 d-flex align-items-center' onClick={openCanvasMobileSearch}>
 
                     <i class="fa-solid fa-angle-left m-3 pt-2 ps-2 mx-4 fs-5"></i>
                   </div>
+                  <form className='search-mob-form' onSubmit={(e) => searchQueryStore(e)}>
 
-                  <input placeholder='Search' className='search-mobile-input' />
+                    <input placeholder='Search' className='search-mobile-input' onChange={(e) => setSearch(e.target.value)} value={searchVal} />
+                  </form>
+                  <div class='xmark-mob' type="button" onClick={()=>{setSearch('')}}>
+                    <i className='fa-solid fa-xmark fs-5' />
+                  </div>
                 </div>
               </div>
               <a href='/wishlist' className='d-flex align-items-center'>
