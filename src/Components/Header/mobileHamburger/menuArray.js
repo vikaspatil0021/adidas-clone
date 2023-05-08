@@ -98,6 +98,6 @@ export const menu1 = {
         }
 
     ],
-    c2: ["Order Tracker", "My Profile", "Store finder", "Help & Customer Service", "Returns", "Signup"]
+    c2: ["My Profile", "My Address", "My Orders", "Login", "Signup"]
 
 }

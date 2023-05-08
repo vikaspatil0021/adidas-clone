@@ -5,6 +5,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART } from '../../redux/actions/
 import { addButtonClass } from '../Repeaters/addButtonClass';
 
 const Cart = () => {
+  const token01 = localStorage.getItem('Token01');
   const dispatch = useDispatch();
   const cartData = useSelector((state) => state.cart);
   useEffect(() => {
@@ -150,6 +151,15 @@ const Cart = () => {
               <button id='checkOutBtn01' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
 
                 addButtonClass("checkOutBtn01");
+                if (!token01) {
+
+                  // trigger login modal
+                  const triggerModal = document.querySelector('#loginModal')
+                  triggerModal.classList.toggle("d-none");
+                }else{
+                  localStorage.setItem('stage','delivery')
+                  window.location.pathname = '/delivery'
+                }
 
               }} >
                 <span>CHECKOUT</span>
@@ -160,6 +170,7 @@ const Cart = () => {
 
               </button>
             </div>
+            
             <div className='mt-5 mb-4 fw-bold fs-5'>
               ORDER SUMMARY
             </div>
@@ -194,6 +205,16 @@ const Cart = () => {
                 <button id='checkOutBtn02' type='button' role='button' className='main-btn w-100 justify-content-between' onClick={() => {
 
                   addButtonClass("checkOutBtn02");
+                  if (!token01) {
+
+                    // trigger login modal
+                    const triggerModal = document.querySelector('#loginModal')
+                    triggerModal.classList.toggle("d-none");
+                  }else{
+                    localStorage.setItem('stage','delivery')
+
+                  window.location.pathname = '/delivery'
+                }
 
                 }} >
                   <span>CHECKOUT</span>

@@ -1,0 +1,49 @@
+.container-delivery{
+    max-width: 1150px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.Acc-address-delivery{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+.Acc-card-delivery{
+    border: #d6d5d5 solid 1px;
+    padding: 15px;
+    display: flex;
+}
+.radioBtn-delivery{
+    margin: 10px 10px;
+    font-size: 20px;
+    display: flex;
+}
+#placeOrderBtn02{
+    display: none;
+}
+@media (max-width:965px) {
+    .Acc-address-delivery{
+        grid-template-columns: 1fr;
+    }
+    .container-delivery{
+        grid-template-columns: 1fr;
+    }
+    .poBtn{
+        width: 100%;
+        display: flex;
+    }
+    .poBtn button{
+        width: 100%;
+        justify-content: space-between;
+    }
+    #placeOrderBtn01{
+        display: none;
+    }
+    #placeOrderBtn02{
+        display: flex;
+    }
+}

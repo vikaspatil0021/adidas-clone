@@ -124,10 +124,14 @@ const Header = (props) => {
   // search
   const [searchVal, setSearch] = useState(localStorage.getItem("searchQuery") || '')
   const searchQueryStore = (e) => {
-    e.preventDefault();
-    localStorage.setItem('searchQuery', searchVal)
 
-    window.location.pathname = '/search'
+    e.preventDefault();
+    if(searchVal!==''){
+
+      localStorage.setItem('searchQuery', searchVal)
+      
+      window.location.pathname = '/search'
+    }
   }
 
   useEffect(() => {
@@ -224,11 +228,12 @@ const Header = (props) => {
         <div className='mx-xl-5 mx-2'>
           <div className='header-top'>
             <ul className='d-flex justify-content-between p-0 m-0'>
-              <li><a href=''>help</a></li>
-              <li><a href=''>returns</a></li>
-              <li><a href=''>order tracker</a></li>
-              <li><a href=''>sign up</a></li>
-              <li><a href=''>log in</a></li>
+              <li><a href='/my-account/profile'>profile</a></li>
+              <li><a href='/my-account/address-book'>address book</a></li>
+              <li><a href='/my-account/order-history'>orders  </a></li>
+              {(!token01)?
+              <><li><a href='/account-register'>sign up</a></li>
+              <li><a href='/account-login'>log in</a></li></>:null}
 
             </ul>
           </div>

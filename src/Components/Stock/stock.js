@@ -18,14 +18,19 @@ const Stock = () => {
     const [requestedData, setrequestedData] = useState([]);
 
     const [categoryUrl, setUrl] = useState((url.includes('/men')) ? url.substring(5) : (url.includes('/kids')) ? url.substring(6) : url.substring(7));
-    const gender = (url.includes('/men')) ? "/men/" : (url.includes('/kids')) ? "/kids/" : "/women/";
+    const gender = (url.includes('/men')) ? "/men/" : (url.includes('/kids')) ? "/kids/" : (url.includes('/women')?"/women/":null);
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/stock' + gender + categoryUrl)
+        if(gender!=null){
+
+            axios.get(process.env.REACT_APP_SERVER_URL + '/stock' + gender + categoryUrl)
             .then((res) => {
                 setProductData(res.data);
                 setrequestedData(res.data);
-
+                
             })
+        }else{
+            window.location.pathname = '/error/pagenotfound'
+        }
     }, [categoryUrl])
     useEffect(() => {
 
@@ -59,8 +64,12 @@ const Stock = () => {
             st = url.substring(6);
 
         }
+        if(gender!=null){
 
-        activeCategoryOption(st);
+            activeCategoryOption(st);
+        }else{
+            window.location.pathname = '/error/pagenotfound'
+        }
 
     }, [])
 

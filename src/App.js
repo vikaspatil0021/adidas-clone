@@ -16,6 +16,8 @@ import ProductPage from './Components/productPage/productPage';
 import Cart from './Components/cart/cart';
 import WishList from './Components/wishList/WishList';
 import Search from './Components/Search/Search';
+import PageNotFound from './Components/PageNotFound/pageNotFound';
+import Delivery from './Components/delivery/Delivery';
 
 inject();
 
@@ -43,10 +45,13 @@ function App() {
 
         <Router>
           <Routes>
+          <Route path='*' element={<PageNotFound />} />
             <Route path="/" exact element={<Main />} />
             <Route path="/account-login" exact element={<AccountLogin changeRe={changeRe} />} />
             <Route path="/account-register" exact element={<AccountRegister changeRe={changeRe} />} />
             <Route path="/cart" exact element={<Cart />} />
+            <Route path="/delivery" exact element={<Delivery />} />
+
             <Route path="/wishlist" exact element={<WishList />} />
             <Route path="/search" exact element={<Search />} />
 
