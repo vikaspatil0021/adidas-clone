@@ -25,6 +25,17 @@
 #placeOrderBtn02{
     display: none;
 }
+.poBtn{
+    min-width: 100%;
+    width: 100%;
+    display: flex;
+}
+.poBtn button{
+    min-width: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 @media (max-width:965px) {
     .Acc-address-delivery{
         grid-template-columns: 1fr;
@@ -32,11 +43,9 @@
     .container-delivery{
         grid-template-columns: 1fr;
     }
-    .poBtn{
-        width: 100%;
-        display: flex;
-    }
+   
     .poBtn button{
+        min-width: 10px;
         width: 100%;
         justify-content: space-between;
     }

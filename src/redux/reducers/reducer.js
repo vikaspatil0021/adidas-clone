@@ -25,6 +25,8 @@ export const cartreducer = (state = iniState.cart, action) => {
         case 'REMOVE_CART':
             return state.filter(each => each.productId != action.payload.productId)
             
+        case 'EMPTY_CART':
+            return []
         default:
             return state;
     }

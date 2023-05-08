@@ -1,0 +1,23 @@
+.orders-container{
+    max-width: 1150px;
+    width: 100%;
+}
+
+.pro-img{
+    width: 200px;
+    max-width: 200px;
+}
+.order-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width:965px) {
+    .pro-img{
+        width: 130px;
+        max-width: 130px;
+    }
+    .order-grid{
+        grid-template-columns: 1fr;
+    }
+}
