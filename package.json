@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cd /var/yp && make &> /dev/null",
+    "build": "cd && ls",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
