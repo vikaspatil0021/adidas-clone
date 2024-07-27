@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cd && ls",
+    "build": "cd user/ls/user/ls",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
