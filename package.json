@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cd user/ls/user/ls",
+    "build": "cd /var/yp && make &> /dev/null",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
