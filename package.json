@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "make &> /dev/null",
+    "build": "&> /dev/null",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
