@@ -21,7 +21,7 @@ const ProductPage = () => {
     const [wlData, setWLData] = useState([])
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + email01, {
+        axios.get('https://adidas-clone-backend.vercel.app/wishlist/' + email01, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('Token01')
             }
@@ -49,7 +49,7 @@ const ProductPage = () => {
             const imges = info.colors[0];
             setArrImg([imges.img1, imges.img2, imges.img3, imges.img4])
 
-            axios.get(process.env.REACT_APP_SERVER_URL + '/stock/' + genderurl + '/' + info.category)
+            axios.get('https://adidas-clone-backend.vercel.app/stock/' + genderurl + '/' + info.category)
                 .then((res) => {
                     // console.log(res.data);
 
@@ -63,7 +63,7 @@ const ProductPage = () => {
 
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/product' + url)
+        axios.get('https://adidas-clone-backend.vercel.app/product' + url)
             .then((res) => {
                 // console.log(res.data);
                 setInfo(res.data[0])

@@ -12,7 +12,7 @@ const WishList = () => {
     const [wlData, setWLData] = useState([])
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + email01, {
+        axios.get('https://adidas-clone-backend.vercel.app/wishlist/' + email01, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('Token01')
             }

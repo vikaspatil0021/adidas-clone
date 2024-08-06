@@ -21,7 +21,7 @@ const Delivery = () => {
     const [seed, setSeed] = useState('')
     const [address, setAddress] = useState([])
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/address/' + email01, {
+        axios.get('https://adidas-clone-backend.vercel.app/address/' + email01, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('Token01')
             }
@@ -88,7 +88,7 @@ const Delivery = () => {
                 date:  day + "/" + month + "/" + year,
                 total: totalPrice
             }
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/orders', { order: sendData }, {
+            await axios.post('https://adidas-clone-backend.vercel.app/orders', { order: sendData }, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('Token01')
                 }

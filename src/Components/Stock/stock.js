@@ -22,7 +22,7 @@ const Stock = () => {
     useEffect(() => {
         if(gender!=null){
 
-            axios.get(process.env.REACT_APP_SERVER_URL + '/stock' + gender + categoryUrl)
+            axios.get('https://adidas-clone-backend.vercel.app/stock' + gender + categoryUrl)
             .then((res) => {
                 setProductData(res.data);
                 setrequestedData(res.data);
@@ -141,7 +141,7 @@ const Stock = () => {
     const [wlData, setWLData] = useState([])
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + email01, {
+        axios.get('https://adidas-clone-backend.vercel.app/wishlist/' + email01, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('Token01')
             }

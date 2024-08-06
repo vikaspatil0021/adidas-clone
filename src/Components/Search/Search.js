@@ -17,7 +17,7 @@ const Search = () => {
     useEffect(() => {
         if (query) {
 
-            axios.post(process.env.REACT_APP_SERVER_URL + '/search', { query })
+            axios.post('https://adidas-clone-backend.vercel.app/search', { query })
                 .then((res) => {
                     setSearchResult((res.data.length === 0) ? '' : res.data)
                 }).catch((err) => {
@@ -53,7 +53,7 @@ const Search = () => {
     const [wlData, setWLData] = useState([])
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + email01, {
+        axios.get('https://adidas-clone-backend.vercel.app/wishlist/' + email01, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('Token01')
             }

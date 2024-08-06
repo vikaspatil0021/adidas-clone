@@ -25,7 +25,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_SERVER_URL + '/orders/' + email01, {
+    axios.get('https://adidas-clone-backend.vercel.app/orders/' + email01, {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem('Token01')
       }

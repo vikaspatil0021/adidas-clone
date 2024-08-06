@@ -55,7 +55,7 @@ const Address = (props) => {
             state: data.state
         }
         if (verifyData() === 8 && props.address.length < 5) {
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/address/crud/add', { email: email01, address: sendData }, {
+            await axios.post('https://adidas-clone-backend.vercel.app/address/crud/add', { email: email01, address: sendData }, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('Token01')
                 }

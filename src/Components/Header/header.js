@@ -105,7 +105,7 @@ const Header = (props) => {
     // setInterval(async()=>{
     if (token01) {
 
-      axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + localStorage.getItem('Email'), {
+      axios.get('https://adidas-clone-backend.vercel.app/wishlist/' + localStorage.getItem('Email'), {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem('Token01')
         }

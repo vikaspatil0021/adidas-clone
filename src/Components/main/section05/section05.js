@@ -18,7 +18,7 @@ const Section05 = () => {
     useEffect(() => {
         if (gender != '') {
 
-            axios.get(process.env.REACT_APP_SERVER_URL + '/stock/' + gender + '/All')
+            axios.get('https://adidas-clone-backend.vercel.app/stock/' + gender + '/All')
                 .then((res) => {
                     console.log(res.data);
                     setCurrentData(res.data)

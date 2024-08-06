@@ -14,7 +14,7 @@ const Account = (props) => {
 
   const [address, setAddress] = useState([])
   useEffect(() => {
-    axios.get(process.env.REACT_APP_SERVER_URL + '/address/' + email01,{headers:{
+    axios.get('https://adidas-clone-backend.vercel.app/address/' + email01,{headers:{
       "Authorization":"Bearer " + localStorage.getItem('Token01')
     }})
       .then((res) => {
@@ -83,7 +83,7 @@ const Account = (props) => {
 
   const deleteAccount = async () => {
 
-    await axios.post(process.env.REACT_APP_SERVER_URL + '/deleteAccount', { email: email01 },{headers:{
+    await axios.post('https://adidas-clone-backend.vercel.app/deleteAccount', { email: email01 },{headers:{
       "Authorization":"Bearer " + localStorage.getItem('Token01')
     }})
       .then((res) => {
@@ -105,7 +105,7 @@ const Account = (props) => {
 
 
   const removeAddress = async (index) => {
-    await axios.post(process.env.REACT_APP_SERVER_URL + '/address/crud/remove', { email: email01, index:index},{headers:{
+    await axios.post('https://adidas-clone-backend.vercel.app/address/crud/remove', { email: email01, index:index},{headers:{
       "Authorization":"Bearer " + localStorage.getItem('Token01')
     }})
       .then((res) => {

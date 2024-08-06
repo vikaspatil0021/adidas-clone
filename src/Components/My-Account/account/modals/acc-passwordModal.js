@@ -82,7 +82,7 @@ const AccPasswordModal = (props) => {
         }
         console.log(arr);
         if (arr.length === 2) {
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/matchPassword', { email: props.email01, password: data.Password }, {
+            await axios.post('https://adidas-clone-backend.vercel.app/matchPassword', { email: props.email01, password: data.Password }, {
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem('Token01')
                 }
@@ -106,7 +106,7 @@ const AccPasswordModal = (props) => {
 
             if (arr.length === 3) {
                 console.log(arr);
-                await axios.post(process.env.REACT_APP_SERVER_URL + '/changePassword', { email: props.email01, password: data.newPassword }, {
+                await axios.post('https://adidas-clone-backend.vercel.app/changePassword', { email: props.email01, password: data.newPassword }, {
                     headers: {
                         "Authorization": "Bearer " + localStorage.getItem('Token01')
                     }

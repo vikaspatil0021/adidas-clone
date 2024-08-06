@@ -193,7 +193,7 @@ const AccountLogin = (props) => {
 
         }
         if (arr.length == 0) {
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/login', { email: data.Email, password: data.Password })
+            await axios.post('https://adidas-clone-backend.vercel.app/login', { email: data.Email, password: data.Password })
                 .then((res) => {
                     const passwordErr = document.querySelector("#warningPasswordError01");
                     console.log(res.data);

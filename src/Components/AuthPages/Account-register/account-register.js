@@ -259,7 +259,7 @@ const AccountRegister = (props) => {
             const emailInput = document.querySelector('#signupEmailAcc');
 
 
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/register', { email: data.Email, password: data.Password })
+            await axios.post('https://adidas-clone-backend.vercel.app/register', { email: data.Email, password: data.Password })
                 .then((res) => {
                     console.log(res.data);
 
@@ -299,7 +299,7 @@ const AccountRegister = (props) => {
 
     const ifLoginAction = async () => {
         const ifL = document.querySelector('#ifLogin');
-        await axios.post(process.env.REACT_APP_SERVER_URL + '/checkUser', { email: data.Email })
+        await axios.post('https://adidas-clone-backend.vercel.app/checkUser', { email: data.Email })
             .then((res) => {
                 console.log(res.data);
                 if (res.data.user) {

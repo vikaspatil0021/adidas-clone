@@ -19,7 +19,7 @@ const wishlistTrigger = (productInfo,btn) => {
         } else {
             action = '/remove/'
         }
-        axios.post(process.env.REACT_APP_SERVER_URL + '/wishlist/crud' + action + email01,
+        axios.post('https://adidas-clone-backend.vercel.app/wishlist/crud' + action + email01,
             { productInfo },
             {
                 headers: {

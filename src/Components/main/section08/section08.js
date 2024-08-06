@@ -15,7 +15,7 @@ const Section08 = () => {
     const [currentData, setCurrentData] = useState([])
     console.log(currentData);
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/stock/women/All')
+        axios.get('https://adidas-clone-backend.vercel.app/stock/women/All')
             .then((res) => {
                 var data = res.data.filter((each, index) => {
                     if ((each.category === 'Footwear' || each.category === 'Clothing') && index < 20) {
@@ -32,7 +32,7 @@ const Section08 = () => {
     const [wlData, setWLData] = useState([])
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + '/wishlist/' + email01, {
+        axios.get('https://adidas-clone-backend.vercel.app/wishlist/' + email01, {
             headers: {
                 "Authorization": "Bearer " + localStorage.getItem('Token01')
             }
