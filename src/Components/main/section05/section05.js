@@ -161,7 +161,7 @@ const Section05 = () => {
             <div id='beforeClick' className='section05'>
 
                 <div className="my-4 fw-bolder mx-3 pe-3" style={{ fontSize: "40px", fontWeight: "700" }}>
-                    WHO ARE YOU SHOPPING FOR?
+                    nobody
                 </div>
                 <div className='section05-grid'>
                     <div>
