@@ -6,3 +6,5 @@ This repository is a frontent part of the MERN project built using REACT,REDUX, 
 This website is a clone of ADIDAS original website with the same features and functionalities such as FILTER methods, Hamburger menu, Overflows, Product cards, Cart etc.
 
 https://adidas-clone-0021.vercel.app/
+
+
